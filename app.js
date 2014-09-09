@@ -8,6 +8,7 @@ var express = require('express'),
     connectFormidable = require('./custom_modules/connect-formidable'),
     Util = require("./src/Utils"),
     viewEngine = require("ejs-locals"),
+    ejs=require('ejs');
     socket = require('socket.io');
 
 
