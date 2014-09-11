@@ -45,7 +45,9 @@ _app.get('/auth/twitter/callback',
     _passport.authenticate('twitter', { successRedirect: '/',
         failureRedirect: '/' }));
 _app.get('/getProfileData',controllers.user.getProfile);
-// retweets
-_app.get('/twitter/tweet', controllers.user.getTweets);
+// new tweets
+_app.post('/makeTweet', controllers.user.makeTweets);
 //tweets
-_app.get('/twitter/tweets',controllers.user.findTweets);
+_app.get('/getTweets',controllers.user.getTweets);
+//retweet
+_app.post('/reTweet',controllers.user.reTweet);

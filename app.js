@@ -14,6 +14,7 @@ expressValidator = require('express-validator'),
     OAuth = require('oauth').OAuth,
     Twit = require('twit');
 var oa;
+var ntwitter = require('ntwitter');
 
 // Use the BearerStrategy with Passport.
 passport.use(new BearerStrategy(Util.verifyBearerToken));
@@ -27,6 +28,9 @@ passport.deserializeUser(function (user, done) {
 
 global.__defineGetter__("_passport", function () {
     return passport
+});
+global.__defineGetter__("_ntwitter", function () {
+    return ntwitter
 });
 global.__defineGetter__("_twit", function () {
     return Twit
@@ -92,7 +96,7 @@ if (__appEnv == "production") {
     app.use(express.static(path.join(__dirname, 'web-app', "bower_components")));
     app.use(express.static(path.join(__dirname, 'web-app', "dev")));
 }
-app.use(expressSession({secret: 'TD_Secret'}))
+app.use(expressSession({secret: 'TD_Secret', key: 'sid', cookie: { secure: false }}))
 app.use(express.cookieParser());
 app.use(Util.localToBearerStrategyMiddleWare);
 app.use(express.json());

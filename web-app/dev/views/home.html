@@ -1,4 +1,17 @@
-<div>
-    <div class="tweetDiv"> tweet div</div>
-    <div class="favouriteTweetDiv"> favourite Tweet div</div>
+<div style="margin-top: 50px">
+    <div class="tweetDiv" ng-show="tweets" style="width: 500px;height:400px;overflow-y: scroll; float: left;margin-left: 100px;background-color: #b3b3b3;border-radius: 5px 5px 5px 5px ">
+        <table class="table">
+            <thead class="caption">Tweets</thead>
+            <tr class="table-bordered" ng-repeat="tweet in tweets track by $index">
+                <td>{{tweet.text}}
+                <br>
+                <button class="btn btn-info" ng-click="retweet(tweet.id)">Retweet</button>
+                <button class="btn btn-info" ng-click="favourite()">Favourite</button>
+                <div></div>
+
+                </tr></td></tr>
+        </table>
+        <!--{{tweets}}-->
+    </div>
+    <div class="favouriteTweetDiv" style="width:300px;background-color: #dcdcdc;float: right;margin-right: 100px"> favourite Tweet div</div>
 </div>

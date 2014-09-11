@@ -2,7 +2,7 @@ var EventName = require("../src/enum/EventName");
 
 
 exports.findOrCreateTwitterAccountService = function (accessToken,refreshToken,profile) {
-    console.log('tweets',profile._json.status.entities.user_mentions[0].indices,"l>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>ength",profile._json.status.retweeted_status.length);
+    console.log('tweets',profile._json,"l>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>ength");
     console.log('tweets',profile,"l>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>............");
     var emitter = this;
     User.findOne({twitterId: profile.id}, function (err, data) {

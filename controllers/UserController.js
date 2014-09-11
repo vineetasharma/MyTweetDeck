@@ -83,7 +83,7 @@ exports.logout = function (req, res) {
     res.redirect("/");
 };
 //retweets
-exports.getTweets=function (req, res) {
+exports.makeTweets=function (req, res) {
     var user=req.checkLoggedIn();
     makeTweet(user,function (error, data) {
         if(error) {
@@ -95,17 +95,6 @@ exports.getTweets=function (req, res) {
         }
     });
 }
-/*initTwitterOauth=function () {
-    _oa = new _OAuth(
-        "https://twitter.com/oauth/request_token"
-        , "https://twitter.com/oauth/access_token"
-        , _config.twitterAuth.consumerKey
-        , _config.twitterAuth.consumerSecret
-        , "1.0A"
-        , "http://localhost:9092/twitter/auth/callback"
-        , "HMAC-SHA1"
-    );
-}*/
 makeTweet=function (user,cb) {
     if(user){
         User.findOne({_id: user._id}, function (err, data) {
@@ -133,7 +122,7 @@ makeTweet=function (user,cb) {
 
     }
 }
-exports.makeDm=function (sn, cb) {
+/*exports.makeDm=function (sn, cb) {
     var user=req.checkLoggedIn();
     if(user){
         User.findOne({_id: user._id}, function (err, data) {
@@ -160,25 +149,81 @@ exports.makeDm=function (sn, cb) {
         });
 
     }
-}
-//find tweets
-exports.findTweets=function(req,res){
+}*/
+exports.getTweets=function(req,res){
     var user=req.checkLoggedIn();
+    getUserTweets(user,function (error, data) {
+        if(error) {
+            console.log(require('sys').inspect(error));
+            res.end('bad stuff happened, none tweetage');
+        } else {
+            console.log(data);
+            res.send(JSON.parse(data));
+        }
+    });
+}
+getUserTweets=function (user,cb) {
     if(user){
         User.findOne({_id: user._id}, function (err, data) {
             if (err) {
                 console.log('error',err);
             }
             else{
-                new _twit({
-                        consumer_key:_config.twitterAuth.consumerKey
-                        , consumer_secret:_config.twitterAuth.consumerSecret
-                        , access_token:data.accessToken
-                        , access_token_secret:data.refreshToken
-                    })
-                    .get('search/tweets', { q: 'Tweet since:2014-09-11', count: 5 }, function(err, data, response) {
-                    console.log('serrtf',data,'?????????????????????????')
-                });
+                new _OAuth(
+                    "https://twitter.com/oauth/request_token"
+                    , "https://twitter.com/oauth/access_token"
+                    , _config.twitterAuth.consumerKey
+                    , _config.twitterAuth.consumerSecret
+                    , "1.0A"
+                    , "http://localhost:9092/twitter/auth/callback"
+                    , "HMAC-SHA1"
+                ).get(
+                    "https://api.twitter.com/1.1/statuses/home_timeline.json?count=10"
+                    , data.accessToken
+                    , data.refreshToken
+                    , cb
+                );
+            }
+        });
+
+    }
+}
+
+exports.reTweet=function(req,res){
+    console.log('metooooooooooooooooooooooooddddddddddddddddddddddddddddddddddddddddddd callllllllllllllllldedddddddddddddd');
+    var user=req.checkLoggedIn();
+    console.log('iddddddddddddddddd>>>>>>>>>>>'+req.body.id);
+    reTweets(user,req.body.id,function (error, data) {
+        if(error) {
+            console.log(require('sys').inspect(error));
+            res.end('bad stuff happened, none tweetage');
+        } else {
+            console.log(data);
+            res.send(JSON.parse(data));
+        }
+    });
+}
+reTweets=function (user,id,cb) {
+    if(user){
+        User.findOne({_id: user._id}, function (err, data) {
+            if (err) {
+                console.log('error',err);
+            }
+            else{
+                new _OAuth(
+                    "https://twitter.com/oauth/request_token"
+                    , "https://twitter.com/oauth/access_token"
+                    , _config.twitterAuth.consumerKey
+                    , _config.twitterAuth.consumerSecret
+                    , "1.0A"
+                    , "http://localhost:9092/twitter/auth/callback"
+                    , "HMAC-SHA1"
+                ).post(
+                        "https://api.twitter.com/1.1/statuses/retweet/"+id+".json"
+                        , data.accessToken
+                        , data.refreshToken
+                        , cb
+                    );
             }
         });
 
