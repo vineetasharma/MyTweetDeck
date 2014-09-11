@@ -1,16 +1,10 @@
-/* Space out content a bit */
-
-body {
-    background-image: url("../images/051e36e98a2b3776061fa6f611f5dcb0_400x400.png");
-    background-size: cover;
-}
-
 /* Everything but the jumbotron gets side spacing for mobile first views */
 .header,
 .marketing,
 .footer {
     padding-left: 15px;
     padding-right: 15px;
+
 }
 
 /* Custom page header */
@@ -26,17 +20,24 @@ body {
     padding-bottom: 19px;
 }
 
-/* Custom page footer */
-.footer {
-    padding-top: 19px;
-    color: #777;
-    border-top: 1px solid #e5e5e5;
+#view {
+    padding-bottom: 50px;
+}
+
+#footer {
+    width: 100%;
+    height: 50px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background: #000;
+    z-index: 2;
 }
 
 /* Customize container */
-@media (min-width: 768px) {
+@media (min-width: 1068px) {
     .container {
-        max-width: 730px;
+        max-width: 1030px;
     }
 }
 
@@ -65,7 +66,7 @@ body {
 }
 
 /* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 1068px) {
     /* Remove the padding we set earlier */
     .header,
     .marketing,
@@ -83,4 +84,481 @@ body {
     .jumbotron {
         border-bottom: 0;
     }
+}
+
+.modal-dialog {
+
+    margin-top: 100px;
+    width: 380px;
+}
+
+.modal-content {
+    background-color: darkgray;
+}
+
+.modal-header {
+    padding: 10px;
+    padding-left: 150px;
+}
+
+.modal-body {
+    padding: 10px;
+    padding-left: 35px;
+
+}
+
+.modal-footer {
+    padding: 10px;
+    padding-left: 30px;
+}
+
+.modal-btn {
+    padding: 6px 40px;
+}
+
+.leftbar {
+    position: relative;
+    overflow: hidden;
+}
+
+.sidebar-inner1 {
+    margin-top: 10px;
+    background-color: #9acfea;
+    height: 100px;
+    border-radius: 10px;
+    opacity: 0.6;
+}
+
+.sidebar-inner2 {
+    margin-top: 100px;
+    background-color: transparent;
+    height: 288px;
+    border-radius: 10px;
+    opacity: 0.6;
+}
+
+.content-row {
+    margin-left: 100px;
+    margin-right: 0 !important;
+}
+
+.content-row-align {
+    top: 50px;
+}
+
+.search-city {
+    margin-top: 50px;
+}
+
+.search-city-btn {
+    padding: 12px 12px;
+}
+
+.weather-align1 {
+    margin-top: 50px;
+    margin-left: 50px;
+    color: white;
+}
+
+.weather-align2 {
+    margin-top: 75px;
+}
+
+#weather-icon {
+    width: 200PX;
+    height: 200px;
+    float: left;
+}
+
+#weather-info {
+    width: 200PX;
+    margin-left: 200px;
+}
+
+#humidity-icon {
+    width: 200PX;
+    height: 200px;
+    float: left;
+}
+
+#humidity-info {
+    width: 200PX;
+    margin-left: 200px;
+}
+
+#windspeed-icon {
+    width: 200PX;
+    height: 200px;
+    float: left;
+}
+
+#windspeed-info {
+    width: 200PX;
+    margin-left: 200px;
+}
+
+.recent-location {
+    margin-top: 30px;
+    margin-left: 40px;
+}
+
+body {
+    background-image: url("../images/exp_wc2014_gen_couch.jpg");
+    background-size: cover;
+}
+
+.list-group-item {
+    background-color: white;
+}
+
+.wa-1 {
+    margin-top: 25px;
+    background-color: #9acfea;
+    height: 100px;
+    border-radius: 10px;
+    opacity: 0.6;
+}
+
+.iglocations {
+    background-image: url("../images/igmap.jpg");
+    height: 400px;
+    width: auto;
+    border-radius: 10px;
+    opacity: 0.8;
+}
+
+.Corporate-Office {
+    padding-top: 10px;
+    border-radius: 10px;
+    opacity: 0.6;
+    padding-left: 20px;
+    font-size: large;
+    font-family: "Helvetica Neue Light", "HelveticaNeue-Light", "Helvetica Neue", Calibri, Helvetica, Arial, sans-serif;
+}
+
+.Corporate-Office-inner {
+    padding-left: 15px;
+    padding-bottom: 15px;
+    color: #f5f5f5;
+}
+
+#NotLoggedIn {
+    visibility: visible;
+}
+
+#LoggedIn {
+    visibility: hidden;
+}
+
+.h3-msg {
+    color: #000000;
+}
+
+.h4 {
+    font-size: 40px;
+}
+
+.h5 {
+    font-size: 20px;
+}
+
+.h1 {
+    font-size: 150px;
+}
+
+.img-icon {
+    height: 100%;
+    width: 100%;
+}
+
+.hw {
+    vertical-align: middle;
+    height: 100px;
+    width: 100px;
+    margin-left: 10px;
+}
+
+#info {
+    margin-left: 20px;
+    margin-top: 50px;
+    color: red;
+    font-size: 40px;
+}
+
+.in-h3 {
+    padding: 20px;
+    font-size: 20px;
+    padding-left: 22px;
+    color: #000000;
+}
+
+.loc {
+    padding-left: 30px;
+    color: #222222;
+    font-size: 16px;
+    text-align: left;
+}
+
+.loader {
+    padding-bottom: 10px;
+}
+
+.main {
+    margin: 1em 0 0.5em 0;
+    font-weight: normal;
+    position: relative;
+    text-shadow: 0 -1px rgba(0, 0, 0, 0.6);
+    font-size: 28px;
+    line-height: 40px;
+    background: #355681;
+    background: rgba(53, 86, 129, 0.8);
+    border: 1px solid #fff;
+    padding: 5px 15px;
+    color: white;
+    border-radius: 0 10px 0 10px;
+    box-shadow: inset 0 0 5px rgba(53, 86, 129, 0.5);
+    font-family: 'Muli', sans-serif;
+}
+
+.from {
+    color: blue;
+}
+
+.message {
+    text-indent: 50px !important;
+}
+
+.aboutus {
+    color: white;
+    margin-top: 30px;
+}
+
+.aboutus-p {
+    font-size: 20px;
+    text-align: justify;
+    text-decoration: solid;
+    line-height: 150%;
+    text-indent: 50px;
+}
+
+.aboutus-hr {
+    border: 2px solid #000;
+}
+
+.followus {
+    height: 70px;
+    width: 70px;
+    overflow: hidden;
+    margin-right: 10px;
+    border-radius: 50%;
+    margin-top: 20%;
+    color: #f5f5f5;
+    font-size: 50px;
+    text-align: center;
+}
+
+.fa-md {
+    padding-top: 30%;
+}
+
+.tw {
+    background-color: lightblue;
+}
+
+.fb {
+    background-color: #105cb6;
+}
+
+.timeDiv {
+    color: #222222;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    height: 92px;
+    color: #f5f5f5;
+
+}
+
+.timeDivLeft {
+    float: left;
+    width: auto;
+    height: 92px;
+    padding-right: 10px;
+    padding-left: 10px;
+    margin-left: 14px;
+    border-bottom-left-radius: 6px;
+    border-top-left-radius: 6px;
+    background-color: #000000;
+    font-variant-numeric: diagonal-fractions;
+}
+
+.timeDivRight {
+    width: auto;
+    height: 92px;
+    border-bottom-right-radius: 6px;
+    border-top-right-radius: 6px;
+    background-color: #000000;
+    padding-left: 0px;
+
+}
+
+.time {
+    font-size: 65px;
+    background-color: white;
+    color: #000000;
+
+}
+
+.timeDay {
+    font-size: 16px;
+    margin-top: 5px;
+}
+
+.dateClass {
+    margin-top: -16px;
+    font-size: 50px;
+}
+
+.timeMonth {
+    margin-top: -16px;
+    font-size: 16px;
+}
+
+.profile-row {
+    margin-left: 20px;
+    margin-top: 20px;
+    background-color: transparent;
+}
+
+#view {
+    padding-bottom: 50px;
+}
+
+#content {
+    padding: 20px;
+    position: relative;
+    z-index: 1
+}
+
+.profile-image {
+    width: 150px;
+    height: 150px;
+    border: 2px solid white;
+    outline: 1px solid #dbdee0
+}
+
+.profile h3 {
+    padding: 0 5px
+}
+
+ul.profile-details {
+    margin-top: 10px;
+    padding: 0 5px;
+    list-style: none;
+    color: #7c848d
+}
+
+ul.profile-details li {
+    position: relative;
+    margin: 0 0 20px 0;
+    padding-left: 22px
+}
+
+ul.profile-details li div {
+    color: #b2b8bd
+}
+
+ul.profile-details li div i {
+    position: absolute;
+    top: 4px;
+    left: -5px;
+    color: #ced1d4;
+    width: 20px;
+    text-align: center
+}
+
+ul.profile-details li input[type="text"] {
+    color: black !important
+}
+
+.tab-content {
+    background: white;
+    border: 1px solid #dbdee0;
+    border-top: 0;
+    padding: 10px
+}
+
+.profile-contact {
+    margin-top: 5px;
+    background-color: #f5f5f5;
+}
+
+.address {
+    font-size: small;
+}
+
+.about {
+    margin-bottom: 10px;
+    text-align: left !important;
+}
+
+.control-label {
+    text-align: left !important;
+    padding-left: 100px;
+}
+
+.edit-profile {
+    text-align: right;
+}
+
+.edit{
+height: 50px;
+width: 50px;
+}
+
+p.email {
+    text-indent: 50px;
+}
+
+.form-group {
+    margin-bottom: 0px;
+}
+
+.save {
+    margin-top: 25px;
+}
+
+.upload-pic {
+    width: 235px;
+    height: 25px;
+}
+
+.settings-content {
+    float: left;
+}
+
+.avatar-upload {
+    text-align: left;
+}
+
+.two-thirds {
+    margin-left: 50px;
+}
+
+.profile-info {
+    margin-left: 0;
+    border: 1px solid;
+    background-color: ghostwhite;
+    border-radius: 4px;
+    height: 35px;
+    padding-top: 7px;
+    padding-left: 7px;
+}
+
+.button-change-profile-picture{
+    padding: 0px;
+    width: 285px;
+}
+.error{
+    color: red;
+    font-size: 14px;
 }

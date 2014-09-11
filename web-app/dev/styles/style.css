@@ -1,0 +1,702 @@
+/* --------------------------------------------------------------------------------------
+
+	Theme Name: Mira
+	Theme URI: http://azmind.com
+	Description: Coming Soon Landing Page Made With Bootstrap
+	Version: 1.0
+	Author: Anli Zaimi
+	Author URI: http://azmind.com
+	
+	All PHP code is released under the GNU General Public License version 3.0 http://www.gnu.org/licenses/gpl-3.0.html
+
+-------------------------------------------------------------------------------------- */
+
+body {
+    background: #fff;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+}
+
+strong {
+    font-weight: 700;
+}
+
+a, a:hover, a:focus {
+    text-decoration: none;
+    -o-transition: all .3s;
+    -moz-transition: all .3s;
+    -webkit-transition: all .3s;
+    -ms-transition: all .3s;
+    transition: all .3s;
+}
+
+h2, h3 {
+    margin-top: 10px;
+    font-size: 46px;
+    font-weight: 100;
+    line-height: 50px;
+}
+
+h4 {
+    color: #555;
+}
+
+img {
+    max-width: 100%;
+}
+
+/*::-moz-selection { color: #fff; text-shadow: none; }*/
+/*::selection { color: #fff; text-shadow: none; }*/
+
+/***** General style, all sections *****/
+
+.section-container {
+    margin: 0 auto;
+    padding-bottom: 60px;
+    color: #888;
+}
+
+.section-container-full-bg {
+    color: #fff;
+}
+
+.section-container-full-bg a {
+    color: #fff;
+    border-bottom: 1px dotted #fff;
+}
+
+.section-container-full-bg a:hover {
+    color: #fff;
+    border: 0;
+}
+
+.section-description {
+    margin-top: 60px;
+    padding-bottom: 10px;
+}
+
+.section-description h3 {
+    color: #555;
+}
+
+.section-container-full-bg .section-description h3 {
+    color: #fff;
+}
+
+.section-description p {
+    margin-top: 30px;
+    padding: 0 120px;
+    font-size: 22px;
+    line-height: 36px;
+}
+
+.section-container-full-bg h4 {
+    color: #fff;
+}
+
+/***** Coming Soon *****/
+
+.coming-soon {
+    margin: 0 auto;
+    text-align: center;
+    color: #fff;
+}
+
+.inner-bg {
+    padding: 75px 0 40px 0;
+}
+
+.coming-soon .logo {
+    padding-bottom: 20px;
+}
+
+.coming-soon .logo h1 {
+    margin: 0;
+}
+
+.coming-soon .logo a {
+    display: inline-block;
+    width: 200px;
+    height: 110px;
+    background: center center no-repeat;
+    text-indent: -99999px;
+}
+
+.coming-soon .logo a:focus {
+    outline: 0;
+}
+
+.coming-soon .logo a:before {
+    width: 0;
+    height: 0;
+    visibility: hidden;
+}
+
+.coming-soon p {
+    margin: 40px 0 10px 0;
+    padding: 0 320px;
+    font-size: 22px;
+    line-height: 36px;
+}
+
+.timer {
+    margin-top: 60px;
+}
+
+.timer .days-wrapper,
+.timer .hours-wrapper,
+.timer .minutes-wrapper,
+.timer .seconds-wrapper {
+    display: inline-block;
+    width: 160px;
+    height: 160px;
+    margin: 0 10px;
+    padding-top: 20px;
+    border: 1px solid #fff;
+    font-size: 18px;
+    -moz-border-radius: 85px;
+    -webkit-border-radius: 85px;
+    border-radius: 85px;
+    cursor: pointer;
+    -o-transition: all .3s;
+    -moz-transition: all .3s;
+    -webkit-transition: all .3s;
+    -ms-transition: all .3s;
+    transition: all .3s;
+}
+
+.timer .days-wrapper:hover,
+.timer .hours-wrapper:hover,
+.timer .minutes-wrapper:hover,
+.timer .seconds-wrapper:hover {
+    border: 1px solid;
+    -o-transition: all .3s;
+    -moz-transition: all .3s;
+    -webkit-transition: all .3s;
+    -ms-transition: all .3s;
+    transition: all .3s;
+}
+
+.timer .days,
+.timer .hours,
+.timer .minutes,
+.timer .seconds {
+    font-size: 80px;
+    font-weight: 100;
+    line-height: 90px;
+}
+
+.coming-soon p.top-arrow {
+    margin-top: 50px;
+    font-size: 36px;
+}
+
+.coming-soon p.top-arrow i {
+    position: relative;
+    width: 100px;
+    height: 37px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.coming-soon p.top-arrow i:before {
+    position: absolute;
+    top: 0;
+    left: 33.5px;
+}
+
+.coming-soon p.top-arrow i:after {
+    content: "scroll down";
+    position: absolute;
+    top: -30px;
+    left: 0;
+    width: 100px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    font-weight: 300;
+}
+
+.coming-soon p.top-arrow i:before,
+.coming-soon p.top-arrow i:after {
+    -o-transition: all .3s;
+    -moz-transition: all .3s;
+    -webkit-transition: all .3s;
+    -ms-transition: all .3s;
+    transition: all .3s;
+}
+
+.coming-soon p.top-arrow i:hover:before {
+    top: 40px;
+}
+
+.coming-soon p.top-arrow i:hover:after {
+    top: 10px;
+}
+
+/***** Subscription form *****/
+
+.subscribe form {
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+.subscribe form input {
+    width: 362px;
+    height: 52px;
+}
+
+.success-message, .error-message {
+    display: none;
+    font-size: 22px;
+    color: #888;
+    line-height: 36px;
+}
+
+.success-message {
+    margin: 20px 0 10px 0;
+}
+
+.error-message {
+    margin: 10px 0;
+}
+
+.section-container-full-bg .success-message, .section-container-full-bg .error-message {
+    color: #fff;
+}
+
+/***** About the new site *****/
+
+.about-box-1 {
+    margin-top: 30px;
+}
+
+.about-box-1 h4 {
+    padding: 10px 0;
+    font-size: 30px;
+    font-weight: 100;
+    line-height: 34px;
+}
+
+.about-box-1 p {
+    font-size: 18px;
+    line-height: 32px;
+}
+
+.about-box-1 .about-box-1-icon {
+    width: 140px;
+    height: 140px;
+    margin: 0 auto;
+    padding-top: 28px;
+    border: 1px solid;
+    font-size: 56px;
+    color: #fff;
+    -moz-border-radius: 85px;
+    -webkit-border-radius: 85px;
+    border-radius: 85px;
+    cursor: pointer;
+    -o-transition: all .3s;
+    -moz-transition: all .3s;
+    -webkit-transition: all .3s;
+    -ms-transition: all .3s;
+    transition: all .3s;
+}
+
+.about-box-1 .about-box-1-icon:hover {
+    background: none;
+    -o-transition: all .3s;
+    -moz-transition: all .3s;
+    -webkit-transition: all .3s;
+    -ms-transition: all .3s;
+    transition: all .3s;
+}
+
+.section-container-full-bg .about-box-1 .about-box-1-icon:hover {
+    border-color: #fff;
+    color: #fff;
+}
+
+/***** Testimonials *****/
+
+.testimonials p {
+    padding: 0;
+}
+
+.testimonial-single {
+    display: inline-block;
+}
+
+.testimonial-single .testimonial-single-text {
+    display: none;
+}
+
+.testimonial-single-image {
+    display: inline-block;
+    width: 58px;
+    margin: 0 5px 10px 5px;
+}
+
+.testimonial-single-image img {
+    width: 100%;
+    opacity: 0.5;
+    cursor: pointer;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    -o-transition: all .3s;
+    -moz-transition: all .3s;
+    -webkit-transition: all .3s;
+    -ms-transition: all .3s;
+    transition: all .3s;
+}
+
+.testimonial-active {
+    padding-bottom: 20px;
+}
+
+.testimonial-quote {
+    font-family: Georgia, serif;
+    font-size: 90px;
+    line-height: 70px;
+    color: #ccc;
+}
+
+.section-container-full-bg .testimonial-quote {
+    color: #fff;
+}
+
+/***** Who's behind this *****/
+
+.whos-behind-box-1 {
+    margin-top: 30px;
+}
+
+.whos-behind-box-1 h4 {
+    padding: 10px 0 0 0;
+    font-size: 30px;
+    font-weight: 100;
+    line-height: 34px;
+}
+
+.whos-behind-box-1 h5 {
+    padding-bottom: 7px;
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 22px;
+    text-transform: uppercase;
+}
+
+.section-container-full-bg .whos-behind-box-1 h5 {
+    color: #fff;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.whos-behind-box-1 p {
+    font-size: 18px;
+    line-height: 32px;
+}
+
+.whos-behind-box-1 .whos-behind-photo {
+    position: relative;
+    width: 140px;
+    height: 140px;
+    margin: 0 auto;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.whos-behind-box-1 .whos-behind-photo img {
+    width: 100%;
+    -moz-border-radius: 85px;
+    -webkit-border-radius: 85px;
+    border-radius: 85px;
+}
+
+.whos-behind-box-1 .whos-behind-photo .whos-behind-social {
+    position: absolute;
+    top: -150px;
+    left: 0;
+    width: 140px;
+    height: 140px;
+    padding-top: 58px;
+    opacity: 0;
+    -moz-border-radius: 85px;
+    -webkit-border-radius: 85px;
+    border-radius: 85px;
+    -o-transition: all .4s;
+    -moz-transition: all .4s;
+    -webkit-transition: all .4s;
+    -ms-transition: all .4s;
+    transition: all .4s;
+}
+
+.whos-behind-box-1 .whos-behind-photo:hover .whos-behind-social {
+    top: 0;
+    opacity: 1;
+}
+
+.whos-behind-box-1 .whos-behind-photo .whos-behind-social,
+.whos-behind-box-1 .whos-behind-photo .whos-behind-social a,
+.whos-behind-box-1 .whos-behind-photo .whos-behind-social a:hover {
+    border: 0;
+    font-size: 18px;
+    color: #fff;
+    line-height: 20px;
+}
+
+.whos-behind-box-1 .whos-behind-photo .whos-behind-social a {
+    margin: 0 4px;
+}
+
+/** Our motto **/
+
+.our-motto {
+    margin-top: 40px;
+}
+
+.our-motto h4 {
+    padding: 0 0 10px 0;
+    font-size: 30px;
+    font-weight: 100;
+    line-height: 34px;
+}
+
+.our-motto .our-motto-text {
+    padding: 0 200px;
+    font-size: 18px;
+    line-height: 32px;
+    word-wrap: break-word;
+}
+
+/***** How to contact us *****/
+
+.contact {
+    padding-bottom: 20px;
+}
+
+.contact-form,
+.contact-address {
+    padding-bottom: 20px;
+    text-align: left;
+}
+
+.contact-form h4,
+.contact-address h4 {
+    padding: 0 0 10px 0;
+    font-size: 30px;
+    font-weight: 100;
+    line-height: 34px;
+}
+
+.contact-form p {
+    margin: 15px 0 0 0;
+    font-size: 18px;
+    line-height: 32px;
+}
+
+.contact-form form {
+    margin: 15px 0 0 0;
+}
+
+.contact-form form input,
+.contact-form form textarea {
+    width: 90%;
+    height: 52px;
+    margin-bottom: 20px;
+}
+
+.contact-form form textarea {
+    height: 162px;
+}
+
+.contact-form form button {
+    width: 130px;
+    height: 52px;
+}
+
+.contact-form form .contact-error {
+}
+
+.contact-form .contact-success-message {
+    display: none;
+}
+
+.contact-address .map {
+    height: 210px;
+    margin: 15px 0 40px 0;
+}
+
+.contact-address .address-line {
+    margin-bottom: 5px;
+    font-size: 18px;
+    line-height: 32px;
+}
+
+.contact-address .address-line p {
+    display: inline;
+    vertical-align: middle;
+}
+
+.contact-address .address-line i {
+    padding-right: 15px;
+    font-size: 24px;
+    color: #ccc;
+    vertical-align: middle;
+}
+
+.section-container-full-bg .contact-address .address-line i {
+    color: #fff;
+}
+
+/***** Footer *****/
+
+footer {
+    padding: 20px 0 16px 0;
+    background: #3d3d3d;
+}
+
+.footer-copyright p {
+    margin: 0;
+    font-size: 18px;
+    line-height: 32px;
+    color: #fff;
+    text-align: left;
+}
+
+.footer-copyright a {
+    color: #fff;
+    border-bottom: 1px dotted #fff;
+}
+
+.footer-copyright a:hover {
+    color: #fff;
+    border: 0;
+}
+
+.footer-social {
+    text-align: right;
+}
+
+/***** Media queries *****/
+
+@media (min-width: 992px) and (max-width: 1199px) {
+
+    .show-menu, .hide-menu {
+        right: 50px;
+    }
+
+    .coming-soon p {
+        padding: 0 120px;
+    }
+
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+
+    .timer .days-wrapper, .timer .hours-wrapper, .timer .minutes-wrapper, .timer .seconds-wrapper {
+        width: 140px;
+        height: 140px;
+        margin: 0 7px;
+        padding-top: 20px;
+        -moz-border-radius: 70px;
+        -webkit-border-radius: 70px;
+        border-radius: 70px;
+    }
+
+    .timer .days, .timer .hours, .timer .minutes, .timer .seconds {
+        font-size: 60px;
+        line-height: 70px;
+    }
+
+    .coming-soon p, .section-description p, .our-motto .our-motto-text {
+        padding: 0;
+    }
+
+}
+
+@media (max-width: 991px) {
+
+    .show-menu {
+        right: 30px;
+    }
+
+    .hide-menu {
+        position: static;
+        top: auto;
+        right: auto;
+        z-index: auto;
+    }
+
+    .hide-menu a {
+        padding-top: 0;
+    }
+
+}
+
+@media (max-width: 767px) {
+
+    h2, h3 {
+        font-size: 36px;
+        padding: 0 20px;
+    }
+
+    .coming-soon p, .section-description p, .our-motto .our-motto-text {
+        padding: 0;
+    }
+
+    .timer .days-wrapper, .timer .hours-wrapper, .timer .minutes-wrapper, .timer .seconds-wrapper {
+        width: 140px;
+        height: 140px;
+        margin: 7px;
+        padding-top: 20px;
+        -moz-border-radius: 70px;
+        -webkit-border-radius: 70px;
+        border-radius: 70px;
+    }
+
+    .timer .days, .timer .hours, .timer .minutes, .timer .seconds {
+        font-size: 60px;
+        line-height: 70px;
+    }
+
+    .contact-form, .contact-address {
+        text-align: center;
+    }
+
+    .contact-form {
+        padding-bottom: 40px;
+    }
+
+    .contact-address {
+        padding-bottom: 0;
+    }
+
+    .footer-copyright p, .footer-social {
+        text-align: center;
+    }
+
+    .footer-social {
+        margin-top: 15px;
+    }
+
+}
+
+@media (max-width: 550px) {
+
+    .subscribe form input {
+        width: 90%;
+    }
+
+    .subscribe form button {
+        width: 90%;
+        margin-top: 10px;
+    }
+
+}
+
+@media (max-width: 400px) {
+
+    .show-menu {
+        right: 10px;
+    }
+
+}

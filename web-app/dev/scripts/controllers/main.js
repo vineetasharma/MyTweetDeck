@@ -9,9 +9,5 @@
  */
 angular.module('yoApp')
   .controller('MainCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+   console.log("main controller called");
   });

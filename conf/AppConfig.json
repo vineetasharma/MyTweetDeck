@@ -4,7 +4,7 @@
         "appName": "Node PA Bot",
         "dataSource": {
             "mongo": {
-                "url": "mongodb://localhost:27017/pa-bot",
+                "url": "mongodb://localhost:27017/TweetDatabase",
                 "poolSize": "100",
                 "ignoreConnectionError": false
             },

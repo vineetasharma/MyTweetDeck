@@ -1,0 +1,59 @@
+<div class="row profile-row" ng-if="profile">
+    <div class="row profile">
+        <div class=" pull-left">
+            <img class="profile-image" src="{{profilePicUrl}}" onerror="this.src='images/defaultProfile.jpg'">
+        </div>
+    </div>
+    <div class="column three-fourths">
+        <dl class="form" ng-if="Name">
+            <dt><label for="user_profile_name">Name</label></dt>
+            <dd class="profile-info"><label class="long" id="user_profile_name">{{Name}}</label>
+            </dd>
+        </dl>
+        <dl class="form" ng-if="Email">
+            <dt><label for="user_profile_email">Email </label></dt>
+            <dd class="profile-info"><label class="long" id="user_profile_email">{{Email}}</label>
+            </dd>
+        </dl>
+        <dl class="form" ng-if="Birthday">
+            <dt><label for="user_profile_birthday">Birthday</label></dt>
+            <dd class="profile-info"><label class="long" id="user_profile_birthday">{{Birthday}}</label>
+            </dd>
+        </dl>
+        <dl class="form" ng-if="Gender">
+            <dt><label for="user_profile_gender">Gender</label></dt>
+            <dd class="profile-info"><label class="long" id="user_profile_gender">{{Gender}}</label>
+            </dd>
+        </dl>
+        <dl class="form" ng-if="Mobile">
+            <dt><label for="user_profile_mobile">Mobile</label></dt>
+            <dd class="profile-info"><label class="long" id="user_profile_mobile">{{Mobile}}</label>
+            </dd>
+        </dl>
+        <dl class="form" ng-if="Hometown">
+            <dt><label for="user_profile_hometown">Hometown</label></dt>
+            <dd class="profile-info"><label class="long" id="user_profile_hometown">{{Hometown}}</label>
+            </dd>
+        </dl>
+        <dl class="form" ng-if="City">
+            <dt><label for="user_profile_city">City</label></dt>
+            <dd class="profile-info"><label class="long" id="user_profile_city">{{City}}</label>
+            </dd>
+        </dl>
+        <dl class="form" ng-if="State">
+            <dt><label for="user_profile_state">State</label></dt>
+            <dd class="profile-info"><label class="long" id="user_profile_state">{{State}}</label>
+            </dd>
+        </dl>
+        <dl class="form" ng-if="Country">
+            <dt><label for="user_profile_country">Country</label></dt>
+            <dd class="profile-info"><label class="long" id="user_profile_country">{{Country}}</label>
+            </dd>
+        </dl>
+        <dl class="form" ng-if="Pin">
+            <dt><label for="user_profile_pin">Pin</label></dt>
+            <dd class="profile-info"><label class="long" id="user_profile_pin">{{Pin}}</label>
+            </dd>
+        </dl>
+    </div>
+</div>
