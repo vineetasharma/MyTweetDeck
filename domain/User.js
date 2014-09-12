@@ -32,6 +32,5 @@ exports.schema = {
             Country: String,
             pin: Number
         }
-    },
-    favouriteTweets:[]
+    }
 };
