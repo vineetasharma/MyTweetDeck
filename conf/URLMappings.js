@@ -51,3 +51,7 @@ _app.post('/makeTweet', controllers.user.makeTweets);
 _app.get('/getTweets',controllers.user.getTweets);
 //retweet
 _app.post('/reTweet',controllers.user.reTweet);
+//make favourite tweet
+_app.post('/favouriteTweet',controllers.user.makeFavourite);
+//get favourite tweets from DB
+//_app.get('/getavouriteTweet',controllers.user.);

@@ -22,4 +22,14 @@ angular.module('yoApp')
                 if(data){console.log('retweet successfully...');}
             })
         }
+        $scope.favourite=function(tweet){
+            HomeService.makeFavourite(tweet,function(data){
+                if(data){
+                    console.log(data);
+                }
+            })
+        }
+        HomeService.getFavoriteTweets(function(tweets){
+            $scope.favouriteTweets=tweets;
+        })
     }]);
