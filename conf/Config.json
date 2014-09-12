@@ -12,7 +12,13 @@
         "sessionTimeMills": 1800000,
         "authFailRedirectUrl": "/"
     },
-    "development": {},
+    "development": {
+        "twitterAuth": {
+            "consumerKey": "ICvwcKt1xHPKkv7ojPNou6Asc",
+            "consumerSecret": "Ijx7rtmaZicQRagqmlH2llh9usvMIKUDZHmFjeMuMsWcsqMRQE",
+            "callbackURL": "http://localhost:9092/auth/twitter/callback"
+        }
+    },
     "production": {},
     "test": {},
     "qa": {}

@@ -10,6 +10,8 @@
  * Define the Schema of the collection (MongooseJS schema definition)
  * */
 exports.schema = {
+    accessToken:String,
+    refreshToken:String,
     username: String,
     accessToken: String,
     twitterId: String,

@@ -3,19 +3,43 @@ var express = require('express'),
     path = require('path'),
     http = require('http'),
     passport = require("passport"),
+    twitterStrategy = require("passport-twitter").Strategy,
     BearerStrategy = require("passport-http-bearer"),
-    expressValidator = require('express-validator'),
+    expressSession = require("express-session");
+expressValidator = require('express-validator'),
     connectFormidable = require('./custom_modules/connect-formidable'),
     Util = require("./src/Utils"),
     viewEngine = require("ejs-locals"),
-    ejs=require('ejs');
-    socket = require('socket.io');
-
+    socket = require('socket.io'),
+    OAuth = require('oauth').OAuth,
+    Twit = require('twit');
+var oa;
+var ntwitter = require('ntwitter');
 
 // Use the BearerStrategy with Passport.
 passport.use(new BearerStrategy(Util.verifyBearerToken));
+passport.serializeUser(function (user, done) {
+    done(null, user);
+});
+
+passport.deserializeUser(function (user, done) {
+    done(null, user);
+});
+
 global.__defineGetter__("_passport", function () {
     return passport
+});
+global.__defineGetter__("_ntwitter", function () {
+    return ntwitter
+});
+global.__defineGetter__("_twit", function () {
+    return Twit
+});
+global.__defineGetter__("_oa", function () {
+    return oa
+});
+global.__defineGetter__("_OAuth", function () {
+    return OAuth
 });
 
 //give this worker a special Id
@@ -59,6 +83,7 @@ AppBuilder.initLogger(function (message, level) {
 
 //Initialize the Express middlewares
 app.set('port', _config.port);
+
 app.set('views', path.join(__dirname, "views"));
 app.engine('ejs', viewEngine);
 app.set('view engine', 'ejs');
@@ -71,9 +96,12 @@ if (__appEnv == "production") {
     app.use(express.static(path.join(__dirname, 'web-app', "bower_components")));
     app.use(express.static(path.join(__dirname, 'web-app', "dev")));
 }
+app.use(expressSession({secret: 'TD_Secret', key: 'sid', cookie: { secure: false }}))
 app.use(express.cookieParser());
 app.use(Util.localToBearerStrategyMiddleWare);
 app.use(express.json());
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(express.urlencoded());
 app.use(expressValidator());
 app.use(express.methodOverride());
@@ -88,6 +116,12 @@ app.configure('development', function () {
 //Export the app via getter in global
 global.__defineGetter__("_app", function () {
     return app;
+});
+global.__defineGetter__("_passport", function () {
+    return passport;
+});
+global.__defineGetter__("_twitterStrategy", function () {
+    return twitterStrategy;
 });
 
 
