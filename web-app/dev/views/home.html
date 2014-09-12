@@ -1,4 +1,4 @@
-<div style="margin-top: 50px">
+<div style="margin-top: 50px" ng-show="tweets">
     <div class="tweetDiv" ng-show="tweets"
          style="width: 500px;height:600px;overflow-y: scroll; float: left;margin-left: 100px;background-color:honeydew;border-radius: 5px 5px 5px 5px ">
         <table class="table">
@@ -18,8 +18,8 @@
          ng-show="favouriteTweets">
         <table class="table">
             <thead class="caption" style="text-align: center">Favourite Tweets</thead>
-            <tr class="table-bordered" ng-repeat="tweet  in favouriteTweets track by $index | limit :5">
-                <td>{{tweet.text}}
+            <tr class="table-bordered" ng-repeat="tweet  in favouriteTweets">
+                <td>{{tweet.tweet.text}}
 
                 </td>
             </tr>

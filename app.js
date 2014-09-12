@@ -12,7 +12,8 @@ expressValidator = require('express-validator'),
     viewEngine = require("ejs-locals"),
     socket = require('socket.io'),
     OAuth = require('oauth').OAuth,
-    Twit = require('twit');
+    Twit = require('twit'),
+    twitter=require('twitter');
 var oa;
 var ntwitter = require('ntwitter');
 
@@ -29,8 +30,8 @@ passport.deserializeUser(function (user, done) {
 global.__defineGetter__("_passport", function () {
     return passport
 });
-global.__defineGetter__("_ntwitter", function () {
-    return ntwitter
+global.__defineGetter__("_twitter", function () {
+    return twitter
 });
 global.__defineGetter__("_twit", function () {
     return Twit

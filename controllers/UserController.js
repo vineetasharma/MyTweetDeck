@@ -162,9 +162,8 @@ getUserTweets = function (user, cb) {
 }
 
 exports.reTweet = function (req, res) {
-    console.log('metooooooooooooooooooooooooddddddddddddddddddddddddddddddddddddddddddd callllllllllllllllldedddddddddddddd');
     var user = req.checkLoggedIn();
-    console.log('iddddddddddddddddd>>>>>>>>>>>' + req.body.id);
+    console.log('id:' + req.body.id);
     reTweets(user, req.body.id, function (error, data) {
         console.log('callback called');
         if (error) {
@@ -176,15 +175,17 @@ exports.reTweet = function (req, res) {
         }
     });
 }
-reTweets = function (user, id, cb) {
+reTweets = function (user, id,cb) {
     if (user) {
         User.findOne({_id: user._id}, function (err, data) {
             if (err) {
                 console.log('error', err);
+                cb(err,null);
+
             }
             else {
-                console.log('auth/////');
                 var request = new _OAuth(
+
                     "https://twitter.com/oauth/request_token"
                     , "https://twitter.com/oauth/access_token"
                     , _config.twitterAuth.consumerKey
@@ -248,11 +249,11 @@ favourite = function (user, tweet, cb) {
                     , data.accessToken
                     , data.refreshToken
                 );
-            var data = "";
+            var data1 = "";
             request.addListener('response', function (response) {
                 response.setEncoding('utf8');
                 response.addListener('data', function (chunk) {
-                    data = data + chunk;
+                    data1 = data1 + chunk;
                     console.log(chunk);
                 });
                 response.addListener('end', function () {
@@ -265,11 +266,11 @@ favourite = function (user, tweet, cb) {
                                cb(err,null);
                             }
                             else {
-                                console.log('favourite tweet inserted into DB....');
+                                console.log('favourite tweet inserted into DB....',tweet);
                                 cb(null,'success');
                             }
                         });
-                    console.log('--- END ---', data);
+                    console.log('--- END ---', data1);
                 });
             });
             request.end();
@@ -292,7 +293,7 @@ exports.getFavouriteTweets = function (req, res) {
                         res.send(null)
                     }
                     else {
-                        console.log('got favourite tweets');
+                        console.log('got favourite tweets',tweets);
                         res.send(tweets);
                     }
                 });
@@ -300,3 +301,4 @@ exports.getFavouriteTweets = function (req, res) {
         });
     }
 }
+exports.get

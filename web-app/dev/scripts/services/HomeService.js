@@ -26,7 +26,7 @@ angular.module('yoApp')
                 });
         };
         this.getFavoriteTweets = function (callback) {
-            $http.get('/getfavouriteTweet')
+            $http.get('/getfavouriteTweets')
                 .success(function (data) {
                     console.log('user Favourite Tweets',data);
                     callback(data);
