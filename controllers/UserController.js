@@ -124,16 +124,411 @@ makeTweet = function (user, cb) {
 }
 exports.getTweets = function (req, res) {
     var user = req.checkLoggedIn();
-    getUserTweets(user, function (error, data) {
-        if (error) {
-            console.log(require('sys').inspect(error));
-            res.end('bad stuff happened, none tweetage');
-        } else {
-            console.log(data);
-            res.send(JSON.parse(data));
-        }
-    });
+    if (user) {
+        User.findOne({_id: user._id}, function (err, data) {
+            if (err) {
+                console.log('error', err);
+            }
+            else {
+                var obj = {
+                    consumer_key: _config.twitterAuth.consumerKey,
+                    consumer_secret: _config.twitterAuth.consumerSecret,
+                    access_token_key: data.accessToken,
+                    access_token_secret: data.refreshToken,
+
+                    headers: {
+                        'Accept': '*/*',
+                        'Connection': 'close',
+                        'User-Agent': 'node-twitter/' + '0.2.12'
+                    },
+
+                    request_token_url: 'https://api.twitter.com/oauth/request_token',
+                    access_token_url: 'https://api.twitter.com/oauth/access_token',
+                    authenticate_url: 'https://api.twitter.com/oauth/authenticate',
+                    authorize_url: 'https://api.twitter.com/oauth/authorize',
+                    callback_url: null,
+
+                    rest_base: 'https://api.twitter.com/1.1',
+                    stream_base: 'https://stream.twitter.com/1.1',
+                    search_base: 'https://api.twitter.com/1.1/search',
+                    user_stream_base: 'https://userstream.twitter.com/1.1',
+                    site_stream_base: 'https://sitestream.twitter.com/1.1',
+                    filter_stream_base: 'https://stream.twitter.com/1.1/statuses',
+
+                    secure: false, // force use of https for login/gatekeeper
+                    cookie: 'twauth',
+                    cookie_options: {},
+                    cookie_secret: null
+                };
+                var T = _twitter(obj);
+                T.getHomeTimeline(function (data) {
+                    console.log('data', data);
+                    res.send(data);
+
+                });
+
+            }
+        });
+
+    }
 }
+exports.getMention = function (req, res) {
+    var user = req.checkLoggedIn();
+    if (user) {
+        User.findOne({_id: user._id}, function (err, data) {
+            if (err) {
+                console.log('error', err);
+            }
+            else {
+                var obj = {
+                    consumer_key: _config.twitterAuth.consumerKey,
+                    consumer_secret: _config.twitterAuth.consumerSecret,
+                    access_token_key: data.accessToken,
+                    access_token_secret: data.refreshToken,
+
+                    headers: {
+                        'Accept': '*/*',
+                        'Connection': 'close',
+                        'User-Agent': 'node-twitter/' + '0.2.12'
+                    },
+
+                    request_token_url: 'https://api.twitter.com/oauth/request_token',
+                    access_token_url: 'https://api.twitter.com/oauth/access_token',
+                    authenticate_url: 'https://api.twitter.com/oauth/authenticate',
+                    authorize_url: 'https://api.twitter.com/oauth/authorize',
+                    callback_url: null,
+
+                    rest_base: 'https://api.twitter.com/1.1',
+                    stream_base: 'https://stream.twitter.com/1.1',
+                    search_base: 'https://api.twitter.com/1.1/search',
+                    user_stream_base: 'https://userstream.twitter.com/1.1',
+                    site_stream_base: 'https://sitestream.twitter.com/1.1',
+                    filter_stream_base: 'https://stream.twitter.com/1.1/statuses',
+
+                    secure: false, // force use of https for login/gatekeeper
+                    cookie: 'twauth',
+                    cookie_options: {},
+                    cookie_secret: null
+                };
+                var T = _twitter(obj);
+                T.getMentions(function (data) {
+                    console.log('data', data.length);
+
+                });
+
+            }
+        });
+
+    }
+}
+exports.getUserTimeLine = function (req, res) {
+    var user = req.checkLoggedIn();
+    if (user) {
+        User.findOne({_id: user._id}, function (err, data) {
+            if (err) {
+                console.log('error', err);
+            }
+            else {
+                var obj = {
+                    consumer_key: _config.twitterAuth.consumerKey,
+                    consumer_secret: _config.twitterAuth.consumerSecret,
+                    access_token_key: data.accessToken,
+                    access_token_secret: data.refreshToken,
+
+                    headers: {
+                        'Accept': '*/*',
+                        'Connection': 'close',
+                        'User-Agent': 'node-twitter/' + '0.2.12'
+                    },
+
+                    request_token_url: 'https://api.twitter.com/oauth/request_token',
+                    access_token_url: 'https://api.twitter.com/oauth/access_token',
+                    authenticate_url: 'https://api.twitter.com/oauth/authenticate',
+                    authorize_url: 'https://api.twitter.com/oauth/authorize',
+                    callback_url: null,
+
+                    rest_base: 'https://api.twitter.com/1.1',
+                    stream_base: 'https://stream.twitter.com/1.1',
+                    search_base: 'https://api.twitter.com/1.1/search',
+                    user_stream_base: 'https://userstream.twitter.com/1.1',
+                    site_stream_base: 'https://sitestream.twitter.com/1.1',
+                    filter_stream_base: 'https://stream.twitter.com/1.1/statuses',
+
+                    secure: false, // force use of https for login/gatekeeper
+                    cookie: 'twauth',
+                    cookie_options: {},
+                    cookie_secret: null
+                };
+                var T = _twitter(obj);
+                T.getUserTimeline(data.twitterId,function (data) {
+                    console.log('data', data.length);
+
+                });
+
+            }
+        });
+
+    }
+}
+exports.getReweeted_to_me = function (req, res) {
+    var user = req.checkLoggedIn();
+    if (user) {
+        User.findOne({_id: user._id}, function (err, data) {
+            if (err) {
+                console.log('error', err);
+            }
+            else {
+                var obj = {
+                    consumer_key: _config.twitterAuth.consumerKey,
+                    consumer_secret: _config.twitterAuth.consumerSecret,
+                    access_token_key: data.accessToken,
+                    access_token_secret: data.refreshToken,
+
+                    headers: {
+                        'Accept': '*/*',
+                        'Connection': 'close',
+                        'User-Agent': 'node-twitter/' + '0.2.12'
+                    },
+
+                    request_token_url: 'https://api.twitter.com/oauth/request_token',
+                    access_token_url: 'https://api.twitter.com/oauth/access_token',
+                    authenticate_url: 'https://api.twitter.com/oauth/authenticate',
+                    authorize_url: 'https://api.twitter.com/oauth/authorize',
+                    callback_url: null,
+
+                    rest_base: 'https://api.twitter.com/1.1',
+                    stream_base: 'https://stream.twitter.com/1.1',
+                    search_base: 'https://api.twitter.com/1.1/search',
+                    user_stream_base: 'https://userstream.twitter.com/1.1',
+                    site_stream_base: 'https://sitestream.twitter.com/1.1',
+                    filter_stream_base: 'https://stream.twitter.com/1.1/statuses',
+
+                    secure: false, // force use of https for login/gatekeeper
+                    cookie: 'twauth',
+                    cookie_options: {},
+                    cookie_secret: null
+                };
+                var T = _twitter(obj);
+                T.getRetweetedToMe(function (data) {
+                    console.log('data', data.length);
+
+                });
+
+            }
+        });
+
+    }
+}
+exports.getRetweets = function (req, res) {
+    var user = req.checkLoggedIn();
+    if (user) {
+        User.findOne({_id: user._id}, function (err, data) {
+            if (err) {
+                console.log('error', err);
+            }
+            else {
+                var obj = {
+                    consumer_key: _config.twitterAuth.consumerKey,
+                    consumer_secret: _config.twitterAuth.consumerSecret,
+                    access_token_key: data.accessToken,
+                    access_token_secret: data.refreshToken,
+
+                    headers: {
+                        'Accept': '*/*',
+                        'Connection': 'close',
+                        'User-Agent': 'node-twitter/' + '0.2.12'
+                    },
+
+                    request_token_url: 'https://api.twitter.com/oauth/request_token',
+                    access_token_url: 'https://api.twitter.com/oauth/access_token',
+                    authenticate_url: 'https://api.twitter.com/oauth/authenticate',
+                    authorize_url: 'https://api.twitter.com/oauth/authorize',
+                    callback_url: "http://localhost:9092/twitter/auth/callback",
+
+                    rest_base: 'https://api.twitter.com/1.1',
+                    stream_base: 'https://stream.twitter.com/1.1',
+                    search_base: 'https://api.twitter.com/1.1/search',
+                    user_stream_base: 'https://userstream.twitter.com/1.1',
+                    site_stream_base: 'https://sitestream.twitter.com/1.1',
+                    filter_stream_base: 'https://stream.twitter.com/1.1/statuses',
+
+                    secure: false, // force use of https for login/gatekeeper
+                    cookie: 'twauth',
+                    cookie_options: {},
+                    cookie_secret: null
+                };
+                var T = _twitter(obj);
+                console.log('id:',data.twitterId);
+                T.getRetweets('509457288717819904',function (data) {
+                    console.log(arguments,'argumnts');
+                    console.log('data', data);
+
+                });
+
+            }
+        });
+
+    }
+}
+exports.getReweeted_of_me = function (req, res) {
+    var user = req.checkLoggedIn();
+    if (user) {
+        User.findOne({_id: user._id}, function (err, data) {
+            if (err) {
+                console.log('error', err);
+            }
+            else {
+                var obj = {
+                    consumer_key: _config.twitterAuth.consumerKey,
+                    consumer_secret: _config.twitterAuth.consumerSecret,
+                    access_token_key: data.accessToken,
+                    access_token_secret: data.refreshToken,
+
+                    headers: {
+                        'Accept': '*/*',
+                        'Connection': 'close',
+                        'User-Agent': 'node-twitter/' + '0.2.12'
+                    },
+
+                    request_token_url: 'https://api.twitter.com/oauth/request_token',
+                    access_token_url: 'https://api.twitter.com/oauth/access_token',
+                    authenticate_url: 'https://api.twitter.com/oauth/authenticate',
+                    authorize_url: 'https://api.twitter.com/oauth/authorize',
+                    callback_url: null,
+
+                    rest_base: 'https://api.twitter.com/1.1',
+                    stream_base: 'https://stream.twitter.com/1.1',
+                    search_base: 'https://api.twitter.com/1.1/search',
+                    user_stream_base: 'https://userstream.twitter.com/1.1',
+                    site_stream_base: 'https://sitestream.twitter.com/1.1',
+                    filter_stream_base: 'https://stream.twitter.com/1.1/statuses',
+
+                    secure: false, // force use of https for login/gatekeeper
+                    cookie: 'twauth',
+                    cookie_options: {},
+                    cookie_secret: null
+                };
+                var T = _twitter(obj);
+                T.getRetweetsOfMe(function (err,data) {
+                    console.log(err,'data', data);
+
+                });
+
+            }
+        });
+
+    }
+}
+exports.getReweeted_to_user = function (req, res) {
+    var user = req.checkLoggedIn();
+    if (user) {
+        User.findOne({_id: user._id}, function (err, data) {
+            if (err) {
+                console.log('error', err);
+            }
+            else {
+                var obj = {
+                    consumer_key: _config.twitterAuth.consumerKey,
+                    consumer_secret: _config.twitterAuth.consumerSecret,
+                    access_token_key: data.accessToken,
+                    access_token_secret: data.refreshToken,
+
+                    headers: {
+                        'Accept': '*/*',
+                        'Connection': 'close',
+                        'User-Agent': 'node-twitter/' + '0.2.12'
+                    },
+
+                    request_token_url: 'https://api.twitter.com/oauth/request_token',
+                    access_token_url: 'https://api.twitter.com/oauth/access_token',
+                    authenticate_url: 'https://api.twitter.com/oauth/authenticate',
+                    authorize_url: 'https://api.twitter.com/oauth/authorize',
+                    callback_url: null,
+
+                    rest_base: 'https://api.twitter.com/1.1',
+                    stream_base: 'https://stream.twitter.com/1.1',
+                    search_base: 'https://api.twitter.com/1.1/search',
+                    user_stream_base: 'https://userstream.twitter.com/1.1',
+                    site_stream_base: 'https://sitestream.twitter.com/1.1',
+                    filter_stream_base: 'https://stream.twitter.com/1.1/statuses',
+
+                    secure: false, // force use of https for login/gatekeeper
+                    cookie: 'twauth',
+                    cookie_options: {},
+                    cookie_secret: null
+                };
+                var T = _twitter(obj);
+                T.getRetweetedToUser(data.twitterId,function (err,data) {
+                    console.log(err,'err','data', data);
+
+                });
+
+            }
+        });
+
+    }
+}
+exports.showStatus = function (req, res) {
+    var user = req.checkLoggedIn();
+    if (user) {
+        User.findOne({_id: user._id}, function (err, data) {
+            if (err) {
+                console.log('error', err);
+            }
+            else {
+                var obj = {
+                    consumer_key: _config.twitterAuth.consumerKey,
+                    consumer_secret: _config.twitterAuth.consumerSecret,
+                    access_token_key: data.accessToken,
+                    access_token_secret: data.refreshToken,
+
+                    headers: {
+                        'Accept': '*/*',
+                        'Connection': 'close',
+                        'User-Agent': 'node-twitter/' + '0.2.12'
+                    },
+
+                    request_token_url: 'https://api.twitter.com/oauth/request_token',
+                    access_token_url: 'https://api.twitter.com/oauth/access_token',
+                    authenticate_url: 'https://api.twitter.com/oauth/authenticate',
+                    authorize_url: 'https://api.twitter.com/oauth/authorize',
+                    callback_url: null,
+
+                    rest_base: 'https://api.twitter.com/1.1',
+                    stream_base: 'https://stream.twitter.com/1.1',
+                    search_base: 'https://api.twitter.com/1.1/search',
+                    user_stream_base: 'https://userstream.twitter.com/1.1',
+                    site_stream_base: 'https://sitestream.twitter.com/1.1',
+                    filter_stream_base: 'https://stream.twitter.com/1.1/statuses',
+
+                    secure: false, // force use of https for login/gatekeeper
+                    cookie: 'twauth',
+                    cookie_options: {},
+                    cookie_secret: null
+                };
+                var T = _twitter(obj);
+                T.showStatus(data.twitterId,function (err,data) {
+                    console.log(err,'err','data', data);
+
+                });
+
+            }
+        });
+
+    }
+}
+
+
+/* var user = req.checkLoggedIn();
+ getUserTweets(user, function (error, data) {
+ if (error) {
+ console.log(require('sys').inspect(error));
+ res.end('bad stuff happened, none tweetage');
+ } else {
+ console.log(data);
+ res.send(JSON.parse(data));
+ }
+ });*/
 getUserTweets = function (user, cb) {
     if (user) {
         User.findOne({_id: user._id}, function (err, data) {
@@ -162,9 +557,7 @@ getUserTweets = function (user, cb) {
 }
 
 exports.reTweet = function (req, res) {
-    console.log('metooooooooooooooooooooooooddddddddddddddddddddddddddddddddddddddddddd callllllllllllllllldedddddddddddddd');
     var user = req.checkLoggedIn();
-    console.log('iddddddddddddddddd>>>>>>>>>>>' + req.body.id);
     reTweets(user, req.body.id, function (error, data) {
         console.log('callback called');
         if (error) {
@@ -217,13 +610,13 @@ reTweets = function (user, id, cb) {
 exports.makeFavourite = function (req, res) {
     var user = req.checkLoggedIn();
     if (user) {
-        favourite(user, req.body.tweet,function(err,result){
-            if(err){
-                console.log('errrrrrrr',err);
+        favourite(user, req.body.tweet, function (err, result) {
+            if (err) {
+                console.log('errrrrrrr', err);
                 res.send(null);
             }
             else
-            res.send(result);
+                res.send(result);
 
         });
     }
@@ -257,16 +650,16 @@ favourite = function (user, tweet, cb) {
                 });
                 response.addListener('end', function () {
                     new Tweet({
-                        twitterId:data.twitterId,
-                        tweet:tweet
+                        twitterId: data.twitterId,
+                        tweet: tweet
                     }).save(function (err, tweet) {
                             if (err) {
                                 log.error(err);
-                               cb(err,null);
+                                cb(err, null);
                             }
                             else {
                                 console.log('favourite tweet inserted into DB....');
-                                cb(null,'success');
+                                cb(null, 'success');
                             }
                         });
                     console.log('--- END ---', data);

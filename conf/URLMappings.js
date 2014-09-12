@@ -55,3 +55,10 @@ _app.post('/reTweet',controllers.user.reTweet);
 _app.post('/favouriteTweet',controllers.user.makeFavourite);
 //get favourite tweets from DB
 _app.get('/getavouriteTweet',controllers.user.getFavouriteTweets);
+_app.get('/getMentions',controllers.user.getMention);
+_app.get('/getUserTimeLines',controllers.user.getUserTimeLine);
+_app.get('/getRetweetedToUser',controllers.user.getReweeted_to_user);
+_app.get('/showStatus',controllers.user.showStatus);
+_app.get('/getReweeted_of_me',controllers.user.getReweeted_of_me);
+_app.get('/getReweeted_to_me',controllers.user.getReweeted_to_me);
+_app.get('/getRetweets',controllers.user.getRetweets);

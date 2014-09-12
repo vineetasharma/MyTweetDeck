@@ -14,7 +14,7 @@ expressValidator = require('express-validator'),
     OAuth = require('oauth').OAuth,
     Twit = require('twit');
 var oa;
-var ntwitter = require('ntwitter');
+var twitter = require('twitter');
 
 // Use the BearerStrategy with Passport.
 passport.use(new BearerStrategy(Util.verifyBearerToken));
@@ -29,8 +29,8 @@ passport.deserializeUser(function (user, done) {
 global.__defineGetter__("_passport", function () {
     return passport
 });
-global.__defineGetter__("_ntwitter", function () {
-    return ntwitter
+global.__defineGetter__("_twitter", function () {
+    return twitter
 });
 global.__defineGetter__("_twit", function () {
     return Twit
