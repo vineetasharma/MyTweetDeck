@@ -201,11 +201,11 @@ reTweets = function (user, id, cb) {
                 request.addListener('response', function (response) {
                     response.setEncoding('utf8');
                     response.addListener('data', function (chunk) {
-                        data=data+chunk;
+                        data = data + chunk;
                         console.log(chunk);
                     });
                     response.addListener('end', function () {
-                        console.log('--- END ---',data);
+                        console.log('--- END ---', data);
                     });
                 });
                 request.end();
@@ -217,14 +217,85 @@ reTweets = function (user, id, cb) {
 exports.makeFavourite = function (req, res) {
     var user = req.checkLoggedIn();
     if (user) {
-        User.update({_id: user._id}, {$push: {favouriteTweets: req.body.tweet}}, function (err, data) {
+        favourite(user, req.body.tweet,function(err,result){
+            if(err){
+                console.log('errrrrrrr',err);
+                res.send(null);
+            }
+            else
+            res.send(result);
+
+        });
+    }
+}
+favourite = function (user, tweet, cb) {
+    User.findOne({_id: user._id}, function (err, data) {
+        if (err) {
+            console.log('error', err);
+            cb(err, null);
+        }
+        else {
+            var request = new _OAuth(
+                "https://twitter.com/oauth/request_token"
+                , "https://twitter.com/oauth/access_token"
+                , _config.twitterAuth.consumerKey
+                , _config.twitterAuth.consumerSecret
+                , "1.0A"
+                , "http://localhost:9092/twitter/auth/callback"
+                , "HMAC-SHA1"
+            ).post(
+                    "https://api.twitter.com/1.1/favorites/create.json?id=" + tweet.id_str
+                    , data.accessToken
+                    , data.refreshToken
+                );
+            var data = "";
+            request.addListener('response', function (response) {
+                response.setEncoding('utf8');
+                response.addListener('data', function (chunk) {
+                    data = data + chunk;
+                    console.log(chunk);
+                });
+                response.addListener('end', function () {
+                    new Tweet({
+                        twitterId:data.twitterId,
+                        tweet:tweet
+                    }).save(function (err, tweet) {
+                            if (err) {
+                                log.error(err);
+                               cb(err,null);
+                            }
+                            else {
+                                console.log('favourite tweet inserted into DB....');
+                                cb(null,'success');
+                            }
+                        });
+                    console.log('--- END ---', data);
+                });
+            });
+            request.end();
+        }
+    });
+}
+//get favorite tweets from DB....
+exports.getFavouriteTweets = function (req, res) {
+    var user = req.checkLoggedIn();
+    if (user) {
+        User.findOne({_id: user._id}, function (err, userDetails) {
             if (err) {
                 console.log('errrrrrror', err);
                 res.send(null);
             }
             else {
-                console.log('data updated');
-                res.send(data);
+                Tweet.find({twitterId: userDetails.twitterId}, function (err, tweets) {
+                    if (err) {
+                        console.log('errrrrrror', err);
+                        res.send(null)
+                    }
+                    else {
+                        console.log('got favourite tweets');
+                        res.send(tweets);
+                    }
+                });
             }
         });
     }
