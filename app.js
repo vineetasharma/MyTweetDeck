@@ -39,8 +39,16 @@ global.__defineGetter__("_twit", function () {
 global.__defineGetter__("_oa", function () {
     return oa
 });
-global.__defineGetter__("_OAuth", function () {
-    return OAuth
+global.__defineGetter__("_oauth", function () {
+    return new OAuth(
+        "https://twitter.com/oauth/request_token"
+        , "https://twitter.com/oauth/access_token"
+        , _config.twitterAuth.consumerKey
+        , _config.twitterAuth.consumerSecret
+        , "1.0A"
+        , "http://localhost:9092/twitter/auth/callback"
+        , "HMAC-SHA1"
+    );
 });
 
 //give this worker a special Id

@@ -85,7 +85,7 @@ exports.logout = function (req, res) {
 //retweets
 exports.makeTweets = function (req, res) {
     var user = req.checkLoggedIn();
-    makeTweet(user, function (error, data) {
+    makeTweet(req.body.status,user, function (error, data) {
         if (error) {
             console.log(require('sys').inspect(error));
             res.end('bad stuff happened, none tweetage');
@@ -95,26 +95,18 @@ exports.makeTweets = function (req, res) {
         }
     });
 }
-makeTweet = function (user, cb) {
+makeTweet = function (status,user, cb) {
     if (user) {
         User.findOne({_id: user._id}, function (err, data) {
             if (err) {
                 console.log('error', err);
             }
             else {
-                new _OAuth(
-                    "https://twitter.com/oauth/request_token"
-                    , "https://twitter.com/oauth/access_token"
-                    , _config.twitterAuth.consumerKey
-                    , _config.twitterAuth.consumerSecret
-                    , "1.0A"
-                    , "http://localhost:9092/twitter/auth/callback"
-                    , "HMAC-SHA1"
-                ).post(
+                _oauth.post(
                     "https://api.twitter.com/1.1/statuses/update.json"
                     , data.accessToken
                     , data.refreshToken
-                    , {"status": " Second Tweet using node modules....." }
+                    , {"status": status }
                     , cb
                 );
             }
@@ -141,15 +133,7 @@ getUserTweets = function (user, cb) {
                 console.log('error', err);
             }
             else {
-                new _OAuth(
-                    "https://twitter.com/oauth/request_token"
-                    , "https://twitter.com/oauth/access_token"
-                    , _config.twitterAuth.consumerKey
-                    , _config.twitterAuth.consumerSecret
-                    , "1.0A"
-                    , "http://localhost:9092/twitter/auth/callback"
-                    , "HMAC-SHA1"
-                ).get(
+               _oauth.get(
                         "https://api.twitter.com/1.1/statuses/home_timeline.json?count=10"
                         , data.accessToken
                         , data.refreshToken
@@ -184,16 +168,7 @@ reTweets = function (user, id,cb) {
 
             }
             else {
-                var request = new _OAuth(
-
-                    "https://twitter.com/oauth/request_token"
-                    , "https://twitter.com/oauth/access_token"
-                    , _config.twitterAuth.consumerKey
-                    , _config.twitterAuth.consumerSecret
-                    , "1.0A"
-                    , "http://localhost:9092/twitter/auth/callback"
-                    , "HMAC-SHA1"
-                ).post(
+                var request = _oauth.post(
                         "https://api.twitter.com/1.1/statuses/retweet/" + id + ".json"
                         , data.accessToken
                         , data.refreshToken
@@ -236,15 +211,7 @@ favourite = function (user, tweet, cb) {
             cb(err, null);
         }
         else {
-            var request = new _OAuth(
-                "https://twitter.com/oauth/request_token"
-                , "https://twitter.com/oauth/access_token"
-                , _config.twitterAuth.consumerKey
-                , _config.twitterAuth.consumerSecret
-                , "1.0A"
-                , "http://localhost:9092/twitter/auth/callback"
-                , "HMAC-SHA1"
-            ).post(
+            var request = _oauth.post(
                     "https://api.twitter.com/1.1/favorites/create.json?id=" + tweet.id_str
                     , data.accessToken
                     , data.refreshToken
@@ -301,4 +268,3 @@ exports.getFavouriteTweets = function (req, res) {
         });
     }
 }
-exports.get
