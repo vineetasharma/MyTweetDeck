@@ -12,7 +12,8 @@ expressValidator = require('express-validator'),
     viewEngine = require("ejs-locals"),
     socket = require('socket.io'),
     OAuth = require('oauth').OAuth,
-    Twit = require('twit');
+    Twit = require('twit'),
+    twitter=require('twitter');
 var oa;
 var ntwitter = require('ntwitter');
 
@@ -29,8 +30,8 @@ passport.deserializeUser(function (user, done) {
 global.__defineGetter__("_passport", function () {
     return passport
 });
-global.__defineGetter__("_ntwitter", function () {
-    return ntwitter
+global.__defineGetter__("_twitter", function () {
+    return twitter
 });
 global.__defineGetter__("_twit", function () {
     return Twit
@@ -38,8 +39,16 @@ global.__defineGetter__("_twit", function () {
 global.__defineGetter__("_oa", function () {
     return oa
 });
-global.__defineGetter__("_OAuth", function () {
-    return OAuth
+global.__defineGetter__("_oauth", function () {
+    return new OAuth(
+        "https://twitter.com/oauth/request_token"
+        , "https://twitter.com/oauth/access_token"
+        , _config.twitterAuth.consumerKey
+        , _config.twitterAuth.consumerSecret
+        , "1.0A"
+        , "http://localhost:9092/twitter/auth/callback"
+        , "HMAC-SHA1"
+    );
 });
 
 //give this worker a special Id

@@ -85,7 +85,7 @@ exports.logout = function (req, res) {
 //retweets
 exports.makeTweets = function (req, res) {
     var user = req.checkLoggedIn();
-    makeTweet(user, function (error, data) {
+    makeTweet(req.body.status,user, function (error, data) {
         if (error) {
             console.log(require('sys').inspect(error));
             res.end('bad stuff happened, none tweetage');
@@ -95,26 +95,18 @@ exports.makeTweets = function (req, res) {
         }
     });
 }
-makeTweet = function (user, cb) {
+makeTweet = function (status,user, cb) {
     if (user) {
         User.findOne({_id: user._id}, function (err, data) {
             if (err) {
                 console.log('error', err);
             }
             else {
-                new _OAuth(
-                    "https://twitter.com/oauth/request_token"
-                    , "https://twitter.com/oauth/access_token"
-                    , _config.twitterAuth.consumerKey
-                    , _config.twitterAuth.consumerSecret
-                    , "1.0A"
-                    , "http://localhost:9092/twitter/auth/callback"
-                    , "HMAC-SHA1"
-                ).post(
+                _oauth.post(
                     "https://api.twitter.com/1.1/statuses/update.json"
                     , data.accessToken
                     , data.refreshToken
-                    , {"status": " Second Tweet using node modules....." }
+                    , {"status": status }
                     , cb
                 );
             }
@@ -141,15 +133,7 @@ getUserTweets = function (user, cb) {
                 console.log('error', err);
             }
             else {
-                new _OAuth(
-                    "https://twitter.com/oauth/request_token"
-                    , "https://twitter.com/oauth/access_token"
-                    , _config.twitterAuth.consumerKey
-                    , _config.twitterAuth.consumerSecret
-                    , "1.0A"
-                    , "http://localhost:9092/twitter/auth/callback"
-                    , "HMAC-SHA1"
-                ).get(
+               _oauth.get(
                         "https://api.twitter.com/1.1/statuses/home_timeline.json?count=10"
                         , data.accessToken
                         , data.refreshToken
@@ -162,9 +146,8 @@ getUserTweets = function (user, cb) {
 }
 
 exports.reTweet = function (req, res) {
-    console.log('metooooooooooooooooooooooooddddddddddddddddddddddddddddddddddddddddddd callllllllllllllllldedddddddddddddd');
     var user = req.checkLoggedIn();
-    console.log('iddddddddddddddddd>>>>>>>>>>>' + req.body.id);
+    console.log('id:' + req.body.id);
     reTweets(user, req.body.id, function (error, data) {
         console.log('callback called');
         if (error) {
@@ -176,23 +159,16 @@ exports.reTweet = function (req, res) {
         }
     });
 }
-reTweets = function (user, id, cb) {
+reTweets = function (user, id,cb) {
     if (user) {
         User.findOne({_id: user._id}, function (err, data) {
             if (err) {
                 console.log('error', err);
+                cb(err,null);
+
             }
             else {
-                console.log('auth/////');
-                var request = new _OAuth(
-                    "https://twitter.com/oauth/request_token"
-                    , "https://twitter.com/oauth/access_token"
-                    , _config.twitterAuth.consumerKey
-                    , _config.twitterAuth.consumerSecret
-                    , "1.0A"
-                    , "http://localhost:9092/twitter/auth/callback"
-                    , "HMAC-SHA1"
-                ).post(
+                var request = _oauth.post(
                         "https://api.twitter.com/1.1/statuses/retweet/" + id + ".json"
                         , data.accessToken
                         , data.refreshToken
@@ -235,24 +211,16 @@ favourite = function (user, tweet, cb) {
             cb(err, null);
         }
         else {
-            var request = new _OAuth(
-                "https://twitter.com/oauth/request_token"
-                , "https://twitter.com/oauth/access_token"
-                , _config.twitterAuth.consumerKey
-                , _config.twitterAuth.consumerSecret
-                , "1.0A"
-                , "http://localhost:9092/twitter/auth/callback"
-                , "HMAC-SHA1"
-            ).post(
+            var request = _oauth.post(
                     "https://api.twitter.com/1.1/favorites/create.json?id=" + tweet.id_str
                     , data.accessToken
                     , data.refreshToken
                 );
-            var data = "";
+            var data1 = "";
             request.addListener('response', function (response) {
                 response.setEncoding('utf8');
                 response.addListener('data', function (chunk) {
-                    data = data + chunk;
+                    data1 = data1 + chunk;
                     console.log(chunk);
                 });
                 response.addListener('end', function () {
@@ -265,11 +233,11 @@ favourite = function (user, tweet, cb) {
                                cb(err,null);
                             }
                             else {
-                                console.log('favourite tweet inserted into DB....');
+                                console.log('favourite tweet inserted into DB....',tweet);
                                 cb(null,'success');
                             }
                         });
-                    console.log('--- END ---', data);
+                    console.log('--- END ---', data1);
                 });
             });
             request.end();
@@ -292,7 +260,7 @@ exports.getFavouriteTweets = function (req, res) {
                         res.send(null)
                     }
                     else {
-                        console.log('got favourite tweets');
+                        console.log('got favourite tweets',tweets);
                         res.send(tweets);
                     }
                 });

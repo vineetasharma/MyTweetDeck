@@ -9,6 +9,11 @@
  */
 angular.module('yoApp')
     .controller('HomeCtrl',['$scope','HomeService', function ($scope,HomeService) {
+        $scope.signIn = function () {
+            jQuery('#signin').modal({
+                keyboard: true
+            });
+        };
         console.log('home controller called');
         HomeService.getTweets(function(user_timeline_tweets){
             console.log('service called');

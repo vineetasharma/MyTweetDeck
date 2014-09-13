@@ -1,0 +1,40 @@
+.homeDiv {
+    margin-top: 70px;
+}
+
+.tweetDiv {
+    width: 550px;
+    height: 600px;
+    /*overflow-y: scroll;*/
+    float: left;
+    margin-left: 20px;
+    background-color: honeydew;
+    border-radius: 5px 5px 5px 5px;
+}
+
+.innerTweetDiv {
+    width: 550px;
+    height: 530px;
+    overflow: auto;
+
+}
+
+.favouriteTweetDiv {
+    width: 500px;
+    height: 600px;
+    background-color: #dcdcdc;
+    float: right;
+    margin-right: 200px;
+    border-radius: 5px 5px 5px 5px;
+}
+.innerFavouriteTweetDiv{
+    width: 500px;
+    height: 530px;
+    overflow: auto;
+}
+.profile{
+    width: 90px;
+    margin-left: 50px;
+    height: 200px;
+    float: left;
+}

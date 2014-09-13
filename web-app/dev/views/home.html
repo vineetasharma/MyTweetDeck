@@ -1,28 +1,53 @@
-<div style="margin-top: 50px">
-    <div class="tweetDiv" ng-show="tweets"
-         style="width: 500px;height:600px;overflow-y: scroll; float: left;margin-left: 100px;background-color:honeydew;border-radius: 5px 5px 5px 5px ">
-        <table class="table">
-            <thead class="caption" style="text-align: center">Tweets</thead>
-            <tr class="table-bordered" ng-repeat="tweet in tweets track by $index">
-                <td>{{tweet.text}}
-                    <br>
-                    <button class="btn btn-info" ng-click="retweet(tweet.id_str)">Retweet</button>
-                    <button class="btn btn-info" ng-click="favourite(tweet)">Favourite</button>
-                    <div></div>
+<div class='homeDiv' ng-show="tweets">
+    <div class="profile">
+        <img src="profile.profilePicUrl" height="80px" width="80px">
+        {{profile.username}}
+        <button class="btn btn-info" ng-click="signIn()">New Tweet</button>
 
-            </tr>
-            </td></tr>
-        </table>
     </div>
-    <div class="favouriteTweetDiv" style="width:300px;background-color: #dcdcdc;float: right;margin-right: 100px"
-         ng-show="favouriteTweets">
-        <table class="table">
-            <thead class="caption" style="text-align: center">Favourite Tweets</thead>
-            <tr class="table-bordered" ng-repeat="tweet  in favouriteTweets track by $index | limit :5">
-                <td>{{tweet.text}}
+    <div class="tweetDiv" ng-show="tweets">
+        <h3 style="margin-top: 20px">Tweets</h3>
 
-                </td>
-            </tr>
-        </table>
+        <div class="innerTweetDiv">
+            <table class="table table-striped">
+                <tr class="table-bordered" ng-repeat="tweet in tweets track by $index">
+                    <td>{{tweet.text}}
+                        <br>
+                        <button class="btn btn-info" ng-click="retweet(tweet.id_str)">Retweet</button>
+                        <button class="btn btn-info" ng-click="favourite(tweet)">Favourite</button>
+                        <div></div>
+
+                </tr>
+                </td></tr>
+            </table>
+        </div>
+
+    </div>
+    <div class="favouriteTweetDiv"
+         ng-show="favouriteTweets">
+        <h3 style="margin-top: 20px">Favourite Tweets</h3>
+
+        <div class="innerFavouriteTweetDiv">
+            <table class="table table-striped">
+                <tr class="table-bordered" ng-repeat="tweet  in favouriteTweets">
+                    <td>{{tweet.tweet.text}}
+                        <img src="../images/star.png" height="25px" width="25px">
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+<div align="left" id="signin" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 style="margin-left: -85px;">Compose New Tweet</h3>
+            </div>
+            <div class="modal-body">
+                <textarea cols="20" rows="10" ></textarea>
+                <button class="btn btn-info modal-btn">Tweet</button>
+            </div>
+        </div>
     </div>
 </div>
