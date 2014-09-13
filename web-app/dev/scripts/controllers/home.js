@@ -8,12 +8,32 @@
  * Controller of the yoApp
  */
 angular.module('yoApp')
-    .controller('HomeCtrl',['$scope','HomeService', function ($scope,HomeService) {
+    .controller('HomeCtrl',['$scope', '$window','HomeService','ProfileService', function ($scope,$window,HomeService,ProfileService) {
         $scope.signIn = function () {
             jQuery('#signin').modal({
                 keyboard: true
             });
         };
+        ProfileService.getProfile(function(err,data){
+            if(data){
+                $scope.profile=data;
+                console.log(data);
+            }
+            else {
+                $window.location.href = '#/';
+            }
+        });
+
+        $scope.tweet=function(){
+            if($scope.tweetStatus){
+                console.log('status',$scope.tweetStatus);
+                HomeService.tweet($scope.tweetStatus,function(err,data){
+                    if(data){
+                        $scope.tweets.push($scope.tweetStatus);
+                    }
+                });
+            }
+        }
         console.log('home controller called');
         HomeService.getTweets(function(user_timeline_tweets){
             console.log('service called');
@@ -36,5 +56,13 @@ angular.module('yoApp')
         }
         HomeService.getFavoriteTweets(function(tweets){
             $scope.favouriteTweets=tweets;
-        })
+        });
+        (function(){
+            setInterval(function(){ HomeService.getTweets(function(user_timeline_tweets){
+                console.log('service called');
+                $scope.tweets=user_timeline_tweets;
+                console.log(user_timeline_tweets);
+            });}, 10000);
+        })();
+
     }]);

@@ -85,7 +85,7 @@ exports.logout = function (req, res) {
 //retweets
 exports.makeTweets = function (req, res) {
     var user = req.checkLoggedIn();
-    makeTweet(req.body.status,user, function (error, data) {
+    makeTweet(req.body.tweet,user, function (error, data) {
         if (error) {
             console.log(require('sys').inspect(error));
             res.end('bad stuff happened, none tweetage');
@@ -96,6 +96,7 @@ exports.makeTweets = function (req, res) {
     });
 }
 makeTweet = function (status,user, cb) {
+    console.log('status',status);
     if (user) {
         User.findOne({_id: user._id}, function (err, data) {
             if (err) {
