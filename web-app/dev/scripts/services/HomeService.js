@@ -36,4 +36,12 @@ angular.module('yoApp')
                     callback(error);
                 });
         };
+        this.tweet=function(status){
+            $http.post('/makeTweet',{tweet:status})
+                .error(function (error) {
+                    console.log("error during retweet: ", error.message);
+                    callback(error,null);
+                });
+
+        };
     }]);

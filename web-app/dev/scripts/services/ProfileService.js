@@ -4,11 +4,11 @@ angular.module('yoApp')
     $http.get("/getProfileData")
         .success(function (data) {
             console.log('user profile',data);
-            callback(data);
+            callback(null,data);
         }).
         error(function (error) {
             console.log("error during finding profile data: ", error.message);
-            callback(error);
+            callback(error,null);
         });
 };
     }]);
