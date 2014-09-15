@@ -1,7 +1,9 @@
 <div class='homeDiv' ng-show="tweets">
     <div class="profile" ng-show="profile">
-        <img src="{{profile.profilePicUrl}}" height="80px" width="80px">
-        {{profile.username}}
+        <img  class="profile-avatar" src="{{profile.profilePicUrl}}" height="100px" width="100px">
+        <br><br>
+        <span style="color: ghostwhite; font-size: 16px">{{profile.username}}</span>
+        <br><br>
         <button class="btn btn-info" ng-click="signIn()">New Tweet</button>
 
     </div>
@@ -13,8 +15,8 @@
                 <tr class="table-bordered" ng-repeat="tweet in tweets track by $index">
                     <td>{{tweet.text}}
                         <br>
-                        <button class="btn btn-info" ng-click="retweet(tweet.id_str)">Retweet</button>
-                        <button class="btn btn-info" ng-click="favourite(tweet)">Favourite</button>
+                        <button class="btn " ng-click="retweet(tweet.id_str)" ng-class="{retweet:tweet.retweeted}"  ng-disabled="tweet.retweeted" >Retweet</button>
+                        <button class="btn " ng-click="favourite(tweet)" ng-class="{favourite:tweet.favorited}"  ng-disabled="tweet.favorited">Favourite</button>
                         <div></div>
 
                 </tr>
@@ -29,7 +31,7 @@
 
         <div class="innerFavouriteTweetDiv">
             <table class="table table-striped">
-                <tr class="table-bordered" ng-repeat="tweet  in favouriteTweets">
+                <tr class="table-bordered" ng-repeat="tweet  in favouriteTweets | orderBy : tweet._id : reverse :true ">
                     <td>{{tweet.tweet.text}}
                         <img src="../images/star.png" height="25px" width="25px">
                     </td>
@@ -45,8 +47,10 @@
                 <h3 style="margin-left: -85px;">Compose New Tweet</h3>
             </div>
             <div class="modal-body">
-                <textarea cols="30" rows="5" class="form-control" ng-model="tweetStatus"></textarea>
+                <textarea cols="25" rows="5" class="form-control" ng-model="tweetStatus"></textarea>
+                <br>
                 <button class="btn btn-info modal-btn" ng-click="tweet()">Tweet</button>
+                <button class=" btn btn-info" data-dismiss="modal" aria-hidden="true">Cancel</button>
             </div>
         </div>
     </div>

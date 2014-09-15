@@ -1,4 +1,10 @@
 
+.retweet{
+    background-color: lightgreen;
+}
+.favourite{
+    background-color:lightpink;
+}
 .boxed-group {
     position: relative;
     border-radius: 3px;
@@ -482,7 +488,9 @@ dl.form > dt {
 }
 
 dl.form > dt label {
-    position: relative
+    position: relative;
+    color: white;
+    font-size: 18px;
 }
 
 dl.form > dd input[type="text"],dd input[type="date"], dl.form > dd #adv_code_search .search-page-label, #adv_code_search dl.form > dd .search-page-label, dl.form > dd input[type="password"], dl.form > dd input[type="email"] {

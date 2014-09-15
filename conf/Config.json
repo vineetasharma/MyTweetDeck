@@ -17,6 +17,11 @@
             "consumerKey": "ICvwcKt1xHPKkv7ojPNou6Asc",
             "consumerSecret": "Ijx7rtmaZicQRagqmlH2llh9usvMIKUDZHmFjeMuMsWcsqMRQE",
             "callbackURL": "http://localhost:9092/auth/twitter/callback"
+        },
+        "mailService": {
+            "service": "Gmail",
+            "email": "ninjatweetdeck@gmail.com",
+            "pass": "igdefault"
         }
     },
     "production": {},

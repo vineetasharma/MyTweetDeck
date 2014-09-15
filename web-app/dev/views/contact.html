@@ -1,0 +1,68 @@
+<div class="contact-container section-container ">
+    <div class="container">
+        <div class="row">
+            <div style="visibility: visible; animation-name: fadeInLeftBig;"
+                 class="col-sm-12 contact section-description wow fadeInLeftBig animated animated">
+                <h2 class="main">Contact us</h2>
+
+            </div>
+        </div>
+        <div class="row">
+
+            <div>
+                <div class="alert alert-info">
+                    <button type="button" class="close" data-dismiss="alert">×</button>
+                    Provide a valid email.
+                </div>
+            </div>
+            <div>
+                <div class="alert alert-warning">
+                    <button type="button" class="close" data-dismiss="alert">×</button>
+                    Fill all fields.
+                </div>
+            </div>
+            <div>
+                <div class="alert alert-success">
+                    <button type="button" class="close" data-dismiss="alert">×</button>
+                    Message sent successfully.
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="alert alert-error">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                Error occurred please try again later.
+            </div>
+        </div>
+        <div style="visibility: visible; animation-name: fadeInUp;"
+             class="col-sm-7 contact-form wow fadeInUp animated animated">
+
+            <h3 class="h3-msg"><strong>Send us a message</strong></h3>
+
+
+            <form method="post">
+                <input type="text" ng-model="name" placeholder="Name..." class="form-control">
+
+
+                <input type="text" ng-model="email" placeholder="Email..." class="form-control">
+                <textarea ng-model="message" placeholder="Message..." class="form-control"></textarea>
+                <input type="submit" value="Send" class="btn btn-primary btn-sm" style=" width: 20%;"
+                       ng-click="sendMail()" ng-disabled="disable">
+            </form>
+
+        </div>
+        <div style="visibility: visible; animation-name: fadeInUp;"
+             class="col-sm-5 contact-address wow fadeInUp animated animated">
+            <div class="Corporate-Office">
+                <h3 class="h3-msg"><strong>Corporate Office:</strong></h3>
+
+                <div class="Corporate-Office-inner">
+                    IntelliGrape Software (P) Ltd<br>
+                    SDF L-6, NSEZ,<br>
+                    Noida Phase 2,<br>
+                    India
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

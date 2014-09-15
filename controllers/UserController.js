@@ -46,6 +46,34 @@ exports.getProfile = function (req, res) {
     else
         res.send(null);
 }
+exports.updateProfile = function (req, res) {
+    log.info('update profile method called',req.body);
+    var user = req.checkLoggedIn();
+    if (user) {
+        UserService.updateUserDetails(user._id,req.body)
+            .on("success", function (user1) {
+                if(req.body.Email){
+                    console.log(user,'user');
+
+                    UserService.sendEmailVerificationLink(user._id,req.body.Name,req.body.Email)
+                        .on(EventName.ERROR,function(err){
+                            log.info('Email not sent',err.message);
+                        })
+                        .on(EventName.DONE,function(res){
+                            console.log('Email sent successfully',res);
+                        });
+                }
+              log.info('profile updated successfully',user);
+                res.send(user);
+            })
+            .on("error", function (err) {
+                log.error('error while updating user profile',err.message);
+                res.send(null);
+            });
+    }
+    else
+        res.send(null);
+}
 exports.loginHandler = function (req, res) {
     req.assert('username', 'Please Enter the Username.').notEmpty();
     req.assert('password', 'Please enter a password.').notEmpty();
@@ -144,6 +172,9 @@ getUserTweets = function (user, cb) {
         });
 
     }
+    else{
+        cb("error");
+    }
 }
 
 exports.reTweet = function (req, res) {
@@ -153,7 +184,7 @@ exports.reTweet = function (req, res) {
         console.log('callback called');
         if (error) {
             console.log(require('sys').inspect(error));
-            res.end('bad stuff happened, none tweetage');
+            res.send(null);
         } else {
             console.log(data);
             res.send(data);
@@ -186,10 +217,16 @@ reTweets = function (user, id,cb) {
                     });
                 });
                 request.end();
+                cb(null,data);
             }
         });
 
     }
+    else{
+        cb('error',null);
+
+    }
+
 }
 exports.makeFavourite = function (req, res) {
     var user = req.checkLoggedIn();
@@ -234,8 +271,8 @@ favourite = function (user, tweet, cb) {
                                cb(err,null);
                             }
                             else {
-                                console.log('favourite tweet inserted into DB....',tweet);
-                                cb(null,'success');
+                                log.info('favourite tweet inserted into DB....',tweet);
+                                cb(null,tweet);
                             }
                         });
                     console.log('--- END ---', data1);
@@ -268,4 +305,8 @@ exports.getFavouriteTweets = function (req, res) {
             }
         });
     }
+}
+exports.verifyEmail = function (req, res) {
+    log.info('verfication Code is executed',req.params.verificationCode);
+    UserService.verifyEmailService(req.params.verificationCode,function(){});
 }
