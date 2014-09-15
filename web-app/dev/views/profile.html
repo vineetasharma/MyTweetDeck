@@ -1,13 +1,19 @@
 <div class="row profile-row" ng-if="profile">
     <div class="row profile">
         <div class=" pull-left">
-            <img class="profile-image" src="{{profilePicUrl}}" onerror="this.src='images/defaultProfile.jpg'">
+            <img class="profile-image" src="{{profile.profilePicUrl}}" onerror="this.src='images/defaultProfile.jpg'">
+            <br>
+            <br>
+            <span style="font-size: 18px;color: white">{{profile.username}}</span>
+            <br>
+            <br>
+            <button class="btn btn-info" ng-click="editProfile()">Edit Profile</button>
         </div>
     </div>
-    <div class="column three-fourths">
-        <dl class="form" ng-if="Name">
-            <dt><label for="user_profile_name">Name</label></dt>
-            <dd class="profile-info"><label class="long" id="user_profile_name">{{Name}}</label>
+    <div class="column three-fourths" ng-if="!edit">
+        <dl class="form" ng-if="profile.username">
+            <dt><label for="user_profile_name" class="profile-info-heading">Name:</label></dt>
+            <dd class="profile-info"><label class="long" id="user_profile_name">{{profile.username}}</label>
             </dd>
         </dl>
         <dl class="form" ng-if="Email">
@@ -55,5 +61,71 @@
             <dd class="profile-info"><label class="long" id="user_profile_pin">{{Pin}}</label>
             </dd>
         </dl>
+    </div>
+    <div ng-if="edit" style="margin-left: 150px;">
+       
+                <div class="column two-thirds">
+                    <dl class="form">
+                        <dt><label >Name</label></dt>
+                        <dd><input class="form-control"
+                                   ng-model="data.Name" value="Name" size="30" type="text"></dd>
+                    </dl>
+                    <dl class="form">
+                        <dt><label for="Email">Email</label></dt>
+                        <dd> <input size="30" type="text" class="form-control" id="Email" name="Email" ng-model="data.Email"></dd>
+
+                    </dl>
+                    <dl class="form">
+                        <dt><label for="Birthday">Birthday</label></dt>
+                        <dd><input class="form-control" id="Birthday" name="Birthday"
+                                   ng-model="data.Birthday"
+                                   size="30" type="text"></dd>
+                    </dl>
+                    <dl class="form">
+                        <dt><label for="Gender">Gender</label></dt>
+                        <dd><input class="form-control" id="Gender" name="Gender"
+                                   ng-model="data.Gender"
+                                   size="30" type="text"></dd>
+                    </dl>
+                    <dl class="form">
+                        <dt><label for="Mobile">Mobile</label></dt>
+                        <dd><input class="form-control" id="Mobile" name="Mobile"
+                                   ng-model="data.Mobile"
+                                   size="30" type="text"></dd>
+                    </dl>
+                    <dl class="form">
+                        <dt><label for="Hometown">Hometown</label></dt>
+                        <dd><input class="form-control" id="Hometown" name="Hometown"
+                                   ng-model="data.HomeTown"
+                                   size="30" type="text"></dd>
+                    </dl>
+                    <dl class="form">
+                        <dt><label for="City">City</label></dt>
+                        <dd><input class="form-control" id="City" name="City"
+                                   ng-model="data.City"
+                                   size="30" type="text"></dd>
+                    </dl>
+                    <dl class="form">
+                        <dt><label for="State">State</label></dt>
+                        <dd><input class="form-control" id="State" name="State"
+                                   ng-model="data.State"
+                                   size="30" type="text"></dd>
+                    </dl>
+                    <dl class="form">
+                        <dt><label for="Country">Country</label></dt>
+                        <dd><input class="form-control" id="Country" name="Country"
+                                   ng-model="data.Country"
+                                   size="30" type="text"></dd>
+                    </dl>
+                    <dl class="form">
+                        <dt><label for="Pin">Pin</label></dt>
+                        <dd><input class="form-control" id="Pin" name="Pin"
+                                   ng-model="data.Pin"
+                                   size="30" type="text"></dd>
+                    </dl>
+                    <button class="btn btn-info" ng-click="updateProfile(data)">Update</button>
+                </div>
+            </form>
+        </div>
     </div>
 </div>

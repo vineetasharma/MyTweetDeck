@@ -424,7 +424,7 @@ body {
 }
 
 .profile-row {
-    margin-left: 20px;
+    margin-left: 50px;
     margin-top: 20px;
     background-color: transparent;
 }
@@ -440,8 +440,8 @@ body {
 }
 
 .profile-image {
-    width: 150px;
-    height: 150px;
+    width: 97px;
+    height: 111px;
     border: 2px solid white;
     outline: 1px solid #dbdee0
 }
@@ -545,13 +545,20 @@ p.email {
 }
 
 .profile-info {
-    margin-left: 0;
+    margin-left: 25px;
     border: 1px solid;
-    background-color: ghostwhite;
+    background-color:#b3d4fc;
     border-radius: 4px;
     height: 35px;
+    width: 400px;
     padding-top: 7px;
     padding-left: 7px;
+}
+.profile-info-heading{
+    margin-left: 25px;
+    padding-top: 7px;
+    padding-left: 7px;
+
 }
 
 .button-change-profile-picture{

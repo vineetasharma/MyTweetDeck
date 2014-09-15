@@ -13,16 +13,24 @@ angular.module('yoApp')
         };
         this.reTweet = function (id,callback) {
             $http.post('/reTweet',{id:id})
+                .success(function (data) {
+                    console.log('Tweet retweeted',data);
+                    callback('success');
+                })
                 .error(function (error) {
                     console.log("error during retweet: ", error.message);
-                    callback(error);
+                    callback(null);
                 });
         };
         this.makeFavourite = function (tweet,callback) {
             $http.post('/favouriteTweet',{tweet:tweet})
+                .success(function (data) {
+                    console.log('Tweet favorited',data);
+                    callback(data);
+                })
                 .error(function (error) {
-                    console.log("error during retweet: ", error.message);
-                    callback(error);
+                    console.log("error during favourite tweet: ", error.message);
+                    callback(null);
                 });
         };
         this.getFavoriteTweets = function (callback) {

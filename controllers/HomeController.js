@@ -5,6 +5,9 @@
  *
  * */
 
+var EventName = require("../src/enum/EventName");
+var HttpStatusCode = require("../src/enum/HttpStatusCode");
+
 /**
  * Handles the route which renders the home page
  * @url "/"
@@ -15,6 +18,7 @@
     if (req.user) res.redirect("/dashboard");
     else res.render('index', {error: null});
 };*/
+
 exports.index = function (req, res) {
     console.log('req.user',req.user);
     if (req.user) {
@@ -41,4 +45,15 @@ exports.index = function (req, res) {
         console.log('>>>>??>>>>>>>>>>>');
     }
 
+};
+exports.sendMail = function (req, res) {
+    HomeService.sendMailService(req.body)
+        .on(EventName.ERROR, function (err) {
+            log.error(err);
+            res.sendErrorAPIResponse(err.message, HttpStatusCode.SERVER_ERROR);
+        })
+        .on(EventName.DONE, function (data) {
+            log.info(data, 'in contact controller');
+            res.sendSuccessAPIResponse(data, HttpStatusCode.SUCCESS_READ_OPERATION_PERFORMED);
+        });
 };

@@ -1,0 +1,138 @@
+
+<!-- saved from url=(0031)http://localhost:9092/#/profile -->
+<html ng-app="yoApp" class="ng-scope"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide{display:none !important;}ng\:form{display:block;}.ng-animate-block-transitions{transition:0s all!important;-webkit-transition:0s all!important;}</style>
+    
+    <link href="./TweetDeck_files/profile.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="./TweetDeck_files/style.css">
+    <link rel="stylesheet" type="text/css" href="./TweetDeck_files/theme.css">
+    <link rel="stylesheet" type="text/css" href="./TweetDeck_files/animate.css">
+    <!--<link rel="stylesheet" type="text/css" href="../bower_components/font-awesome/css/font-awesome.css">-->
+    <link rel="stylesheet" type="text/css" href="./TweetDeck_files/main.css">
+    <link rel="stylesheet" type="text/css" href="./TweetDeck_files/MyCss.css">
+
+    <script src="./TweetDeck_files/angular.min.js"></script>
+    <script src="./TweetDeck_files/angular-route.min.js"></script>
+    <script src="./TweetDeck_files/jquery.min.js"></script>
+    <script src="./TweetDeck_files/bootstrap.min.js"></script>
+
+    <script src="./TweetDeck_files/app.js"></script>
+    <script src="./TweetDeck_files/ProfileService.js"></script>
+    <script src="./TweetDeck_files/HomeService.js"></script>
+    <script src="./TweetDeck_files/ContactService.js"></script>
+    <script src="./TweetDeck_files/main.js"></script>
+
+    <script src="./TweetDeck_files/profile.js"></script>
+    <script src="./TweetDeck_files/home.js"></script>
+    <script src="./TweetDeck_files/about.js"></script>
+    <script src="./TweetDeck_files/contact.js"></script>
+    <style type="text/css">@charset "UTF-8";
+        [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak, .ng-hide {
+            display: none !important;
+        }
+
+        ng\:form {
+            display: block;
+        }
+
+        .ng-animate-block-transitions {
+            transition: 0s all !important;
+            -webkit-transition: 0s all !important;
+        }
+
+        [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak, .ng-hide {
+            display: none !important;
+        }
+
+        ng\:form {
+            display: block;
+        }
+
+        .ng-animate-block-transitions {
+            transition: 0s all !important;
+            -webkit-transition: 0s all !important;
+        }
+
+
+    </style>
+    <title>TweetDeck</title>
+</head>
+<body id="home" class="ng-scope">
+<header class="navbar navbar-inverse hero" role="banner">
+    <div class="container">
+        <div class="navbar-header">
+            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="http://localhost:9092/" class="navbar-brand">NinjaTweetDeck</a>
+        </div>
+        <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="http://localhost:9092/#/home">
+                        Home
+                    </a>
+                </li>
+                <li>
+                    <a href="http://localhost:9092/#/about" class="">
+                        About
+                    </a>
+                </li>
+                <li>
+                    <a href="http://localhost:9092/#/contact" class="">
+                        Contact
+                    </a>
+                </li>
+                
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);">
+                        <img src="./TweetDeck_files/defaultProfile.jpg" style="width: 25px;height: 25px" onerror="this.src=&#39;images/defaultProfile.jpg&#39;"> &nbsp;vini
+                        <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li><a href="./TweetDeck_files/TweetDeck.html"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li><a href="http://localhost:9092/logout"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        </li>
+                    </ul>
+                    <input type="hidden" value="vini" id="profileData">
+                    <!-- /.dropdown-user -->
+                </li>
+                
+            </ul>
+        </nav>
+    </div>
+</header>
+<!-- /.row -->
+<!-- ngView:  --><div id="view" ng-view="" class="ng-scope"><!-- ngIf: profile --><div class="row profile-row ng-scope" ng-if="profile">
+    <div class="row profile">
+        <div class=" pull-left">
+            <img class="profile-image" src="./TweetDeck_files/default_profile_4_normal.png" onerror="this.src=&#39;images/defaultProfile.jpg&#39;">
+            <br>
+            <br>
+            <button class="btn btn-info" ng-click="editProfile()">Edit Profile</button>
+        </div>
+    </div>
+    <!-- ngIf: !edit --><div class="column three-fourths ng-scope" ng-if="!edit">
+        <!-- ngIf: profile.username --><dl class="form ng-scope" ng-if="profile.username">
+            <dt><label for="user_profile_name" class="profile-info-heading">Name:</label></dt>
+            <dd class="profile-info"><label class="long ng-binding" id="user_profile_name">vini</label>
+            </dd>
+        </dl><!-- end ngIf: profile.username -->
+        <!-- ngIf: Email -->
+        <!-- ngIf: Birthday -->
+        <!-- ngIf: Gender -->
+        <!-- ngIf: Mobile -->
+        <!-- ngIf: Hometown -->
+        <!-- ngIf: City -->
+        <!-- ngIf: State -->
+        <!-- ngIf: Country -->
+        <!-- ngIf: Pin -->
+    </div><!-- end ngIf: !edit -->
+    <!-- ngIf: edit -->
+    </div><!-- end ngIf: profile -->
+</div>
+
+</body></html>

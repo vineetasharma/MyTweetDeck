@@ -13,6 +13,9 @@ expressValidator = require('express-validator'),
     socket = require('socket.io'),
     OAuth = require('oauth').OAuth,
     Twit = require('twit'),
+    nodemailer=require('nodemailer'),
+    process=require('process'),
+    ejs=require('ejs'),
     twitter=require('twitter');
 var oa;
 var ntwitter = require('ntwitter');
@@ -32,6 +35,9 @@ global.__defineGetter__("_passport", function () {
 });
 global.__defineGetter__("_twitter", function () {
     return twitter
+});
+global.__defineGetter__("_ejs", function () {
+    return ejs
 });
 global.__defineGetter__("_twit", function () {
     return Twit
@@ -132,7 +138,12 @@ global.__defineGetter__("_passport", function () {
 global.__defineGetter__("_twitterStrategy", function () {
     return twitterStrategy;
 });
-
+global.__defineGetter__("_nodemailer", function () {
+    return nodemailer
+});
+global.__defineGetter__("_process", function () {
+    return process
+});
 
 //Initialize the Database connection and load models
 AppBuilder.initDomains(function () {

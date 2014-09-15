@@ -45,6 +45,7 @@ _app.get('/auth/twitter/callback',
     _passport.authenticate('twitter', { successRedirect: '/',
         failureRedirect: '/' }));
 _app.get('/getProfileData',controllers.user.getProfile);
+_app.post('/updateProfile',controllers.user.updateProfile);
 // new tweets
 _app.post('/makeTweet', controllers.user.makeTweets);
 //tweets
@@ -55,3 +56,5 @@ _app.post('/reTweet',controllers.user.reTweet);
 _app.post('/favouriteTweet',controllers.user.makeFavourite);
 //get favourite tweets from DB
 _app.get('/getfavouriteTweets',controllers.user.getFavouriteTweets);
+_app.post('/sendMail',controllers.home.sendMail);
+_app.get('/verifyEmail/:verificationCode',controllers.user.verifyEmail);

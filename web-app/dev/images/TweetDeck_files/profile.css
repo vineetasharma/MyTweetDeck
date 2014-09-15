@@ -1,0 +1,614 @@
+
+.boxed-group {
+    position: relative;
+    border-radius: 3px;
+    margin-bottom: 30px
+}
+
+.boxed-group .counter {
+    color: #fff;
+    background-color: #babec0
+}
+
+.boxed-group .boxed-group-action {
+    float: right;
+    margin: 6px 10px 0 0;
+    position: relative;
+    z-index: 2
+}
+
+.boxed-group .boxed-group-action.flush {
+    margin-top: 0;
+    margin-right: 0
+}
+
+.boxed-group .boxed-group-action.chromeless {
+    padding: 10px 10px 7px;
+    color: #777;
+    text-decoration: none
+}
+
+.boxed-group .boxed-group-action.chromeless:hover {
+    color: #4183c4
+}
+
+.boxed-group .boxed-group-action > .octicon {
+    color: #999;
+    margin-top: 4px
+}
+
+.boxed-group .boxed-group-action > button {
+    background-color: transparent;
+    border: 0;
+    -webkit-appearance: none
+}
+
+.boxed-group .boxed-group-inner {
+    padding: 1px 10px;
+    background: #fff;
+    border: 1px solid #d8d8d8;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    color: #666;
+    font-size: 13px
+}
+
+.boxed-group .boxed-group-inner .markdown-body {
+    padding: 20px 10px 10px;
+    font-size: 13px
+}
+
+.boxed-group .boxed-group-inner strong {
+    color: #000
+}
+
+.boxed-group .boxed-group-inner.markdown-body {
+    padding-top: 10px;
+    padding-bottom: 10px
+}
+
+.boxed-group .boxed-group-inner.seamless {
+    padding: 0
+}
+
+.boxed-group .boxed-group-inner h4 {
+    margin: 15px 0 -5px;
+    font-size: 14px;
+    color: #000
+}
+
+.boxed-group .boxed-group-inner .boxed-action {
+    float: right
+}
+
+.boxed-group .boxed-group-inner .help {
+    clear: both;
+    margin: 1em -10px 0;
+    padding: 1em 10px 1em 35px;
+    border-top: 1px solid #ddd;
+    color: #999
+}
+
+.boxed-group .boxed-group-inner .help .octicon {
+    margin-left: -25px;
+    margin-right: 5px
+}
+
+.boxed-group .boxed-group-inner .flash-global {
+    margin-left: -10px;
+    margin-right: -10px;
+    border-top: 0
+}
+
+.boxed-group.flush .boxed-group-inner {
+    padding: 0
+}
+
+.boxed-group.condensed .boxed-group-inner {
+    font-size: 12px;
+    padding: 0
+}
+
+.boxed-group > h3, .boxed-group .heading {
+    background-color: #f5f5f5;
+    margin: 0;
+    border-radius: 3px 3px 0 0;
+    border: 1px solid #d8d8d8;
+    border-bottom: 0;
+    padding: 9px 10px 10px;
+    font-size: 14px;
+    line-height: 17px;
+    display: block
+}
+
+.boxed-group > h3 a, .boxed-group .heading a {
+    color: inherit
+}
+
+.boxed-group > h3 a.boxed-group-breadcrumb, .boxed-group .heading a.boxed-group-breadcrumb {
+    color: #666;
+    font-weight: normal;
+    text-decoration: none
+}
+
+.boxed-group > h3 .avatar, .boxed-group .heading .avatar {
+    margin-top: -4px;
+    border-radius: 3px;
+    vertical-align: middle
+}
+
+.boxed-group .tabnav.heading {
+    padding: 0
+}
+
+.boxed-group .tabnav.heading .tabnav-tab.selected {
+    border-top: 0
+}
+
+.boxed-group .tabnav.heading .tabnav-tabs a {
+    border-radius: 0;
+    border-top: 0
+}
+
+.boxed-group .tabnav.heading .tabnav-tabs li:first-child .selected {
+    border-left-color: #fff;
+    border-top-left-radius: 3px
+}
+
+.boxed-group code.heading {
+    font-size: 12px
+}
+
+.boxed-group.dangerzone > h3 {
+    background-color: #df3e3e;
+    border: 1px solid #a00;
+    color: #fff;
+    text-shadow: 0 -1px 0 #900
+}
+
+.boxed-group.dangerzone .boxed-group-inner {
+    border-top: 0
+}
+
+.boxed-group.condensed > h3 {
+    padding: 6px 6px 7px;
+    font-size: 12px
+}
+
+.boxed-group.condensed > h3 .octicon {
+    padding: 0 6px 0 2px
+}
+
+.one-half .boxed-group, .dashboard-sidebar .boxed-group {
+    margin-bottom: 20px
+}
+
+.boxed-group hr.bleed-flush {
+    width: 100%;
+    padding: 0 10px;
+    margin-left: -10px
+}
+
+.boxed-group hr.compact {
+    margin-top: 10px;
+    margin-bottom: 10px
+}
+
+.boxed-group span.animated-ellipsis-container, .boxed-group span.animated-ellipsis {
+    padding: 0
+}
+
+.boxed-group .animated-ellipsis-container {
+    line-height: 1.3
+}
+.settings-content {
+    position: relative;
+    float: right;
+    width: 715px
+}
+
+.settings-content .notifications td {
+    padding: 5px 10px
+}
+
+.settings-content .notifications th {
+    padding: 10px 10px 5px
+}
+
+.profile-picture {
+    margin: 10px 0 0
+}
+
+.profile-picture p {
+    float: left;
+    margin-top: 7px
+}
+
+.profile-picture img {
+    float: left;
+    margin: 0 10px 0 0;
+    border-radius: 3px
+}
+
+.edit-profile-avatar label {
+    display: inline-block;
+    margin: 0 0 6px
+}
+
+.edit-profile-avatar .profile-avatar {
+    border-radius: 3px;
+    float: left
+}
+
+.edit-profile-avatar .drag-and-drop {
+    padding: 0;
+    color: #666;
+    border-width: 0
+}
+
+.edit-profile-avatar input {
+    cursor: pointer
+}
+
+.edit-profile-avatar.dragover .user-avatar {
+    opacity: 0.5
+}
+
+.edit-profile-avatar.is-bad-file {
+    border: 0
+}
+
+.edit-profile-avatar .button.button-change-profile-picture {
+    overflow: hidden
+}
+
+.edit-profile-avatar .label-upload-profile-picture {
+    display: block;
+    margin: 0;
+    padding: 0
+}
+
+.edit-profile-avatar .manual-file-chooser {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 146px;
+    height: 34px;
+    margin-left: 0;
+    padding: 0;
+    cursor: pointer
+}
+
+.avatar-upload {
+    float: left;
+    width: 340px;
+    margin-left: 20px
+}
+
+.avatar-upload .flash {
+    width: 100%;
+    padding: 30px 15px;
+    border: dashed 1px #bd2c00;
+    box-shadow: none
+}
+
+.avatar-upload .upload-state {
+    display: none;
+    padding: 10px 0
+}
+
+.avatar-upload .upload-state p {
+    margin: 0;
+    font-size: 12px;
+    color: #999
+}
+
+.avatar-upload .avatar-upload .octicon {
+    display: inline-block
+}
+
+.is-default .avatar-upload .default {
+    display: block
+}
+
+.is-uploading .avatar-upload .loading {
+    display: block;
+    padding: 0
+}
+
+.is-uploading .avatar-upload .loading img {
+    vertical-align: top
+}
+
+.is-uploading .avatar-upload .button-change-profile-picture {
+    display: none
+}
+
+.is-bad-file .avatar-upload .bad-file {
+    display: block;
+    margin: 0
+}
+
+.is-too-big .avatar-upload .too-big {
+    display: block;
+    margin: 0
+}
+
+.is-bad-dimensions .avatar-upload .bad-dimensions {
+    display: block;
+    margin: 0
+}
+
+.is-failed .avatar-upload .failed-request {
+    display: block;
+    margin: 0
+}
+
+.boxed-group .fork-flag {
+    margin-left: 16px;
+    font-size: 12px;
+    color: #999
+}
+
+.boxed-group.application-show-group .logo-upload {
+    float: right;
+    width: 142px;
+    background-color: #eee;
+    position: relative
+}
+
+.boxed-group.application-show-group .logo-upload a.delete {
+    position: absolute;
+    right: 0;
+    padding: 5px;
+    display: none
+}
+
+.boxed-group.application-show-group .logo-upload a.delete:hover {
+    color: #bd2c00
+}
+
+.boxed-group.application-show-group .logo-box {
+    border: 1px solid #ccc;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    height: 140px
+}
+
+.boxed-group.application-show-group .logo-box img {
+    height: 140px;
+    width: 140px;
+    border-radius: 2px 2px 0 0;
+    display: none
+}
+
+.boxed-group.application-show-group .logo-placeholder {
+    height: 140px;
+    width: 140px;
+    color: #999;
+    text-align: center;
+    text-shadow: 0 1px 0 #fff
+}
+
+.boxed-group.application-show-group .logo-placeholder span {
+    margin: 45px 0 0
+}
+
+.boxed-group.application-show-group .logo-placeholder p {
+    margin: 0;
+    font-size: 16px
+}
+
+.boxed-group.application-show-group .has-uploaded-logo .logo-placeholder, .boxed-group.application-show-group .has-uploaded-logo .or {
+    display: none
+}
+
+.boxed-group.application-show-group .has-uploaded-logo:hover a.delete {
+    display: block
+}
+
+.boxed-group.application-show-group .has-uploaded-logo .logo-box img {
+    display: block
+}
+
+.boxed-group.application-show-group dl.form > dd input[type="text"].wide {
+    width: 460px
+}
+
+.boxed-group.application-show-group dl.form > dd input[type="textarea"].short {
+    height: 50px;
+    min-height: 50px
+}
+
+.two-factor-setup-container .form label {
+    font-style: normal
+}
+
+.two-factor-setup-container .form dd {
+    margin: 0;
+    padding: 0
+}
+
+.setup-form .form dd input[type="text"], .setup-form .form dd input[type="date"], .setup-form .form dd input[type="password"], .setup-form .form dd input[type="email"] {
+    width: 100%
+}
+
+label, input[type="text"],input[type="date"], #adv_code_search .search-page-label, input[type="password"], input[type="email"], input[type="number"], input[type="tel"], input[type="url"], textarea {
+    font-size: 13px
+}
+
+input[type="text"], #adv_code_search .search-page-label, input[type="password"], input[type="date"], input[type="email"], input[type="number"], input[type="tel"], input[type="url"], textarea {
+    min-height: 34px;
+    padding: 7px 8px;
+    color: #333;
+    vertical-align: middle;
+    background-color: #fff;
+    background-repeat: no-repeat;
+    background-position: right center;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    outline: none;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.075)
+}
+
+input[type="text"].focus, #adv_code_search .focus.search-page-label, input[type="text"]:focus, .focused .drag-and-drop, #adv_code_search .search-page-label:focus, input[type="password"].focus, input[type="date"].focus, input[type="password"]:focus, input[type="email"].focus, input[type="email"]:focus, input[type="number"].focus, input[type="number"]:focus, input[type="tel"].focus, input[type="tel"]:focus, input[type="url"].focus, input[type="url"]:focus, textarea.focus, textarea:focus {
+    border-color: #51a7e8;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.075), 0 0 5px rgba(81, 167, 232, 0.5)
+}
+
+input[type="text"].input-contrast, #adv_code_search .input-contrast.search-page-label, input[type="password"].input-contrast, input[type="email"].input-contrast, input[type="number"].input-contrast, input[type="date"].input-contrast, input[type="tel"].input-contrast, input[type="url"].input-contrast, textarea.input-contrast {
+    background-color: #fafafa
+}
+
+input[type="text"].input-contrast:focus, .focused .input-contrast.drag-and-drop, #adv_code_search .input-contrast.search-page-label:focus, input[type="password"].input-contrast:focus, input[type="email"].input-contrast:focus, input[type="date"].input-contrast:focus, input[type="number"].input-contrast:focus, input[type="tel"].input-contrast:focus, input[type="url"].input-contrast:focus, textarea.input-contrast:focus {
+    background-color: #fff
+}
+
+dl.form {
+    margin: 15px 0
+}
+
+dl.form input[type="text"], dl.form input[type="date"], dl.form #adv_code_search .search-page-label, #adv_code_search dl.form .search-page-label, dl.form input[type="password"], dl.form input[type="email"], dl.form textarea {
+    background-color: #fafafa
+}
+
+dl.form input[type="text"]:focus,dl.form input[type="date"]:focus, dl.form .focused .drag-and-drop, .focused dl.form .drag-and-drop, dl.form #adv_code_search .search-page-label:focus, #adv_code_search dl.form .search-page-label:focus, dl.form input[type="password"]:focus, dl.form input[type="email"]:focus, dl.form textarea:focus {
+    background-color: #fff
+}
+
+dl.form > dt {
+    margin: 0 0 6px
+}
+
+dl.form > dt label {
+    position: relative;
+    color: white;
+    font-size: 18px;
+}
+
+dl.form > dd input[type="text"],dd input[type="date"], dl.form > dd #adv_code_search .search-page-label, #adv_code_search dl.form > dd .search-page-label, dl.form > dd input[type="password"], dl.form > dd input[type="email"] {
+    width: 440px;
+    max-width: 100%;
+    margin-right: 5px;
+    background-position-x: 98%
+}
+
+dl.form > dd input[type="text"].short, dl.form > dd #adv_code_search .short.search-page-label, #adv_code_search dl.form > dd .short.search-page-label, dl.form > dd input[type="password"].short, dl.form > dd input[type="email"].short {
+    width: 250px
+}
+
+dl.form > dd input[type="text"].shorter, dl.form > dd #adv_code_search .shorter.search-page-label, #adv_code_search dl.form > dd .shorter.search-page-label, dl.form > dd input[type="password"].shorter, dl.form > dd input[type="email"].shorter {
+    width: 130px
+}
+
+dl.form > dd input[type="text"].long,input[type="date"].long, dl.form > dd #adv_code_search .long.search-page-label, #adv_code_search dl.form > dd .long.search-page-label, dl.form > dd input[type="password"].long, dl.form > dd input[type="email"].long {
+    width: 100%
+}
+
+dl.form > dd input[type="text"].is-autocheck-loading, dl.form > dd #adv_code_search .is-autocheck-loading.search-page-label, #adv_code_search dl.form > dd .is-autocheck-loading.search-page-label, dl.form > dd input[type="password"].is-autocheck-loading, dl.form > dd input[type="email"].is-autocheck-loading {
+    background-image: url("/images/spinners/octocat-spinner-32.gif?a363166e");
+    background-size: 16px
+}
+
+dl.form > dd input[type="text"].is-autocheck-successful, dl.form > dd #adv_code_search .is-autocheck-successful.search-page-label, #adv_code_search dl.form > dd .is-autocheck-successful.search-page-label, dl.form > dd input[type="password"].is-autocheck-successful, dl.form > dd input[type="email"].is-autocheck-successful {
+    background-image: url("/images/modules/ajax/success.png?91b869f9")
+}
+
+dl.form > dd input[type="text"].is-autocheck-errored, dl.form > dd #adv_code_search .is-autocheck-errored.search-page-label, #adv_code_search dl.form > dd .is-autocheck-errored.search-page-label, dl.form > dd input[type="password"].is-autocheck-errored, dl.form > dd input[type="email"].is-autocheck-errored {
+    background-image: url("/images/modules/ajax/error.png?334b1507");
+}
+
+dl.form > dd textarea {
+    width: 100%;
+    height: 200px;
+    min-height: 200px
+}
+
+dl.form > dd textarea.short {
+    height: 50px;
+    min-height: 50px
+}
+
+dl.form > dd p.note {
+    min-height: 17px;
+    margin: 4px 0 2px;
+    font-size: 12px;
+    color: #777
+}
+
+dl.form > dd p.note .spinner {
+    margin-right: 3px;
+    vertical-align: middle
+}
+
+dl.form > dd h4 {
+    margin: 4px 0 0
+}
+
+dl.form > dd h4.is-error {
+    color: #bd2c00
+}
+
+dl.form > dd h4.is-success {
+    color: #6cc644
+}
+
+dl.form > dd h4 + p.note {
+    margin-top: 0
+}
+
+.right {
+    float: right
+}
+
+.left {
+    float: left
+}
+
+.columns {
+    margin-left: -10px;
+    margin-right: -10px
+}
+
+.columns:before, .columns:after {
+    display: table;
+    content: " "
+}
+
+.columns:after {
+    clear: both
+}
+
+.column {
+    float: left;
+    padding-left: 10px;
+    padding-right: 10px
+}
+
+.one-third {
+    width: 33%
+}
+
+.two-thirds {
+    width: 67%
+}
+
+.one-fourth {
+    width: 25%
+}
+
+.one-half {
+    width: 50%
+}
+
+.three-fourths {
+    width: 75%;
+    margin-left: 60px;
+}
+
+.single-column {
+    padding-left: 10px;
+    padding-right: 10px
+}
+
