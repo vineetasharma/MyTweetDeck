@@ -7,7 +7,7 @@
             <span style="font-size: 18px;color: white">{{profile.username}}</span>
             <br>
             <br>
-            <button class="btn btn-info" ng-click="editProfile()">Edit Profile</button>
+            <button class="btn btn-info" ng-click="editProfile()" ng-show="!edit">Edit Profile</button>
         </div>
     </div>
     <div class="column three-fourths" ng-if="!edit">
@@ -16,49 +16,49 @@
             <dd class="profile-info"><label class="long" id="user_profile_name">{{profile.username}}</label>
             </dd>
         </dl>
-        <dl class="form" ng-if="Email">
-            <dt><label for="user_profile_email">Email </label></dt>
-            <dd class="profile-info"><label class="long" id="user_profile_email">{{Email}}</label>
+        <dl class="form" ng-if="profile.email.emailId">
+            <dt><label for="user_profile_email" class="profile-info-heading">Email </label></dt>
+            <dd class="profile-info"><label class="long" id="user_profile_email">{{profile.email.emailId}}</label>
             </dd>
         </dl>
-        <dl class="form" ng-if="Birthday">
-            <dt><label for="user_profile_birthday">Birthday</label></dt>
-            <dd class="profile-info"><label class="long" id="user_profile_birthday">{{Birthday}}</label>
+        <dl class="form" ng-if="profile.profileData.Birthday">
+            <dt><label for="user_profile_birthday" class="profile-info-heading">Birthday</label></dt>
+            <dd class="profile-info"><label class="long" id="user_profile_birthday">{{profile.profileData.Birthday}}</label>
             </dd>
         </dl>
-        <dl class="form" ng-if="Gender">
-            <dt><label for="user_profile_gender">Gender</label></dt>
-            <dd class="profile-info"><label class="long" id="user_profile_gender">{{Gender}}</label>
+        <dl class="form" ng-if="profile.profileData.Gender">
+            <dt><label for="user_profile_gender" class="profile-info-heading">Gender</label></dt>
+            <dd class="profile-info"><label class="long" id="user_profile_gender">{{profile.profileData.Gender}}</label>
             </dd>
         </dl>
-        <dl class="form" ng-if="Mobile">
-            <dt><label for="user_profile_mobile">Mobile</label></dt>
-            <dd class="profile-info"><label class="long" id="user_profile_mobile">{{Mobile}}</label>
+        <dl class="form" ng-if="profile.profileData.Mobile">
+            <dt><label for="user_profile_mobile" class="profile-info-heading">Mobile</label></dt>
+            <dd class="profile-info"><label class="long" id="user_profile_mobile">{{profile.profileData.Mobile}}</label>
             </dd>
         </dl>
-        <dl class="form" ng-if="Hometown">
-            <dt><label for="user_profile_hometown">Hometown</label></dt>
-            <dd class="profile-info"><label class="long" id="user_profile_hometown">{{Hometown}}</label>
+        <dl class="form" ng-if="profile.profileData.Address.Hometown">
+            <dt><label for="user_profile_hometown" class="profile-info-heading">Hometown</label></dt>
+            <dd class="profile-info"><label class="long" id="user_profile_hometown">{{profile.profileData.Address.Hometown}}</label>
             </dd>
         </dl>
-        <dl class="form" ng-if="City">
-            <dt><label for="user_profile_city">City</label></dt>
-            <dd class="profile-info"><label class="long" id="user_profile_city">{{City}}</label>
+        <dl class="form" ng-if="profile.profileData.Address.City">
+            <dt><label for="user_profile_city" class="profile-info-heading">City</label></dt>
+            <dd class="profile-info"><label class="long" id="user_profile_city">{{profile.profileData.Address.City}}</label>
             </dd>
         </dl>
-        <dl class="form" ng-if="State">
-            <dt><label for="user_profile_state">State</label></dt>
-            <dd class="profile-info"><label class="long" id="user_profile_state">{{State}}</label>
+        <dl class="form" ng-if="profile.profileData.Address.State">
+            <dt><label for="user_profile_state" class="profile-info-heading">State</label></dt>
+            <dd class="profile-info"><label class="long" id="user_profile_state">{{profile.profileData.Address.State}}</label>
             </dd>
         </dl>
-        <dl class="form" ng-if="Country">
-            <dt><label for="user_profile_country">Country</label></dt>
-            <dd class="profile-info"><label class="long" id="user_profile_country">{{Country}}</label>
+        <dl class="form" ng-if="profile.profileData.Address.Country">
+            <dt><label for="user_profile_country" class="profile-info-heading">Country</label></dt>
+            <dd class="profile-info"><label class="long" id="user_profile_country">{{profile.profileData.Address.Country}}</label>
             </dd>
         </dl>
-        <dl class="form" ng-if="Pin">
-            <dt><label for="user_profile_pin">Pin</label></dt>
-            <dd class="profile-info"><label class="long" id="user_profile_pin">{{Pin}}</label>
+        <dl class="form" ng-if="profile.profileData.Address.Pin">
+            <dt><label for="user_profile_pin" class="profile-info-heading">Pin</label></dt>
+            <dd class="profile-info"><label class="long" id="user_profile_pin">{{profile.profileData.Address.Pin}}</label>
             </dd>
         </dl>
     </div>
@@ -73,7 +73,8 @@
                     <dl class="form">
                         <dt><label for="Email">Email</label></dt>
                         <dd> <input size="30" type="text" class="form-control" id="Email" name="Email" ng-model="data.Email"></dd>
-
+                        <br>
+                        <button class="btn btn-info" ng-show="profile.email.email_valid" ng-click="reSetEmail()">Reset Email</button>
                     </dl>
                     <dl class="form">
                         <dt><label for="Birthday">Birthday</label></dt>
@@ -124,6 +125,7 @@
                                    size="30" type="text"></dd>
                     </dl>
                     <button class="btn btn-info" ng-click="updateProfile(data)">Update</button>
+                    <button class="btn btn-info" ng-click="cancel()">cancel</button>
                 </div>
             </form>
         </div>

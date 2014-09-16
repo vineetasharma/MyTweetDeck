@@ -13,6 +13,11 @@ angular.module('yoApp')
         $scope.editProfile=function(){
             $scope.edit=true;
         }
+        $scope.cancel=function(){
+            $scope.edit=false;
+            $window.location.href = '#/profile';
+        }
+
         ProfileService.getProfile(function (err,data) {
             console.log(data,'data');
             if(data){
