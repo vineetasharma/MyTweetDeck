@@ -1,7 +1,8 @@
 <div class="row profile-row" ng-if="profile">
     <div class="row profile">
         <div class=" pull-left">
-            <img class="profile-image" src="{{profile.profilePicUrl}}" onerror="this.src='images/defaultProfile.jpg'">
+            <img class="profile-image" src="{{profile.profilePicUrl}}" onerror="this.src='images/defaultProfile.jpg'"
+                 height="100px" width="100px">
             <br>
             <br>
             <span style="font-size: 18px;color: white">{{profile.username}}</span>
@@ -23,7 +24,8 @@
         </dl>
         <dl class="form" ng-if="profile.profileData.Birthday">
             <dt><label for="user_profile_birthday" class="profile-info-heading">Birthday</label></dt>
-            <dd class="profile-info"><label class="long" id="user_profile_birthday">{{profile.profileData.Birthday}}</label>
+            <dd class="profile-info"><label class="long"
+                                            id="user_profile_birthday">{{profile.profileData.Birthday}}</label>
             </dd>
         </dl>
         <dl class="form" ng-if="profile.profileData.Gender">
@@ -43,12 +45,14 @@
         </dl>
         <dl class="form" ng-if="profile.profileData.Address.City">
             <dt><label for="user_profile_city" class="profile-info-heading">City</label></dt>
-            <dd class="profile-info"><label class="long" id="user_profile_city">{{profile.profileData.Address.City}}</label>
+            <dd class="profile-info"><label class="long"
+                                            id="user_profile_city">{{profile.profileData.Address.City}}</label>
             </dd>
         </dl>
         <dl class="form" ng-if="profile.profileData.Address.State">
             <dt><label for="user_profile_state" class="profile-info-heading">State</label></dt>
-            <dd class="profile-info"><label class="long" id="user_profile_state">{{profile.profileData.Address.State}}</label>
+            <dd class="profile-info"><label class="long"
+                                            id="user_profile_state">{{profile.profileData.Address.State}}</label>
             </dd>
         </dl>
         <dl class="form" ng-if="profile.profileData.Address.Country">
@@ -58,76 +62,112 @@
         </dl>
         <dl class="form" ng-if="profile.profileData.Address.Pin">
             <dt><label for="user_profile_pin" class="profile-info-heading">Pin</label></dt>
-            <dd class="profile-info"><label class="long" id="user_profile_pin">{{profile.profileData.Address.Pin}}</label>
+            <dd class="profile-info"><label class="long"
+                                            id="user_profile_pin">{{profile.profileData.Address.Pin}}</label>
             </dd>
         </dl>
     </div>
     <div ng-if="edit" style="margin-left: 150px;">
-       
-                <div class="column two-thirds">
-                    <dl class="form">
-                        <dt><label >Name</label></dt>
-                        <dd><input class="form-control"
-                                   ng-model="data.Name" value="Name" size="30" type="text"></dd>
-                    </dl>
-                    <dl class="form">
-                        <dt><label for="Email">Email</label></dt>
-                        <dd> <input size="30" type="text" class="form-control" id="Email" name="Email" ng-model="data.Email"></dd>
-                        <br>
+        <form name="userForm">
+            <div class="column two-thirds">
+                <dl class="form">
+                    <dt><label for="Name">Name</label></dt>
+                    <dd><input class="form-control"
+                               ng-model="data.Name" id="Name" name="Name" size="30" type="text"
+                               ng-pattern="/^[a-zA-Z ]*$/" required>
+
+                        <p ng-if="userForm.Name.$error.pattern" class="help-block error">Enter alphabets </p>
+
+                        <p ng-if="userForm.Name.$error.required && userForm.Name.$error.$invalid"
+                           class="help-block error">Enter Your name </p>
+                    </dd>
+                </dl>
+                <dl class="form">
+                    <dt><label for="Email">Email</label></dt>
+                    <dd><input size="30" type="text" class="form-control" id="Email" name="Email" ng-model="data.Email"
+                               ng-pattern="/^(([^<>()[\]\\.,;:\s@\']+(\.[^<>()[\]\\.,;:\s@\']+)*)|(\'.+\'))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/i">
                         <button class="btn btn-info" ng-show="profile.email.email_valid" ng-click="reSetEmail()">Reset Email</button>
-                    </dl>
-                    <dl class="form">
-                        <dt><label for="Birthday">Birthday</label></dt>
-                        <dd><input class="form-control" id="Birthday" name="Birthday"
-                                   ng-model="data.Birthday"
-                                   size="30" type="text"></dd>
-                    </dl>
-                    <dl class="form">
-                        <dt><label for="Gender">Gender</label></dt>
-                        <dd><input class="form-control" id="Gender" name="Gender"
-                                   ng-model="data.Gender"
-                                   size="30" type="text"></dd>
-                    </dl>
-                    <dl class="form">
-                        <dt><label for="Mobile">Mobile</label></dt>
-                        <dd><input class="form-control" id="Mobile" name="Mobile"
-                                   ng-model="data.Mobile"
-                                   size="30" type="text"></dd>
-                    </dl>
-                    <dl class="form">
-                        <dt><label for="Hometown">Hometown</label></dt>
-                        <dd><input class="form-control" id="Hometown" name="Hometown"
-                                   ng-model="data.HomeTown"
-                                   size="30" type="text"></dd>
-                    </dl>
-                    <dl class="form">
-                        <dt><label for="City">City</label></dt>
-                        <dd><input class="form-control" id="City" name="City"
-                                   ng-model="data.City"
-                                   size="30" type="text"></dd>
-                    </dl>
-                    <dl class="form">
-                        <dt><label for="State">State</label></dt>
-                        <dd><input class="form-control" id="State" name="State"
-                                   ng-model="data.State"
-                                   size="30" type="text"></dd>
-                    </dl>
-                    <dl class="form">
-                        <dt><label for="Country">Country</label></dt>
-                        <dd><input class="form-control" id="Country" name="Country"
-                                   ng-model="data.Country"
-                                   size="30" type="text"></dd>
-                    </dl>
-                    <dl class="form">
-                        <dt><label for="Pin">Pin</label></dt>
-                        <dd><input class="form-control" id="Pin" name="Pin"
-                                   ng-model="data.Pin"
-                                   size="30" type="text"></dd>
-                    </dl>
-                    <button class="btn btn-info" ng-click="updateProfile(data)">Update</button>
-                    <button class="btn btn-info" ng-click="cancel()">cancel</button>
-                </div>
-            </form>
-        </div>
+                        <p ng-if="userForm.Email.$error.pattern" class="help-block error">Enter valid Email </p></dd>
+                    <br>
+
+                </dl>
+                <dl class="form">
+                    <dt><label for="Birthday">Birthday</label></dt>
+                    <dd><input class="form-control" id="Birthday" name="Birthday"
+                               ng-model="data.Birthday"
+                               size="30" type="date" style="height: 43px;font-size: 17px"></dd>
+                </dl>
+                <dl class="form">
+                    <dt><label for="Gender">Gender</label></dt>
+                    <dd>
+                        <select id="Gender" ng-model="data.Gender" ng-options="gender for gender in genders" class="form-control" style="width: 441px;height: 43px;font-size: 17px"></select>
+
+                        <!--<select id="Gender" ng-model="data.Gender" class="form-control" style="width: 441px;height: 43px;font-size: 17px">
+                            <option value="Female" selected="selected">Female</option>
+                            <option value="Male">Male</option>
+                        </select>-->
+
+                    </dd>
+                </dl>
+                <dl class="form">
+                    <dt><label for="Mobile">Mobile</label></dt>
+                    <dd><input class="form-control" id="Mobile" name="Mobile"
+                               ng-model="data.Mobile"
+                               size="30" type="text" ng-pattern="/^[0-9]+$/" ng-minlength="10" ng-maxlength="10">
+
+                        <p ng-if="userForm.Mobile.$error.minlength" class="help-block error">Mobile number is too
+                            short.</p>
+
+                        <p ng-if="userForm.Mobile.$error.maxlength" class="help-block error">Mobile number is too
+                            long.</p>
+
+                        <p ng-if="userForm.Mobile.$error.pattern" class="help-block error">Enter a numeric value</p>
+                    </dd>
+                </dl>
+                <dl class="form">
+                    <dt><label for="Hometown">Hometown</label></dt>
+                    <dd><input class="form-control" id="Hometown" name="Hometown"
+                               ng-model="data.HomeTown"
+                               size="30" type="text" ng-pattern="/^[a-zA-Z ]*$/">
+
+                        <p ng-if="userForm.Hometown.$error.pattern" class="help-block error">Enter alphabets </p></dd>
+                </dl>
+                <dl class="form">
+                    <dt><label for="City">City</label></dt>
+                    <dd><input class="form-control" id="City" name="City"
+                               ng-model="data.City"
+                               size="30" type="text" ng-pattern="/^[a-zA-Z ]*$/">
+
+                        <p ng-if="userForm.City.$error.pattern" class="help-block error">Enter alphabets </p></dd>
+                </dl>
+                <dl class="form">
+                    <dt><label for="State">State</label></dt>
+                    <dd><input class="form-control" id="State" name="State"
+                               ng-model="data.State"
+                               size="30" type="text" ng-pattern="/^[a-zA-Z ]*$/">
+
+                        <p ng-if="userForm.State.$error.pattern" class="help-block error">Enter alphabets </p></dd>
+                </dl>
+                <dl class="form">
+                    <dt><label for="Country">Country</label></dt>
+                    <dd><input class="form-control" id="Country" name="Country"
+                               ng-model="data.Country"
+                               size="30" type="text" ng-pattern="/^[a-zA-Z ]*$/">
+
+                        <p ng-if="userForm.Country.$error.pattern" class="help-block error">Enter alphabets </p></dd>
+                </dl>
+                <dl class="form">
+                    <dt><label for="Pin">Pin</label></dt>
+                    <dd><input class="form-control" id="Pin" name="Pin"
+                               ng-model="data.Pin"
+                               size="30" type="text" ng-pattern="/^[0-9]+$/" required>
+
+                        <p ng-if="userForm.Pin.$error.pattern" class="help-block error">Enter a numeric value</p></dd>
+                </dl>
+                <button class="btn btn-info" ng-click="updateProfile(data)">Update</button>
+                <button class="btn btn-info" ng-click="cancel()">cancel</button>
+            </div>
+        </form>
     </div>
+</div>
 </div>

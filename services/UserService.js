@@ -14,22 +14,7 @@ exports.findOrCreateTwitterAccountService = function (accessToken, refreshToken,
                 username: profile.displayName,
                 twitterId: profile.id,
                 profilePicUrl: profile.photos[0].value,
-                profileData: {
-                    Birthday: "",
-                    Gender: "",
-                    Mobile: "",
-                    CurrentCity: "",
-                    Address: {
-                        Hometown: "",
-                        City: "",
-                        State: "",
-                        Country: "",
-                        pin: ""
-                    }
-                },
                 email: {
-                    emailId: "",
-                    validationCode: "",
                     emailValid: false
                 }
             }).save(function (err, user) {
@@ -155,7 +140,146 @@ exports.verifyEmailService = function (verifyCode,callback) {
                 });
 
             }
+            emitter.emit(EventName.NOT_FOUND,null);
         }
     });
+}.toEmitter();
+exports.makeTweet = function (status,user,cb) {
+    var emitter = this;
+    if (user) {
+        User.findOne({_id: user._id}, function (err, data) {
+            if (err) {
+                log.error('error when compose a new Tweet', err);
+                emitter.emit(EventName.ERROR,err);
+            }
+            else {
+                _oauth.post(
+                    "https://api.twitter.com/1.1/statuses/update.json"
+                    , data.accessToken
+                    , data.refreshToken
+                    , {"status": status }
+                    ,cb
+                );
+                emitter.emit(EventName.DONE,'success');
+            }
+        });
+
+    }
+    emitter.emit(EventName.NOT_FOUND,null);
+
+}.toEmitter();
+exports.reTweets = function (user, id,cb) {
+    var emitter = this;
+    if (user) {
+        User.findOne({_id: user._id}, function (err, data) {
+            if (err) {
+                log.error('error', err);
+                emitter.emit(EventName.ERROR,err);
+
+            }
+            else {
+                var request = _oauth.post(
+                    "https://api.twitter.com/1.1/statuses/retweet/" + id + ".json"
+                    , data.accessToken
+                    , data.refreshToken
+                );
+                var data = "";
+                request.addListener('response', function (response) {
+                    response.setEncoding('utf8');
+                    response.addListener('data', function (chunk) {
+                        data = data + chunk;
+                        //console.log(chunk);
+                    });
+                    response.addListener('end', function () {
+                        log.info('--- END ---', data);
+                    });
+                });
+                request.end();
+                emitter.emit(EventName.DONE,data);
+
+            }
+        });
+
+    }
+    else{
+        emitter.emit(EventName.NOT_FOUND,null);
+    }
+}.toEmitter();
+exports.favourite = function (user, tweet, cb) {
+    var emitter = this;
+    User.findOne({_id: user._id}, function (err, data) {
+        if (err) {
+            log.error('error', err);
+            emitter.emit(EventName.ERROR,err);
+        }
+        else {
+            var request = _oauth.post(
+                "https://api.twitter.com/1.1/favorites/create.json?id=" + tweet.id_str
+                , data.accessToken
+                , data.refreshToken
+            );
+            var data1 = "";
+            request.addListener('response', function (response) {
+                response.setEncoding('utf8');
+                response.addListener('data', function (chunk) {
+                    data1 = data1 + chunk;
+                    log.info(chunk);
+                });
+                response.addListener('end', function () {
+                    new Tweet({
+                        twitterId:data.twitterId,
+                        tweet:tweet
+                    }).save(function (err, tweet) {
+                            if (err) {
+                                log.error(err);
+                                emitter.emit(EventName.ERROR,err);
+                            }
+                            else {
+                                log.info('favourite tweet inserted into DB....',tweet);
+                                emitter.emit(EventName.DONE,tweet);
+                            }
+                        });
+                    log.info('--- END ---', data1);
+                });
+            });
+            request.end();
+        }
+    });
+
+}.toEmitter();
+exports.getUserTweets = function (user) {
+    var emitter = this;
+    var tweets;
+    var cb=function(err,data){
+        if(!err){
+            tweets=data;
+            emitter.emit(EventName.DONE,tweets);
+        }
+        else{
+            emitter.emit(EventName.ERROR,err);
+        }
+
+    };
+    if (user) {
+        User.findOne({_id: user._id}, function (err, data) {
+            if (err) {
+                log.error('error', err);
+                emitter.emit(EventName.ERROR,err);
+            }
+            else {
+                _oauth.get(
+                    "https://api.twitter.com/1.1/statuses/home_timeline.json?count=10"
+                    , data.accessToken
+                    , data.refreshToken
+                    ,cb
+                );
+
+            }
+        });
+
+    }
+    else {
+        emitter.emit(EventName.NOT_FOUND,null);
+    }
 }.toEmitter();
 

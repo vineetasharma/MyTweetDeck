@@ -18,7 +18,7 @@ angular.module('yoApp')
                     callback(data);
                 }).
                 error(function (error) {
-                    console.log("error during sending mail: ", error);
+                    log.error("error during sending mail: ", error);
                     callback(null);
                 });
 

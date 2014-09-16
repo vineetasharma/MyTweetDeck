@@ -47,27 +47,27 @@ exports.getProfile = function (req, res) {
         res.send(null);
 }
 exports.updateProfile = function (req, res) {
-    log.info('update profile method called',req.body);
+    log.info('update profile method called', req.body);
     var user = req.checkLoggedIn();
     if (user) {
-        UserService.updateUserDetails(user._id,req.body)
+        UserService.updateUserDetails(user._id, req.body)
             .on("success", function (user1) {
-                if(req.body.Email){
-                    console.log(user,'user');
+                if (req.body.Email) {
+                    console.log(user, 'user');
 
-                    UserService.sendEmailVerificationLink(user._id,req.body.Name,req.body.Email)
-                        .on(EventName.ERROR,function(err){
-                            log.info('Email not sent',err.message);
+                    UserService.sendEmailVerificationLink(user._id, req.body.Name, req.body.Email)
+                        .on(EventName.ERROR, function (err) {
+                            log.info('Email not sent', err.message);
                         })
-                        .on(EventName.DONE,function(res){
-                            console.log('Email sent successfully',res);
+                        .on(EventName.DONE, function (res) {
+                            console.log('Email sent successfully', res);
                         });
                 }
-              log.info('profile updated successfully',user);
+                log.info('profile updated successfully', user);
                 res.send(user);
             })
             .on("error", function (err) {
-                log.error('error while updating user profile',err.message);
+                log.error('error while updating user profile', err.message);
                 res.send(null);
             });
     }
@@ -113,174 +113,65 @@ exports.logout = function (req, res) {
 //retweets
 exports.makeTweets = function (req, res) {
     var user = req.checkLoggedIn();
-    makeTweet(req.body.tweet,user, function (error, data) {
-        if (error) {
-            console.log(require('sys').inspect(error));
-            res.end('bad stuff happened, none tweetage');
-        } else {
-            console.log(data);
+    UserService.makeTweet(req.body.tweet, user)
+        .on(EventName.DONE, function (user) {
             res.end('go check your tweets!');
-        }
-    });
-}
-makeTweet = function (status,user, cb) {
-    console.log('status',status);
-    if (user) {
-        User.findOne({_id: user._id}, function (err, data) {
-            if (err) {
-                console.log('error', err);
-            }
-            else {
-                _oauth.post(
-                    "https://api.twitter.com/1.1/statuses/update.json"
-                    , data.accessToken
-                    , data.refreshToken
-                    , {"status": status }
-                    , cb
-                );
-            }
+        })
+        .on(EventName.ERROR, function (err) {
+            log.error(err);
+            res.end('bad stuff happened, none tweetage');
+        })
+        .on(EventName.NOT_FOUND, function () {
+            res.end('User not found ');
         });
-
-    }
 }
+
 exports.getTweets = function (req, res) {
     var user = req.checkLoggedIn();
-    getUserTweets(user, function (error, data) {
-        if (error) {
-            console.log(require('sys').inspect(error));
-            res.end('bad stuff happened, none tweetage');
-        } else {
-            console.log(data);
+    var tweets;
+    UserService.getUserTweets(user)
+        .on(EventName.DONE, function(data) {
             res.send(JSON.parse(data));
-        }
-    });
-}
-getUserTweets = function (user, cb) {
-    if (user) {
-        User.findOne({_id: user._id}, function (err, data) {
-            if (err) {
-                console.log('error', err);
-            }
-            else {
-               _oauth.get(
-                        "https://api.twitter.com/1.1/statuses/home_timeline.json?count=10"
-                        , data.accessToken
-                        , data.refreshToken
-                        , cb
-                    );
-            }
+        })
+        .on(EventName.ERROR, function (err) {
+            log.error(err);
+            res.send(err);
+        })
+        .on(EventName.NOT_FOUND, function () {
+            res.send(null);
         });
 
-    }
-    else{
-        cb("error");
-    }
 }
-
 exports.reTweet = function (req, res) {
     var user = req.checkLoggedIn();
     console.log('id:' + req.body.id);
-    reTweets(user, req.body.id, function (error, data) {
-        console.log('callback called');
-        if (error) {
-            console.log(require('sys').inspect(error));
-            res.send(null);
-        } else {
-            console.log(data);
+    UserService.reTweets(user, req.body.id)
+        .on(EventName.DONE, function (data) {
             res.send(data);
-        }
-    });
-}
-reTweets = function (user, id,cb) {
-    if (user) {
-        User.findOne({_id: user._id}, function (err, data) {
-            if (err) {
-                console.log('error', err);
-                cb(err,null);
-
-            }
-            else {
-                var request = _oauth.post(
-                        "https://api.twitter.com/1.1/statuses/retweet/" + id + ".json"
-                        , data.accessToken
-                        , data.refreshToken
-                    );
-                var data = "";
-                request.addListener('response', function (response) {
-                    response.setEncoding('utf8');
-                    response.addListener('data', function (chunk) {
-                        data = data + chunk;
-                        console.log(chunk);
-                    });
-                    response.addListener('end', function () {
-                        console.log('--- END ---', data);
-                    });
-                });
-                request.end();
-                cb(null,data);
-            }
+        })
+        .on(EventName.ERROR, function (err) {
+            log.error(err);
+            res.send(null);
+        })
+        .on(EventName.NOT_FOUND, function () {
+            res.send(null);
         });
-
-    }
-    else{
-        cb('error',null);
-
-    }
-
 }
 exports.makeFavourite = function (req, res) {
     var user = req.checkLoggedIn();
     if (user) {
-        favourite(user, req.body.tweet,function(err,result){
-            if(err){
-                console.log('errrrrrrr',err);
+        UserService.favourite(user, req.body.tweet)
+            .on(EventName.DONE, function (data) {
+                res.send(data);
+            })
+            .on(EventName.ERROR, function (err) {
+                log.error(err);
                 res.send(null);
-            }
-            else
-            res.send(result);
-
-        });
-    }
-}
-favourite = function (user, tweet, cb) {
-    User.findOne({_id: user._id}, function (err, data) {
-        if (err) {
-            console.log('error', err);
-            cb(err, null);
-        }
-        else {
-            var request = _oauth.post(
-                    "https://api.twitter.com/1.1/favorites/create.json?id=" + tweet.id_str
-                    , data.accessToken
-                    , data.refreshToken
-                );
-            var data1 = "";
-            request.addListener('response', function (response) {
-                response.setEncoding('utf8');
-                response.addListener('data', function (chunk) {
-                    data1 = data1 + chunk;
-                    console.log(chunk);
-                });
-                response.addListener('end', function () {
-                    new Tweet({
-                        twitterId:data.twitterId,
-                        tweet:tweet
-                    }).save(function (err, tweet) {
-                            if (err) {
-                                log.error(err);
-                               cb(err,null);
-                            }
-                            else {
-                                log.info('favourite tweet inserted into DB....',tweet);
-                                cb(null,tweet);
-                            }
-                        });
-                    console.log('--- END ---', data1);
-                });
             });
-            request.end();
-        }
-    });
+    }
+    else {
+        res.send(null);
+    }
 }
 //get favorite tweets from DB....
 exports.getFavouriteTweets = function (req, res) {
@@ -298,7 +189,7 @@ exports.getFavouriteTweets = function (req, res) {
                         res.send(null)
                     }
                     else {
-                        console.log('got favourite tweets',tweets);
+//                        console.log('got favourite tweets', tweets);
                         res.send(tweets);
                     }
                 });
@@ -307,6 +198,16 @@ exports.getFavouriteTweets = function (req, res) {
     }
 }
 exports.verifyEmail = function (req, res) {
-    log.info('verfication Code is executed',req.params.verificationCode);
-    UserService.verifyEmailService(req.params.verificationCode,function(){});
+    log.info('verfication Code is executed', req.params.verificationCode);
+    UserService.verifyEmailService(req.params.verificationCode)
+        .on(EventName.DONE, function (data) {
+            log.info('Your Email has been verified.');
+        })
+        .on(EventName.ERROR, function (err) {
+            log.error(err);
+        })
+        .on(EventName.NOT_FOUND, function (data) {
+            log.info('You have a verified Email.');
+            res.redirect('/');
+        });
 }

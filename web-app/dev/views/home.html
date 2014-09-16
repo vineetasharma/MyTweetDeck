@@ -1,6 +1,6 @@
 <div class='homeDiv' ng-show="tweets">
     <div class="profile" ng-show="profile">
-        <img  class="profile-avatar" src="{{profile.profilePicUrl}}" height="100px" width="100px">
+        <img  class="profile-image" src="{{profile.profilePicUrl}}">
         <br><br>
         <span style="color: ghostwhite; font-size: 16px">{{profile.username}}</span>
         <br><br>
@@ -31,7 +31,7 @@
 
         <div class="innerFavouriteTweetDiv">
             <table class="table table-striped">
-                <tr class="table-bordered" ng-repeat="tweet  in favouriteTweets | orderBy : tweet._id : reverse :true ">
+                <tr class="table-bordered" ng-repeat="tweet  in favouriteTweets | orderBy : $index :false">
                     <td>{{tweet.tweet.text}}
                         <img src="../images/star.png" height="25px" width="25px">
                     </td>
