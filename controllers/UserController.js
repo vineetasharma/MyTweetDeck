@@ -52,8 +52,8 @@ exports.updateProfile = function (req, res) {
     if (user) {
         UserService.updateUserDetails(user._id, req.body)
             .on("success", function (user1) {
-                if (req.body.Email) {
-                    console.log(user, 'user');
+                if ((req.body.Email && req.body.reset=='Yes') || (req.body.Email && !req.body.reset)) {
+                    log.info(req.body.reset,'mail send service called');
 
                     UserService.sendEmailVerificationLink(user._id, req.body.Name, req.body.Email)
                         .on(EventName.ERROR, function (err) {

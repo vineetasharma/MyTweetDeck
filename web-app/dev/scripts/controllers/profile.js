@@ -10,6 +10,7 @@
 angular.module('yoApp')
     .controller('ProfileCtrl', ['$scope', 'ProfileService','$window', function ($scope, ProfileService,$window) {
         console.log('Profile controller called');
+        var reset;
         $scope.genders=['Female','Male'];
 
         $scope.data={};
@@ -22,7 +23,9 @@ angular.module('yoApp')
             $window.location.href = '#/profile';
         }
         $scope.resetEmail=function(){
-            var reset=true;
+            reset=true;
+            $scope.profile.email.email_valid=false;
+            console.log($scope.profile.email.email_valid,'email_valid');
             ProfileService.resetEmail(reset,function(err,data){
                 if(err){
                     console.log('error when resetting email',err);
@@ -48,11 +51,9 @@ angular.module('yoApp')
                 $scope.data.Mobile=''+$scope.profile.profileData ? $scope.profile.profileData.Mobile : '';
                 $scope.data.Birthday=$scope.profile.profileData ? $scope.profile.profileData.Birthday : '';
                 $scope.data.Email=$scope.profile.email? $scope.profile.email.emailId : '';
-                console.log($scope.data.Gender,'gender');
-                if(data.email)
-                {
 
-                }
+                console.log($scope.data.Gender,'gender');
+
             }
             else
             {
@@ -61,6 +62,13 @@ angular.module('yoApp')
         });
 
         $scope.updateProfile=function(data){
+            if(reset){
+                data.reset='Yes';
+            }
+            if(!reset && $scope.profile.email.email_valid){
+
+                data.reset='No';
+            }
             console.log('updated profile data',data,'Gender:',data.Gender);
             ProfileService.updateProfileData(data,function(err){
                 if(!err){

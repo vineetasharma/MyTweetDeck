@@ -62,7 +62,7 @@ exports.updateUserDetails = function (id, data) {
         },
         email: {
             emailId: data.Email,
-            emailValid: false
+            email_valid: (data.reset=='No'? true:false)
         }
 
     }
