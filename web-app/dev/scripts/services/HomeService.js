@@ -11,6 +11,33 @@ angular.module('yoApp')
                     callback(error);
                 });
         };
+        this.getFriends = function (callback) {
+            console.log('get Friend service called');
+            $http.get('/getFriendList')
+                .success(function (data) {
+                    console.log('Friend list:',data);
+                    callback(null,data);
+                }).
+                error(function (error) {
+                    console.log("error during finding friends: ", error.message);
+                    callback(error,null);
+                });
+        };
+        this.getUserTimeLine = function (data,callback) {
+            $http({
+                url: '/getUserTimeLine',
+                method: "GET",
+                params: data
+            })
+                .success(function (data) {
+                    console.log('user Time line Tweets',data);
+                    callback(null,data);
+                }).
+                error(function (error) {
+                    console.log("error during finding User Time line tweets: ", error.message);
+                    callback(error,null);
+                });
+        };
         this.reTweet = function (id,callback) {
             $http.post('/reTweet',{id:id})
                 .success(function (data) {

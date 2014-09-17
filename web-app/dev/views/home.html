@@ -1,10 +1,24 @@
 <div class='homeDiv' ng-show="tweets">
     <div class="profile" ng-show="profile">
-        <img  class="profile-avatar" src="{{profile.profilePicUrl}}" height="100px" width="100px">
+        <img class="profile-image" src="{{profile.profilePicUrl}}">
         <br><br>
         <span style="color: ghostwhite; font-size: 16px">{{profile.username}}</span>
         <br><br>
         <button class="btn btn-info" ng-click="signIn()">New Tweet</button>
+        <br>
+        User_id:<input class="form-control" type="text" ng-model="user_id">
+        <br>
+        Screen_name:<input class="form-control" type="text" ng-model="screen_name">
+        <br>
+        <button class="btn btn-info" ng-click="search(user_id,screen_name)">Search Friend's Tweet</button>
+        <input ng-model="searchText">
+        <table >
+            <tr><th>Name</th><th>TwitterID</th></tr>
+            <tr ng-repeat="friend in friends | filter:searchText">
+                <td>{{friend.screen_name}}</td>
+                <td>{{friend.id}}</td>
+            </tr>
+        </table>
 
     </div>
     <div class="tweetDiv" ng-show="tweets">
@@ -15,8 +29,12 @@
                 <tr class="table-bordered" ng-repeat="tweet in tweets track by $index">
                     <td>{{tweet.text}}
                         <br>
-                        <button class="btn " ng-click="retweet(tweet.id_str)" ng-class="{retweet:tweet.retweeted}"  ng-disabled="tweet.retweeted" >Retweet</button>
-                        <button class="btn " ng-click="favourite(tweet)" ng-class="{favourite:tweet.favorited}"  ng-disabled="tweet.favorited">Favourite</button>
+                        <button class="btn " ng-click="retweet(tweet.id_str)" ng-class="{retweet:tweet.retweeted}"
+                                ng-disabled="tweet.retweeted">Retweet
+                        </button>
+                        <button class="btn " ng-click="favourite(tweet)" ng-class="{favourite:tweet.favorited}"
+                                ng-disabled="tweet.favorited">Favourite
+                        </button>
                         <div></div>
 
                 </tr>
@@ -31,9 +49,22 @@
 
         <div class="innerFavouriteTweetDiv">
             <table class="table table-striped">
-                <tr class="table-bordered" ng-repeat="tweet  in favouriteTweets | orderBy : tweet._id : reverse :true ">
+                <tr class="table-bordered" ng-repeat="tweet  in favouriteTweets | orderBy : $index :false">
                     <td>{{tweet.tweet.text}}
                         <img src="../images/star.png" height="25px" width="25px">
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div ng-if="friendTimelines" class="friendTweet">
+        <h3 style="margin-top: 20px">Favourite Tweets</h3>
+
+        <div class="innerFriendTweetDiv">
+            <table class="table table-striped">
+                <tr class="table-bordered" ng-repeat="tweet  in friendTimelines">
+                    <td>{{tweet.text}}
+
                     </td>
                 </tr>
             </table>

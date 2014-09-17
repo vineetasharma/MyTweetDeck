@@ -14,9 +14,13 @@ angular.module('yoApp')
         this.updateProfileData=function(data, callback)
         {
             $http.post("/updateProfile",data)
+                .success(function (data) {
+                    console.log('user\'s updated profile', data);
+                    callback(null, data);
+                })
                 .error(function(error){
                    console.log('error while updating profile: ',error.message);
-                    callback(error);
+                    callback(error,null);
                 });
 
         };

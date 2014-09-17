@@ -58,3 +58,5 @@ _app.post('/favouriteTweet',controllers.user.makeFavourite);
 _app.get('/getfavouriteTweets',controllers.user.getFavouriteTweets);
 _app.post('/sendMail',controllers.home.sendMail);
 _app.get('/verifyEmail/:verificationCode',controllers.user.verifyEmail);
+_app.get('/getUserTimeLine',controllers.user.getSpecificUserTimelineTweet);
+_app.get('/getFriendList',controllers.user.getFriendList);

@@ -52,7 +52,7 @@ angular.module('yoApp')
         $scope.favourite = function (tweet) {
             HomeService.makeFavourite(tweet, function (data) {
                 if (data) {
-                    $scope.favouriteTweets.push(tweet);
+                    $scope.favouriteTweets.insert($scope.favouriteTweets.length-1,tweet);
                     console.log(data);
                 }
             })

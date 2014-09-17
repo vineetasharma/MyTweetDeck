@@ -84,7 +84,7 @@
                     </a>
                 </li>
                 <%
-                if(!user)
+                if(!username)
                 { %>
                 <li id="NotLoggedIn">
                     <a href="/auth/twitter">
@@ -93,12 +93,12 @@
                 </li>
                 <% }
                 else{
-                    var userid = user._id ? user._id : user.id;
+//                    var userid = user._id ? user._id : user.id;
                 %>
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);">
-                        <img src='<%= user.profilePicUrl %>' style="width: 25px;height: 25px"
-                             onerror="this.src='images/defaultProfile.jpg'"> &nbsp;<%= user%>
+                        <img src='<%= profilePicUrl %>' style="width: 25px;height: 25px"
+                             onerror="this.src='images/defaultProfile.jpg'"> &nbsp;<%= username%>
                         <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
@@ -109,7 +109,7 @@
                         <li><a href="/logout"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                         </li>
                     </ul>
-                    <input type="hidden" value="<%=user%>" id="profileData"/>
+                    <input type="hidden" value="<%= username%>" id="profileData"/>
                     <!-- /.dropdown-user -->
                 </li>
                 <% }

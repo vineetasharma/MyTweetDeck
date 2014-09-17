@@ -24,7 +24,7 @@
     height: 600px;
     background-color: #dcdcdc;
     float: right;
-    margin-right: 200px;
+    margin-right: 130px;
     border-radius: 5px 5px 5px 5px;
 }
 .innerFavouriteTweetDiv{
@@ -33,8 +33,22 @@
     overflow: auto;
 }
 .profile{
-    width: 90px;
+    width: 160px;
     margin-left: 50px;
     height: 200px;
     float: left;
+}
+.friendTweet{
+    width: 500px;
+    height: 600px;
+    background-color: #dcdcdc;
+    float: left;
+    margin-left: 434px;
+    border-radius: 5px 5px 5px 5px;
+    margin-top: 25px;
+}
+.innerFriendTweetDiv{
+    width: 500px;
+    height: 530px;
+    overflow: auto;
 }

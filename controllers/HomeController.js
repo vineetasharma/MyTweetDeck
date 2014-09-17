@@ -22,7 +22,7 @@ var HttpStatusCode = require("../src/enum/HttpStatusCode");
 exports.index = function (req, res) {
     console.log('req.user',req.user);
     if (req.user) {
-        console.log('req.user',req.user);
+        log.info('req.user',req.user);
         res.loginUser(req.user._id, req.user.username, ['user']);
     }
     var user = req.checkLoggedIn();
@@ -31,18 +31,18 @@ exports.index = function (req, res) {
         User.findOne({_id: user._id}, function (err, data) {
             if (err) {
                 res.render('index', {user: null});
-                console.log('error',err);
+                log.error('error',err);
             }
             else{
-                res.render('index', {user: data.username});
-                console.log('data',data);
+                res.render('index', data);
+                log.info('data when user exist',data);
             }
         });
 
     }
     else{
-        res.render('index', {user:req.user?req.user.username:null});
-        console.log('>>>>??>>>>>>>>>>>');
+        res.render('index', {username:req.user?req.user.username:null,profilePicUrl:req.user?req.user.profilePicUrl:null});
+        log.info('>>>>??>>>>>>>>>>>');
     }
 
 };
