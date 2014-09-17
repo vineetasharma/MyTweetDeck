@@ -142,6 +142,43 @@ exports.getTweets = function (req, res) {
         });
 
 }
+exports.getSpecificUserTimelineTweet = function (req, res) {
+    var user = req.checkLoggedIn();
+    var tweets;
+    data={id: req.param('user_id'),screen_name: req.param('screen_name')};
+//    log.info(data,'params.....',req.param('screen_name'));
+    UserService.getSpecificTweets(user,data)
+        .on(EventName.DONE, function(data) {
+            console.log('data in controller........',data);
+            res.send(data);
+        })
+        .on(EventName.ERROR, function (err) {
+            log.error(err);
+            res.send(err);
+        })
+        .on(EventName.NOT_FOUND, function () {
+            res.send(null);
+        });
+
+}
+exports.getFriendList = function (req, res) {
+    log.info('getFriendList method called');
+    var user = req.checkLoggedIn();
+    var tweets;
+    UserService.getUserFriendList(user)
+        .on(EventName.DONE, function(data) {
+            console.log('data in controller........',data);
+            res.send(JSON.parse(data));
+        })
+        .on(EventName.ERROR, function (err) {
+            log.error(err);
+            res.send(err);
+        })
+        .on(EventName.NOT_FOUND, function () {
+            res.send(null);
+        });
+
+}
 exports.reTweet = function (req, res) {
     var user = req.checkLoggedIn();
     console.log('id:' + req.body.id);

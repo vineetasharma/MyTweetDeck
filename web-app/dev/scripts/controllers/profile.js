@@ -48,7 +48,7 @@ angular.module('yoApp')
                 $scope.data.HomeTown=$scope.profile.profileData ? ($scope.profile.profileData.Address ? $scope.profile.profileData.Address.Hometown : '') : '';
                 $scope.data.Country=$scope.profile.profileData ? ($scope.profile.profileData.Address ? $scope.profile.profileData.Address.Country : '') : '';
                 $scope.data.Pin=$scope.profile.profileData ? ($scope.profile.profileData.Address ? $scope.profile.profileData.Address.pin : '') : '';
-                $scope.data.Mobile=''+$scope.profile.profileData ? $scope.profile.profileData.Mobile : '';
+                $scope.data.Mobile=''+($scope.profile.profileData ? $scope.profile.profileData.Mobile : '');
                 $scope.data.Birthday=$scope.profile.profileData ? $scope.profile.profileData.Birthday : '';
                 $scope.data.Email=$scope.profile.email? $scope.profile.email.emailId : '';
 

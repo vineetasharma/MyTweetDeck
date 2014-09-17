@@ -38,3 +38,17 @@
     height: 200px;
     float: left;
 }
+.friendTweet{
+    width: 500px;
+    height: 600px;
+    background-color: #dcdcdc;
+    float: left;
+    margin-left: 434px;
+    border-radius: 5px 5px 5px 5px;
+    margin-top: 25px;
+}
+.innerFriendTweetDiv{
+    width: 500px;
+    height: 530px;
+    overflow: auto;
+}

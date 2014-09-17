@@ -283,3 +283,74 @@ exports.getUserTweets = function (user) {
     }
 }.toEmitter();
 
+exports.getSpecificTweets = function (user,params) {
+    log.info(params,'parameters...');
+    var emitter = this;
+    var tweets;
+    var cb=function(err,data){
+        if(!err){
+            tweets=data;
+            log.info('user Time line Tweets:  ',tweets);
+            emitter.emit(EventName.DONE,tweets);
+        }
+        else{
+            emitter.emit(EventName.ERROR,err);
+        }
+
+    };
+    if (user) {
+        User.findOne({_id: user._id}, function (err, data) {
+            if (err) {
+                log.error('error', err);
+                emitter.emit(EventName.ERROR,err);
+            }
+            else {
+                _oauth.get(
+                    "https://api.twitter.com/1.1/statuses/user_timeline.json?count=10&user_id="+params.user_id+"&screen_name="+params.screen_name
+                    , data.accessToken
+                    , data.refreshToken
+                    ,cb
+                );
+
+            }
+        });
+
+    }
+    else {
+        emitter.emit(EventName.NOT_FOUND,null);
+    }
+}.toEmitter();
+exports.getUserFriendList = function (user) {
+    var emitter = this;
+    var cb=function(err,data){
+        if(!err){
+            emitter.emit(EventName.DONE,data);
+        }
+        else{
+            emitter.emit(EventName.ERROR,err);
+        }
+
+    };
+    if (user) {
+        User.findOne({_id: user._id}, function (err, data) {
+            if (err) {
+                log.error('error', err);
+                emitter.emit(EventName.ERROR,err);
+            }
+            else {
+                _oauth.get(
+                    "https://api.twitter.com/1.1/friends/list.json?count=100"
+                    , data.accessToken
+                    , data.refreshToken
+                    ,cb
+                );
+
+            }
+        });
+
+    }
+    else {
+        emitter.emit(EventName.NOT_FOUND,null);
+    }
+}.toEmitter();
+
