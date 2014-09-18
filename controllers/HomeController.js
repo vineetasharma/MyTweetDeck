@@ -26,7 +26,7 @@ exports.index = function (req, res) {
         res.loginUser(req.user._id, req.user.username, ['user']);
     }
     var user = req.checkLoggedIn();
-    console.log('user>>>>>>>>>>>>>>>>.',user);
+    console.log('user:',user);
     if(user){
         User.findOne({_id: user._id}, function (err, data) {
             if (err) {
@@ -42,7 +42,6 @@ exports.index = function (req, res) {
     }
     else{
         res.render('index', {username:req.user?req.user.username:null,profilePicUrl:req.user?req.user.profilePicUrl:null});
-        log.info('>>>>??>>>>>>>>>>>');
     }
 
 };

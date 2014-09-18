@@ -26,29 +26,8 @@
       <file leaf-file-name="profile.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web-app/dev/views/profile.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="95" column="53" selection-start="5524" selection-end="5524" vertical-scroll-proportion="-8.833333" vertical-offset="1213" max-vertical-offset="2760">
-              <folding>
-                <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#2;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#0;n#dd#0;n#dl#3;n#div#0;n#form#0;n#div#2;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#select#0;n#dd#0;n#dl#4;n#div#0;n#form#0;n#div#2;n#div#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="EmailVarify.ejs" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web-app/dev/views/EmailVarify.ejs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="26" column="7" selection-start="334" selection-end="334" vertical-scroll-proportion="-16.25" vertical-offset="0" max-vertical-offset="480">
-              <folding>
-                <marker date="1410829446871" expanded="true" signature="5:333" placeholder="..." />
-                <marker date="1410829446871" expanded="true" signature="12:21" placeholder="..." />
-                <marker date="1410829446871" expanded="true" signature="28:325" placeholder="..." />
-                <marker date="1410829446871" expanded="true" signature="32:55" placeholder="..." />
-                <marker date="1410829446871" expanded="true" signature="59:187" placeholder="..." />
-                <marker date="1410829446871" expanded="true" signature="191:316" placeholder="..." />
-              </folding>
+            <state line="117" column="33" selection-start="6919" selection-end="6919" vertical-scroll-proportion="0.0" vertical-offset="1528" max-vertical-offset="2760">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -56,7 +35,7 @@
       <file leaf-file-name="profile.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web-app/dev/scripts/controllers/profile.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="61" column="11" selection-start="2786" selection-end="2786" vertical-scroll-proportion="0.0" vertical-offset="175" max-vertical-offset="1500">
+            <state line="61" column="11" selection-start="2786" selection-end="2786" vertical-scroll-proportion="0.0" vertical-offset="915" max-vertical-offset="1500">
               <folding />
             </state>
           </provider>
@@ -65,16 +44,25 @@
       <file leaf-file-name="home.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web-app/dev/scripts/controllers/home.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="18" selection-start="658" selection-end="658" vertical-scroll-proportion="0.0" vertical-offset="225" max-vertical-offset="1995">
+            <state line="138" column="31" selection-start="5278" selection-end="5290" vertical-scroll-proportion="0.0" vertical-offset="1907" max-vertical-offset="2610">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HomeService.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="HomeController.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/controllers/HomeController.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="28" column="22" selection-start="804" selection-end="804" vertical-scroll-proportion="0.0" vertical-offset="322" max-vertical-offset="945">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HomeService.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web-app/dev/scripts/services/HomeService.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="50" selection-start="604" selection-end="604" vertical-scroll-proportion="0.6687898" vertical-offset="0" max-vertical-offset="1305">
+            <state line="45" column="14" selection-start="1763" selection-end="1763" vertical-scroll-proportion="0.0" vertical-offset="540" max-vertical-offset="1530">
               <folding />
             </state>
           </provider>
@@ -83,7 +71,7 @@
       <file leaf-file-name="URLMappings.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/conf/URLMappings.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="61" column="9" selection-start="2287" selection-end="2303" vertical-scroll-proportion="0.0" vertical-offset="537" max-vertical-offset="1005">
+            <state line="61" column="9" selection-start="2287" selection-end="2302" vertical-scroll-proportion="0.0" vertical-offset="525" max-vertical-offset="1020">
               <folding />
             </state>
           </provider>
@@ -92,7 +80,7 @@
       <file leaf-file-name="UserController.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/controllers/UserController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="170" column="39" selection-start="5461" selection-end="5461" vertical-scroll-proportion="0.0" vertical-offset="2334" max-vertical-offset="3840">
+            <state line="169" column="37" selection-start="5429" selection-end="5429" vertical-scroll-proportion="0.0" vertical-offset="2295" max-vertical-offset="4215">
               <folding />
             </state>
           </provider>
@@ -101,24 +89,22 @@
       <file leaf-file-name="UserService.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/services/UserService.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="324" column="30" selection-start="10072" selection-end="10072" vertical-scroll-proportion="0.0" vertical-offset="4769" max-vertical-offset="5430">
+            <state line="344" column="75" selection-start="10688" selection-end="10688" vertical-scroll-proportion="0.0" vertical-offset="4990" max-vertical-offset="5970">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="home.html" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="home.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web-app/dev/views/home.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="40" selection-start="867" selection-end="867" vertical-scroll-proportion="-10.625" vertical-offset="0" max-vertical-offset="495">
+            <state line="99" column="55" selection-start="4347" selection-end="4347" vertical-scroll-proportion="3.5783134" vertical-offset="0" max-vertical-offset="1755">
               <folding>
-                <element signature="tag#div#1;tag#div#0" expanded="false" />
-                <element signature="n#style#0;n#h3#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-                <element signature="tag#div#2;tag#div#0" expanded="false" />
-                <element signature="n#style#0;n#h3#0;n#div#2;n#div#0;n#!!top" expanded="true" />
-                <element signature="tag#div#3;tag#div#0" expanded="false" />
-                <element signature="n#style#0;n#h3#0;n#div#3;n#div#0;n#!!top" expanded="true" />
-                <element signature="tag#div#1" expanded="false" />
+                <element signature="n#style#0;n#span#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#2;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#3;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#2;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#h3#0;n#div#0;n#div#0;n#div#0;n#div#2;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -127,7 +113,7 @@
       <file leaf-file-name="MyCss.css" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web-app/dev/styles/MyCss.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="47" column="21" selection-start="825" selection-end="825" vertical-scroll-proportion="0.0" vertical-offset="429" max-vertical-offset="885">
+            <state line="52" column="19" selection-start="906" selection-end="906" vertical-scroll-proportion="0.0" vertical-offset="780" max-vertical-offset="885">
               <folding />
             </state>
           </provider>
@@ -171,7 +157,6 @@
         <option value="$PROJECT_DIR$/web-app/dev/styles/profile.css" />
         <option value="$PROJECT_DIR$/web-app/dev/scripts/services/ProfileService.js" />
         <option value="$PROJECT_DIR$/web-app/dev/styles/main.css" />
-        <option value="$PROJECT_DIR$/controllers/HomeController.js" />
         <option value="$PROJECT_DIR$/views/index.ejs" />
         <option value="$PROJECT_DIR$/web-app/dev/images/TweetDeck_files/home.js" />
         <option value="$PROJECT_DIR$/web-app/dev/scripts/services/ContactService.js" />
@@ -181,11 +166,12 @@
         <option value="$PROJECT_DIR$/web-app/dev/scripts/controllers/profile.js" />
         <option value="$PROJECT_DIR$/web-app/dev/styles/MyCss.css" />
         <option value="$PROJECT_DIR$/conf/URLMappings.js" />
-        <option value="$PROJECT_DIR$/services/UserService.js" />
-        <option value="$PROJECT_DIR$/controllers/UserController.js" />
-        <option value="$PROJECT_DIR$/web-app/dev/views/home.html" />
-        <option value="$PROJECT_DIR$/web-app/dev/scripts/controllers/home.js" />
         <option value="$PROJECT_DIR$/web-app/dev/scripts/services/HomeService.js" />
+        <option value="$PROJECT_DIR$/controllers/UserController.js" />
+        <option value="$PROJECT_DIR$/services/UserService.js" />
+        <option value="$PROJECT_DIR$/controllers/HomeController.js" />
+        <option value="$PROJECT_DIR$/web-app/dev/scripts/controllers/home.js" />
+        <option value="$PROJECT_DIR$/web-app/dev/views/home.html" />
       </list>
     </option>
   </component>
@@ -206,7 +192,7 @@
     <ConfirmationsSetting value="0" id="Remove" />
   </component>
   <component name="ProjectReloadState">
-    <option name="STATE" value="2" />
+    <option name="STATE" value="0" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1" splitterProportion="0.5">
@@ -228,56 +214,6 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="MyTweetDeck" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MyTweetDeck" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MyTweetDeck" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MyTweetDeck" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MyTweetDeck" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dev" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MyTweetDeck" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MyTweetDeck" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dev" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -403,25 +339,25 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="24" width="1301" height="744" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.38897398" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.76030535" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32824427" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4532925" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25859374" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32924962" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.8116386" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.44410414" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25496182" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4532925" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -510,98 +446,64 @@
         <state line="1027" column="18" selection-start="26341" selection-end="26341" vertical-scroll-proportion="0.33266532" vertical-offset="15239" max-vertical-offset="19755" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/controllers/HomeController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="46" selection-start="1139" selection-end="1139" vertical-scroll-proportion="0.0" vertical-offset="322" max-vertical-offset="960">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/index.ejs">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="96" column="18" selection-start="3706" selection-end="3706" vertical-scroll-proportion="0.0" vertical-offset="1117" max-vertical-offset="1935">
-          <folding>
-            <marker date="1410847588329" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1410847588329" expanded="true" signature="-1:-1" placeholder="{...}" />
-          </folding>
-        </state>
+        <state line="96" column="18" selection-start="3706" selection-end="3706" vertical-scroll-proportion="0.0" vertical-offset="1117" max-vertical-offset="1935" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web-app/dev/scripts/services/ProfileService.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="39" selection-start="729" selection-end="729" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="480">
-          <folding />
-        </state>
+        <state line="17" column="39" selection-start="729" selection-end="729" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="480" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web-app/dev/styles/profile.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="515" column="16" selection-start="12556" selection-end="12556" vertical-scroll-proportion="0.0" vertical-offset="7595" max-vertical-offset="9390">
-          <folding />
-        </state>
+        <state line="515" column="16" selection-start="12556" selection-end="12556" vertical-scroll-proportion="0.0" vertical-offset="7595" max-vertical-offset="9390" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web-app/dev/images/TweetDeck_files/profile.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="615">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="615" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web-app/dev/images/TweetDeck_files/home.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="54" column="81" selection-start="1854" selection-end="1854" vertical-scroll-proportion="0.0" vertical-offset="369" max-vertical-offset="1170">
-          <folding />
-        </state>
+        <state line="54" column="81" selection-start="1854" selection-end="1854" vertical-scroll-proportion="0.0" vertical-offset="369" max-vertical-offset="1170" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web-app/dev/views/contact.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="50" column="19" selection-start="2093" selection-end="2093" vertical-scroll-proportion="0.0" vertical-offset="585" max-vertical-offset="1095">
-          <folding />
-        </state>
+        <state line="50" column="19" selection-start="2093" selection-end="2093" vertical-scroll-proportion="0.0" vertical-offset="585" max-vertical-offset="1095" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web-app/dev/scripts/controllers/contact.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="78" selection-start="285" selection-end="285" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="960">
-          <folding />
-        </state>
+        <state line="6" column="78" selection-start="285" selection-end="285" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="960" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web-app/dev/scripts/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="30" selection-start="954" selection-end="954" vertical-scroll-proportion="0.0" vertical-offset="54" max-vertical-offset="660">
-          <folding />
-        </state>
+        <state line="35" column="30" selection-start="954" selection-end="954" vertical-scroll-proportion="0.0" vertical-offset="54" max-vertical-offset="660" />
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/.WebStorm7/system/extLibs/nodejs-v0.10.26-src/core-modules-sources/lib/http.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="690" column="0" selection-start="19862" selection-end="19862" vertical-scroll-proportion="0.33241758" vertical-offset="9944" max-vertical-offset="32310">
-          <folding />
-        </state>
+        <state line="690" column="0" selection-start="19862" selection-end="19862" vertical-scroll-proportion="0.33241758" vertical-offset="9944" max-vertical-offset="32310" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/services/HomeService.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="47" selection-start="122" selection-end="122" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="555">
-          <folding />
-        </state>
+        <state line="3" column="47" selection-start="122" selection-end="122" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="555" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web-app/dev/scripts/services/ContactService.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="29" selection-start="850" selection-end="850" vertical-scroll-proportion="0.0" vertical-offset="40" max-vertical-offset="480">
-          <folding />
-        </state>
+        <state line="20" column="29" selection-start="850" selection-end="850" vertical-scroll-proportion="0.0" vertical-offset="40" max-vertical-offset="480" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/oauth/lib/oauth.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="486" column="74" selection-start="16854" selection-end="16857" vertical-scroll-proportion="0.27845037" vertical-offset="7175" max-vertical-offset="8805">
-          <folding />
-        </state>
+        <state line="486" column="74" selection-start="16854" selection-end="16857" vertical-scroll-proportion="0.27845037" vertical-offset="7175" max-vertical-offset="8805" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web-app/dev/images/HomePage/twitter_logo-resized-600.png">
@@ -636,9 +538,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web-app/dev/images/TweetDeck.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2145">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2145" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web-app/dev/images/tweetdeck-logo.jpg">
@@ -678,77 +578,49 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web-app/dev/styles/main.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="347" column="5" selection-start="5157" selection-end="5162" vertical-scroll-proportion="0.5335366" vertical-offset="5030" max-vertical-offset="8670">
-          <folding />
-        </state>
+        <state line="347" column="5" selection-start="5157" selection-end="5162" vertical-scroll-proportion="0.5335366" vertical-offset="5030" max-vertical-offset="8670" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web-app/dev/views/main.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="51" selection-start="58" selection-end="58" vertical-scroll-proportion="-1.25" vertical-offset="0" max-vertical-offset="675">
-          <folding>
-            <element signature="n#style#0;n#td#0;n#tr#0;n#table#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#td#0;n#tr#0;n#table#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#0;n#tr#1;n#table#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#p#0;n#td#0;n#tr#1;n#table#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#0;n#tr#2;n#table#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#tr#0;n#table#0;n#td#0;n#tr#2;n#table#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#0;n#tr#0;n#table#0;n#td#0;n#tr#2;n#table#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#0;n#td#0;n#tr#0;n#table#0;n#td#0;n#tr#2;n#table#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#1;n#tr#0;n#table#0;n#td#0;n#tr#2;n#table#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#p#0;n#td#1;n#tr#0;n#table#0;n#td#0;n#tr#2;n#table#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#tr#1;n#table#0;n#td#0;n#tr#2;n#table#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#0;n#tr#1;n#table#0;n#td#0;n#tr#2;n#table#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#0;n#td#0;n#tr#1;n#table#0;n#td#0;n#tr#2;n#table#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#1;n#tr#1;n#table#0;n#td#0;n#tr#2;n#table#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#p#0;n#td#1;n#tr#1;n#table#0;n#td#0;n#tr#2;n#table#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
+        <state line="2" column="51" selection-start="58" selection-end="58" vertical-scroll-proportion="-1.25" vertical-offset="0" max-vertical-offset="675" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web-app/dev/views/about.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="39" selection-start="418" selection-end="418" vertical-scroll-proportion="-2.5" vertical-offset="75" max-vertical-offset="705">
-          <folding>
-            <element signature="n#style#0;n#p#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#a#0;n#p#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#p#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#p#2;n#div#0;n#div#0;n#div#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#p#3;n#div#0;n#div#0;n#div#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
+        <state line="9" column="39" selection-start="418" selection-end="418" vertical-scroll-proportion="-2.5" vertical-offset="75" max-vertical-offset="705" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/domain/User.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="28" selection-start="710" selection-end="710" vertical-scroll-proportion="0.0" vertical-offset="44" max-vertical-offset="540">
-          <folding />
-        </state>
+        <state line="31" column="28" selection-start="710" selection-end="710" vertical-scroll-proportion="0.0" vertical-offset="44" max-vertical-offset="540" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web-app/dev/views/EmailVarify.ejs">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="7" selection-start="334" selection-end="334" vertical-scroll-proportion="-16.25" vertical-offset="0" max-vertical-offset="480">
+        <state line="26" column="7" selection-start="334" selection-end="334" vertical-scroll-proportion="0.0" vertical-offset="390" max-vertical-offset="480">
           <folding>
-            <marker date="1410829446871" expanded="true" signature="5:333" placeholder="..." />
-            <marker date="1410829446871" expanded="true" signature="12:21" placeholder="..." />
-            <marker date="1410829446871" expanded="true" signature="28:325" placeholder="..." />
-            <marker date="1410829446871" expanded="true" signature="32:55" placeholder="..." />
-            <marker date="1410829446871" expanded="true" signature="59:187" placeholder="..." />
-            <marker date="1410829446871" expanded="true" signature="191:316" placeholder="..." />
+            <marker date="1410829446871" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1410829446871" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1410829446871" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1410829446871" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1410829446871" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1410829446871" expanded="true" signature="-1:-1" placeholder="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web-app/dev/views/profile.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="95" column="53" selection-start="5524" selection-end="5524" vertical-scroll-proportion="-8.833333" vertical-offset="1213" max-vertical-offset="2760">
-          <folding>
-            <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#2;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#dd#0;n#dl#3;n#div#0;n#form#0;n#div#2;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#select#0;n#dd#0;n#dl#4;n#div#0;n#form#0;n#div#2;n#div#0;n#!!top" expanded="true" />
-          </folding>
+        <state line="117" column="33" selection-start="6919" selection-end="6919" vertical-scroll-proportion="0.0" vertical-offset="1528" max-vertical-offset="2760">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-app/dev/styles/MyCss.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="52" column="19" selection-start="906" selection-end="906" vertical-scroll-proportion="0.0" vertical-offset="471" max-vertical-offset="885">
+          <folding />
         </state>
       </provider>
     </entry>
@@ -759,60 +631,58 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/services/UserService.js">
+    <entry file="file://$PROJECT_DIR$/conf/URLMappings.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="324" column="30" selection-start="10072" selection-end="10072" vertical-scroll-proportion="0.0" vertical-offset="4769" max-vertical-offset="5430">
+        <state line="61" column="9" selection-start="2287" selection-end="2302" vertical-scroll-proportion="0.0" vertical-offset="525" max-vertical-offset="1020">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/controllers/UserController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="170" column="39" selection-start="5461" selection-end="5461" vertical-scroll-proportion="0.0" vertical-offset="2334" max-vertical-offset="3840">
+        <state line="169" column="37" selection-start="5429" selection-end="5429" vertical-scroll-proportion="0.0" vertical-offset="2295" max-vertical-offset="4215">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web-app/dev/styles/MyCss.css">
+    <entry file="file://$PROJECT_DIR$/controllers/HomeController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="47" column="21" selection-start="825" selection-end="825" vertical-scroll-proportion="0.0" vertical-offset="434" max-vertical-offset="885">
+        <state line="28" column="22" selection-start="804" selection-end="804" vertical-scroll-proportion="0.0" vertical-offset="322" max-vertical-offset="945">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web-app/dev/views/home.html">
+    <entry file="file://$PROJECT_DIR$/services/UserService.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="40" selection-start="867" selection-end="867" vertical-scroll-proportion="-10.625" vertical-offset="0" max-vertical-offset="495">
-          <folding>
-            <element signature="tag#div#1;tag#div#0" expanded="false" />
-            <element signature="n#style#0;n#h3#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-            <element signature="tag#div#2;tag#div#0" expanded="false" />
-            <element signature="n#style#0;n#h3#0;n#div#2;n#div#0;n#!!top" expanded="true" />
-            <element signature="tag#div#3;tag#div#0" expanded="false" />
-            <element signature="n#style#0;n#h3#0;n#div#3;n#div#0;n#!!top" expanded="true" />
-            <element signature="tag#div#1" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/conf/URLMappings.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="61" column="9" selection-start="2287" selection-end="2303" vertical-scroll-proportion="0.0" vertical-offset="537" max-vertical-offset="1005">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-app/dev/scripts/controllers/home.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="18" selection-start="658" selection-end="658" vertical-scroll-proportion="0.0" vertical-offset="225" max-vertical-offset="1995">
+        <state line="344" column="75" selection-start="10688" selection-end="10688" vertical-scroll-proportion="0.0" vertical-offset="4990" max-vertical-offset="5970">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web-app/dev/scripts/services/HomeService.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="50" selection-start="604" selection-end="604" vertical-scroll-proportion="0.6687898" vertical-offset="0" max-vertical-offset="1305">
+        <state line="45" column="14" selection-start="1763" selection-end="1763" vertical-scroll-proportion="0.0" vertical-offset="360" max-vertical-offset="1530">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-app/dev/scripts/controllers/home.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="138" column="31" selection-start="5278" selection-end="5290" vertical-scroll-proportion="0.0" vertical-offset="1907" max-vertical-offset="2610">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-app/dev/views/home.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="99" column="55" selection-start="4347" selection-end="4347" vertical-scroll-proportion="3.5783134" vertical-offset="0" max-vertical-offset="1755">
+          <folding>
+            <element signature="n#style#0;n#span#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#2;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#3;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#2;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#h3#0;n#div#0;n#div#0;n#div#0;n#div#2;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

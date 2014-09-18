@@ -38,6 +38,21 @@ angular.module('yoApp')
                     callback(error,null);
                 });
         };
+        this.getSearchTweets = function (data,callback) {
+            $http({
+                url: '/searchTweets',
+                method: "GET",
+                params: data
+            })
+                .success(function (data) {
+                    console.log('search Tweets',data);
+                    callback(null,data);
+                }).
+                error(function (error) {
+                    console.log("error during seaching tweets: ", error.message);
+                    callback(error,null);
+                });
+        };
         this.reTweet = function (id,callback) {
             $http.post('/reTweet',{id:id})
                 .success(function (data) {

@@ -14,7 +14,13 @@ angular.module('yoApp')
                 keyboard: false
             });
         };
+        $scope.showTweet = function () {
+            jQuery('#tweet').modal({
+                keyboard: false
+            });
+        };
         $scope.favouriteTweets = [];
+        $scope.tweets=[];
         ProfileService.getProfile(function (err, data) {
             if (data) {
                 $scope.profile = data;
@@ -24,8 +30,11 @@ angular.module('yoApp')
                 $window.location.href = '#/';
             }
         });
-        HomeService.getFriends(function (err,friends) {
-            console.log('friend list:',friends);
+        HomeService.getFriends(function (err, friends) {
+            if (friends) {
+                $scope.friends = friends.users;
+            }
+            console.log('friend list:', friends);
 
         });
         $scope.tweet = function () {
@@ -41,7 +50,12 @@ angular.module('yoApp')
         console.log('home controller called');
         HomeService.getTweets(function (user_timeline_tweets) {
             console.log('service called');
-            if (typeof user_timeline_tweets == 'object') $scope.tweets = user_timeline_tweets;
+            if (typeof user_timeline_tweets == 'object') {
+                user_timeline_tweets.forEach(function(tweet){
+                   $scope.tweets.push(tweet);
+                });
+                console.log($scope.tweets);
+            }
             console.log(user_timeline_tweets);
         });
         $scope.retweet = function (id) {
@@ -76,6 +90,9 @@ angular.module('yoApp')
         }
         HomeService.getFavoriteTweets(function (tweets) {
             $scope.favouriteTweets = tweets;
+            $scope.favouriteTweets.forEach(function(tweet){
+                $scope.tweets.push(tweet);
+            });
         });
         (function () {
             setInterval(function () {
@@ -97,14 +114,14 @@ angular.module('yoApp')
                             console.log('outer part');
                             flag = false;
                         });
-                        console.log('temp....',temp);
+                        console.log('temp....', temp);
                         console.log('if part...');
-                        temp.forEach(function(oldTweet){
+                        temp.forEach(function (oldTweet) {
                             user_timeline_tweets.push(oldTweet);
 
 
                         });
-                        console.log(user_timeline_tweets.length,':length of user Time Line Tweets');
+                        console.log(user_timeline_tweets.length, ':length of user Time Line Tweets');
                         $scope.tweets = user_timeline_tweets;
                     }
 
@@ -112,15 +129,39 @@ angular.module('yoApp')
                 });
             }, 60000);
         })();
-        $scope.search=function(id,name){
-            if(id && name){
-                HomeService.getUserTimeLine({user_id:id,screen_name:name},function(err,data){
-                    if(err){
+        $scope.searchTweet= function (text) {
+                HomeService.getSearchTweets({text: text}, function (err, data) {
+                    if (err) {
+                        console.log('error while searching tweets');
+                    }
+                    else {
+                        $scope.showTweet();
+                        $scope.searchTweets=data.statuses;
+                        console.log('search tweets:', data.statuses,'total search tweets: ',data.statuses.length);
+                    }
+                });
+        }
+        $scope.search = function (id, name) {
+            if (arguments.length == 2) {
+                HomeService.getUserTimeLine({user_id: id, screen_name: name}, function (err, data) {
+                    if (err) {
                         console.log('error while getting user time line tweets');
                     }
-                    else{
-                        console.log('user time line tweets:',data);
-                        $scope.friendTimelines=data;
+                    else {
+                        console.log('user time line tweets:', data);
+                        $scope.friendTimelines = data;
+                    }
+                });
+            }
+            else {
+                console.log(id, ':selected value');
+                HomeService.getUserTimeLine({user_id: id.id, screen_name: id.screen_name}, function (err, data) {
+                    if (err) {
+                        console.log('error while getting user time line tweets');
+                    }
+                    else {
+                        console.log('user time line tweets:', data);
+                        $scope.friendTimelines = data;
                     }
                 });
             }

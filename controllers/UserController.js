@@ -161,6 +161,23 @@ exports.getSpecificUserTimelineTweet = function (req, res) {
         });
 
 }
+exports.searchTweets = function (req, res) {
+    var user = req.checkLoggedIn();
+    data={text: req.param('text')};
+    UserService.searchTweets(user,data)
+        .on(EventName.DONE, function(data) {
+            console.log('search Tweets:........',data);
+            res.send(JSON.parse(data));
+        })
+        .on(EventName.ERROR, function (err) {
+            log.error(err);
+            res.send(err);
+        })
+        .on(EventName.NOT_FOUND, function () {
+            res.send(null);
+        });
+
+}
 exports.getFriendList = function (req, res) {
     log.info('getFriendList method called');
     var user = req.checkLoggedIn();
@@ -168,7 +185,15 @@ exports.getFriendList = function (req, res) {
     UserService.getUserFriendList(user)
         .on(EventName.DONE, function(data) {
             console.log('data in controller........',data);
-            res.send(JSON.parse(data));
+            try{
+                data=JSON.parse(data);
+                res.send(data);
+            }
+            catch(e){
+                log.error(e);
+                res.send(null);
+            }
+
         })
         .on(EventName.ERROR, function (err) {
             log.error(err);
