@@ -299,3 +299,31 @@ exports.verifyEmail = function (req, res) {
             res.redirect('/');
         });
 }
+exports.followUser = function (req, res) {
+    var user = req.checkLoggedIn();
+    UserService.follow(req.body.data, user)
+        .on(EventName.DONE, function (user) {
+            res.end(user);
+        })
+        .on(EventName.ERROR, function (err) {
+            log.error(err);
+            res.send(null);
+        })
+        .on(EventName.NOT_FOUND, function () {
+            res.end('User not found ');
+        });
+}
+exports.unFollowUser = function (req, res) {
+    var user = req.checkLoggedIn();
+    UserService.unFollow(req.body.data, user)
+        .on(EventName.DONE, function (user) {
+            res.end(user);
+        })
+        .on(EventName.ERROR, function (err) {
+            log.error(err);
+            res.send(null);
+        })
+        .on(EventName.NOT_FOUND, function () {
+            res.end('User not found ');
+        });
+}

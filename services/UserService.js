@@ -423,4 +423,50 @@ exports.getUserByName = function (user,params) {
         emitter.emit(EventName.NOT_FOUND,null);
     }
 }.toEmitter();
+exports.unFollow = function (data,user,cb) {
+    var emitter = this;
+    if (user) {
+        User.findOne({_id: user._id}, function (err, data) {
+            if (err) {
+                log.error( err);
+                emitter.emit(EventName.ERROR,err);
+            }
+            else {
+                _oauth.post(
+                    "https://api.twitter.com/1.1/friendships/destroy.json?screen_name="+data.screen_name+"&user_id="+data.user_id
+                    , data.accessToken
+                    , data.refreshToken
+                    ,cb
+                );
+                emitter.emit(EventName.DONE,'success');
+            }
+        });
+
+    }
+    emitter.emit(EventName.NOT_FOUND,null);
+
+}.toEmitter();
+exports.follow = function (data,user,cb) {
+    var emitter = this;
+    if (user) {
+        User.findOne({_id: user._id}, function (err, data) {
+            if (err) {
+                log.error('error when compose a new Tweet', err);
+                emitter.emit(EventName.ERROR,err);
+            }
+            else {
+                _oauth.post(
+                    "https://api.twitter.com/1.1/friendships/create.json?screen_name="+data.screen_name+"&user_id="+data.user_id
+                    , data.accessToken
+                    , data.refreshToken
+                    ,cb
+                );
+                emitter.emit(EventName.DONE,'success');
+            }
+        });
+
+    }
+    emitter.emit(EventName.NOT_FOUND,null);
+
+}.toEmitter();
 

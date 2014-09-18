@@ -19,8 +19,13 @@ angular.module('yoApp')
                 keyboard: false
             });
         };
+        $scope.showUser = function () {
+            jQuery('#UserSearch').modal({
+                keyboard: false
+            });
+        };
         $scope.favouriteTweets = [];
-        $scope.tweets=[];
+        $scope.tweets = [];
         ProfileService.getProfile(function (err, data) {
             if (data) {
                 $scope.profile = data;
@@ -51,8 +56,8 @@ angular.module('yoApp')
         HomeService.getTweets(function (user_timeline_tweets) {
             console.log('service called');
             if (typeof user_timeline_tweets == 'object') {
-                user_timeline_tweets.forEach(function(tweet){
-                   $scope.tweets.push(tweet);
+                user_timeline_tweets.forEach(function (tweet) {
+                    $scope.tweets.push(tweet);
                 });
                 console.log($scope.tweets);
             }
@@ -73,16 +78,37 @@ angular.module('yoApp')
                 }
             })
         }
+        $scope.unfollow = function (user) {
+            console.log('unfollow method called');
+            HomeService.unFollow({screen_name: user.screen_name, user_id: user.id}, function (data) {
+                if (data) {
+
+                    console.log('unfollow request completed');
+                }
+            })
+        }
+        $scope.follow = function (user) {
+            console.log('follow method called');
+            HomeService.follow({screen_name: user.screen_name, user_id: user.id}, function (data) {
+                if (data) {
+                    console.log('follow request completed');
+
+                }
+            })
+        }
         $scope.favourite = function (fav_tweet) {
             HomeService.makeFavourite(fav_tweet, function (data) {
                 if (data) {
                     console.log(data);
                     $scope.tweets.forEach(function (tweet) {
-                        if (tweet.id_str == fav_tweet.id_str)
+                        if (tweet.id_str == fav_tweet.id_str) {
                             tweet.favorited = true;
+                            $scope.favouriteTweets.push(data);
+                        }
+
                     });
 //                    if($scope.favouriteTweets){
-                    $scope.favouriteTweets.push(data);
+
                     console.log('favourite tweet updated ', fav_tweet, 'favourite Tweet', $scope.favouriteTweets);
 //                    }
                 }
@@ -90,8 +116,8 @@ angular.module('yoApp')
         }
         HomeService.getFavoriteTweets(function (tweets) {
             $scope.favouriteTweets = tweets;
-                $scope.tweets.concat($scope.favouriteTweets);
-            });
+            $scope.tweets = $scope.tweets.concat($scope.favouriteTweets);
+        });
         (function () {
             setInterval(function () {
                 HomeService.getTweets(function (user_timeline_tweets) {
@@ -127,17 +153,29 @@ angular.module('yoApp')
                 });
             }, 60000);
         })();
-        $scope.searchTweet= function (text) {
-                HomeService.getSearchTweets({text: text}, function (err, data) {
-                    if (err) {
-                        console.log('error while searching tweets');
-                    }
-                    else {
-                        $scope.showTweet();
-                        $scope.searchTweets=data.statuses;
-                        console.log('search tweets:', data.statuses,'total search tweets: ',data.statuses.length);
-                    }
-                });
+        $scope.searchTweet = function (text) {
+            HomeService.getSearchTweets({text: text}, function (err, data) {
+                if (err) {
+                    console.log('error while searching tweets');
+                }
+                else {
+                    $scope.showTweet();
+                    $scope.searchTweets = data.statuses;
+                    console.log('search tweets:', data.statuses, 'total search tweets: ', data.statuses.length);
+                }
+            });
+        }
+        $scope.searchUser = function (name) {
+            HomeService.getSearchUsers({name: name}, function (err, users) {
+                if (err) {
+                    console.log('error while searching user...');
+                }
+                else {
+                    $scope.showUser();
+                    $scope.users = users;
+                    console.log('search results:', users);
+                }
+            });
         }
         $scope.search = function (id, name) {
             if (arguments.length == 2) {
@@ -151,7 +189,7 @@ angular.module('yoApp')
                     }
                 });
             }
-            else if(id.user){
+            else if (id.user) {
                 console.log(id, ':selected value');
                 HomeService.getUserTimeLine({user_id: id.user.id, screen_name: id.user.screen_name}, function (err, data) {
                     if (err) {
@@ -163,7 +201,7 @@ angular.module('yoApp')
                     }
                 });
             }
-            else{
+            else {
                 HomeService.getUserTimeLine({user_id: id.id, screen_name: id.screen_name}, function (err, data) {
                     if (err) {
                         console.log('error while getting user time line tweets');

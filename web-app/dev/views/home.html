@@ -6,14 +6,17 @@
         <br><br>
         <button class="btn btn-info" ng-click="signIn()">New Tweet</button>
         <br>
-        <span style="color: ghostwhite; font-size: 16px;">User_id:</span>
+        <!--<span style="color: ghostwhite; font-size: 16px;">User_id:</span>
         <input class="form-control" type="text" ng-model="user_id" placeholder="twitter_id">
         <br>
         <span style="color: ghostwhite; font-size: 16px;">Screen_name:</span>
         <input class="form-control" type="text" ng-model="screen_name" placeholder="screen_name">
         <br>
         <button class="btn btn-info" ng-click="search(user_id,screen_name)">Search Friend's Tweet</button>
+        <br>-->
+        <input class="form-control" type="text" ng-model="name" placeholder="search users">
         <br>
+        <button class="btn btn-info" ng-click="searchUser(name)">Search</button>
         <select ng-model="friend" ng-options="friend.screen_name for friend in friends"
                 class="form-control" ng-show="friends">
         </select>
@@ -98,6 +101,7 @@
         <div class="modal-content" style="width: 654;margin-left: -88px;">
             <div class="modal-header">
                 <h3 style="margin-left: -85px;">Search Tweets</h3>
+                <button class=" btn btn-info" data-dismiss="modal" aria-hidden="true">Close</button>
             </div>
             <div class="modal-body" style="width: 600px;height:500px;overflow: auto">
                 <table class="table table-striped">
@@ -106,8 +110,32 @@
                     </tr>
                     </td></tr>
                 </table>
-
+            </div>
+        </div>
+    </div>
+</div>
+<div align="left" id="UserSearch" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content" style="width: 654;margin-left: -88px;">
+            <div class="modal-header">
+                <h3 style="margin-left: -85px;">Search Results</h3>
                 <button class=" btn btn-info" data-dismiss="modal" aria-hidden="true">Close</button>
+            </div>
+            <div class="modal-body" style="width: 600px;height:500px;overflow: auto">
+                <table class="table table-striped">
+                    <tr class="table-bordered" ng-repeat="user in users track by $index">
+                        <td><img src="{{user.profile_image_url}}" style="height: 50px;width:50px">
+
+                        </td>
+                        <td>{{user.name}}
+
+                        </td>
+                        <td>
+                            <button class="btn btn-info" ng-click="unfollow(user)" ng-show="user.following">UnFollow</button>
+                            <button class="btn btn-info" ng-click="Follow(user)" ng-show="!user.following">Follow</button>
+                        </td>
+                    </tr>
+                </table>
             </div>
         </div>
     </div>
