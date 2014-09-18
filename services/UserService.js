@@ -320,6 +320,42 @@ exports.getSpecificTweets = function (user,params) {
         emitter.emit(EventName.NOT_FOUND,null);
     }
 }.toEmitter();
+exports.searchTweets = function (user,params) {
+    log.info(params,'parameters...');
+    var text=encodeURIComponent(params.text);
+    var emitter = this;
+    var cb=function(err,data){
+        if(!err){
+            log.info('Search Tweets:  ',data);
+            emitter.emit(EventName.DONE,data);
+        }
+        else{
+            emitter.emit(EventName.ERROR,err);
+        }
+
+    };
+    if (user) {
+        User.findOne({_id: user._id}, function (err, data) {
+            if (err) {
+                log.error('error', err);
+                emitter.emit(EventName.ERROR,err);
+            }
+            else {
+                _oauth.get(
+                    "https://api.twitter.com/1.1/search/tweets.json?count=50&q="+text
+                    , data.accessToken
+                    , data.refreshToken
+                    ,cb
+                );
+
+            }
+        });
+
+    }
+    else {
+        emitter.emit(EventName.NOT_FOUND,null);
+    }
+}.toEmitter();
 exports.getUserFriendList = function (user) {
     var emitter = this;
     var cb=function(err,data){

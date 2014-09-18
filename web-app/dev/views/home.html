@@ -2,27 +2,33 @@
     <div class="profile" ng-show="profile">
         <img class="profile-image" src="{{profile.profilePicUrl}}">
         <br><br>
-        <span style="color: ghostwhite; font-size: 16px">{{profile.username}}</span>
+        <span style="color: ghostwhite; font-size: 16px;">{{profile.username}}</span>
         <br><br>
         <button class="btn btn-info" ng-click="signIn()">New Tweet</button>
         <br>
-        User_id:<input class="form-control" type="text" ng-model="user_id">
+        <span style="color: ghostwhite; font-size: 16px;">User_id:</span>
+        <input class="form-control" type="text" ng-model="user_id" placeholder="twitter_id">
         <br>
-        Screen_name:<input class="form-control" type="text" ng-model="screen_name">
+        <span style="color: ghostwhite; font-size: 16px;">Screen_name:</span>
+        <input class="form-control" type="text" ng-model="screen_name" placeholder="screen_name">
         <br>
         <button class="btn btn-info" ng-click="search(user_id,screen_name)">Search Friend's Tweet</button>
-        <input ng-model="searchText">
-        <table >
-            <tr><th>Name</th><th>TwitterID</th></tr>
-            <tr ng-repeat="friend in friends | filter:searchText">
-                <td>{{friend.screen_name}}</td>
-                <td>{{friend.id}}</td>
-            </tr>
-        </table>
+        <br>
+        <select ng-model="friend" ng-options="friend.screen_name for friend in friends"
+                class="form-control" ng-show="friends">
+        </select>
+        <br>
+        <button class="btn btn-info" ng-click="search(friend)" ng-show="friends">Search Friend</button>
+        <br>
+        <span style="color: ghostwhite; font-size: 16px;">Search Tweets by text </span>
+        <input class="form-control" type="text" ng-model="phrase">
+        <br>
+        <button class="btn btn-info" ng-click="searchTweet(phrase)">Search Tweets</button>
+
 
     </div>
     <div class="tweetDiv" ng-show="tweets">
-        <h3 style="margin-top: 20px">Tweets</h3>
+        <h3 style="margin-top: 20px;margin-left: 200px;">Tweets</h3>
 
         <div class="innerTweetDiv">
             <table class="table table-striped">
@@ -45,7 +51,7 @@
     </div>
     <div class="favouriteTweetDiv"
          ng-show="favouriteTweets">
-        <h3 style="margin-top: 20px">Favourite Tweets</h3>
+        <h3 style="margin-top: 20px;margin-left: 200px;">Favourite Tweets</h3>
 
         <div class="innerFavouriteTweetDiv">
             <table class="table table-striped">
@@ -58,13 +64,12 @@
         </div>
     </div>
     <div ng-if="friendTimelines" class="friendTweet">
-        <h3 style="margin-top: 20px">Favourite Tweets</h3>
+        <h3 style="margin-top: 20px;margin-left: 200px;">{{friend.name}} Tweet</h3>
 
         <div class="innerFriendTweetDiv">
             <table class="table table-striped">
                 <tr class="table-bordered" ng-repeat="tweet  in friendTimelines">
                     <td>{{tweet.text}}
-
                     </td>
                 </tr>
             </table>
@@ -82,6 +87,25 @@
                 <br>
                 <button class="btn btn-info modal-btn" ng-click="tweet()">Tweet</button>
                 <button class=" btn btn-info" data-dismiss="modal" aria-hidden="true">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div align="left" id="tweet" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content" style="width: 654;margin-left: -88px;">
+            <div class="modal-header">
+                <h3 style="margin-left: -85px;">Search Tweets</h3>
+            </div>
+            <div class="modal-body" style="width: 600px;height:500px;overflow: auto">
+                <table class="table table-striped">
+                    <tr class="table-bordered" ng-repeat="tweet in searchTweets track by $index">
+                        <td>{{tweet.text}}
+                    </tr>
+                    </td></tr>
+                </table>
+
+                <button class=" btn btn-info" data-dismiss="modal" aria-hidden="true">Close</button>
             </div>
         </div>
     </div>
