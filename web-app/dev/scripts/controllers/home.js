@@ -90,10 +90,8 @@ angular.module('yoApp')
         }
         HomeService.getFavoriteTweets(function (tweets) {
             $scope.favouriteTweets = tweets;
-            $scope.favouriteTweets.forEach(function(tweet){
-                $scope.tweets.push(tweet);
+                $scope.tweets.concat($scope.favouriteTweets);
             });
-        });
         (function () {
             setInterval(function () {
                 HomeService.getTweets(function (user_timeline_tweets) {
@@ -153,8 +151,19 @@ angular.module('yoApp')
                     }
                 });
             }
-            else {
+            else if(id.user){
                 console.log(id, ':selected value');
+                HomeService.getUserTimeLine({user_id: id.user.id, screen_name: id.user.screen_name}, function (err, data) {
+                    if (err) {
+                        console.log('error while getting user time line tweets');
+                    }
+                    else {
+                        console.log('user time line tweets:', data);
+                        $scope.friendTimelines = data;
+                    }
+                });
+            }
+            else{
                 HomeService.getUserTimeLine({user_id: id.id, screen_name: id.screen_name}, function (err, data) {
                     if (err) {
                         console.log('error while getting user time line tweets');

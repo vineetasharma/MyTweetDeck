@@ -61,3 +61,4 @@ _app.get('/verifyEmail/:verificationCode',controllers.user.verifyEmail);
 _app.get('/getUserTimeLine',controllers.user.getSpecificUserTimelineTweet);
 _app.get('/searchTweets',controllers.user.searchTweets);
 _app.get('/getFriendList',controllers.user.getFriendList);
+_app.get('/getUserByName',controllers.user.getUserByName);

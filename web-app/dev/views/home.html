@@ -1,4 +1,4 @@
-<div class='homeDiv' ng-show="tweets">
+<div class='homeDiv'>
     <div class="profile" ng-show="profile">
         <img class="profile-image" src="{{profile.profilePicUrl}}">
         <br><br>
@@ -40,6 +40,8 @@
                         </button>
                         <button class="btn " ng-click="favourite(tweet)" ng-class="{favourite:tweet.favorited}"
                                 ng-disabled="tweet.favorited">Favourite
+                        </button>
+                        <button class="btn btn-info " ng-click="search(tweet)">Tweet by {{tweet.user.name}}
                         </button>
                         <div></div>
 

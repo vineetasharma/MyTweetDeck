@@ -204,6 +204,32 @@ exports.getFriendList = function (req, res) {
         });
 
 }
+exports.getUserByName = function (req, res) {
+    log.info('getUserBy Name method called');
+    var user = req.checkLoggedIn();
+    var tweets;
+    UserService.getUserByName(user,{name:req.param("name")})
+        .on(EventName.DONE, function(data) {
+            log.info('user by name in controller........',data);
+            try{
+                data=JSON.parse(data);
+                res.send(data);
+            }
+            catch(e){
+                log.error(e);
+                res.send(null);
+            }
+
+        })
+        .on(EventName.ERROR, function (err) {
+            log.error(err);
+            res.send(err);
+        })
+        .on(EventName.NOT_FOUND, function () {
+            res.send(null);
+        });
+
+}
 exports.reTweet = function (req, res) {
     var user = req.checkLoggedIn();
     console.log('id:' + req.body.id);
