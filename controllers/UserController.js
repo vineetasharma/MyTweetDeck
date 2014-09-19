@@ -135,7 +135,7 @@ exports.getTweets = function (req, res) {
         })
         .on(EventName.ERROR, function (err) {
             log.error(err);
-            res.send(err);
+            res.send(null);
         })
         .on(EventName.NOT_FOUND, function () {
             res.send(null);
@@ -184,7 +184,7 @@ exports.getFriendList = function (req, res) {
     var tweets;
     UserService.getUserFriendList(user)
         .on(EventName.DONE, function(data) {
-            console.log('data in controller........',data);
+            log.info('Friend List........',data);
             try{
                 data=JSON.parse(data);
                 res.send(data);
@@ -297,5 +297,33 @@ exports.verifyEmail = function (req, res) {
         .on(EventName.NOT_FOUND, function (data) {
             log.info('You have a verified Email.');
             res.redirect('/');
+        });
+}
+exports.followUser = function (req, res) {
+    var user = req.checkLoggedIn();
+    UserService.follow(req.body.data, user)
+        .on(EventName.DONE, function (user) {
+            res.send(user);
+        })
+        .on(EventName.ERROR, function (err) {
+            log.error(err);
+            res.send(null);
+        })
+        .on(EventName.NOT_FOUND, function () {
+            res.end('User not found ');
+        });
+}
+exports.unFollowUser = function (req, res) {
+    var user = req.checkLoggedIn();
+    UserService.unFollow(req.body.data, user)
+        .on(EventName.DONE, function (user) {
+            res.end(user);
+        })
+        .on(EventName.ERROR, function (err) {
+            log.error(err);
+            res.send(null);
+        })
+        .on(EventName.NOT_FOUND, function () {
+            res.end('User not found ');
         });
 }

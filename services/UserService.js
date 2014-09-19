@@ -423,4 +423,74 @@ exports.getUserByName = function (user,params) {
         emitter.emit(EventName.NOT_FOUND,null);
     }
 }.toEmitter();
+exports.unFollow = function (data1,user,cb) {
+    var emitter = this;
+    if (user) {
+        User.findOne({_id: user._id}, function (err, data) {
+            if (err) {
+                log.error( err);
+                emitter.emit(EventName.ERROR,err);
+            }
+            else {
+               var request= _oauth.post(
+                    "https://api.twitter.com/1.1/friendships/destroy.json?screen_name="+data1.screen_name+"&user_id="+data1.user_id
+                    , data.accessToken
+                    , data.refreshToken
+                );
+                var data = "";
+                request.addListener('response', function (response) {
+                    response.setEncoding('utf8');
+                    response.addListener('data', function (chunk) {
+                        data = data + chunk;
+                        //console.log(chunk);
+                    });
+                    response.addListener('end', function () {
+                        log.info('--- END ---', data);
+                    });
+                });
+                request.end();
+                emitter.emit(EventName.DONE,data);
+            }
+        });
+
+    }
+    emitter.emit(EventName.NOT_FOUND,null);
+
+}.toEmitter();
+exports.follow = function (data1,user) {
+    log.info(data1);
+    var emitter = this;
+    if (user) {
+        User.findOne({_id: user._id}, function (err, data) {
+            if (err) {
+                log.error('error when compose a new Tweet', err);
+                emitter.emit(EventName.ERROR,err);
+            }
+            else {
+                var request = _oauth.post(
+                    "https://api.twitter.com/1.1/friendships/create.json?screen_name="+data1.screen_name+"&user_id="+data1.user_id
+                    , data.accessToken
+                    , data.refreshToken
+                );
+                console.log("https://api.twitter.com/1.1/friendships/create.json?screen_name="+data1.screen_name+"&user_id="+data1.user_id);
+                var data = "";
+                request.addListener('response', function (response) {
+                    response.setEncoding('utf8');
+                    response.addListener('data', function (chunk) {
+                        data = data + chunk;
+                        //console.log(chunk);
+                    });
+                    response.addListener('end', function () {
+                        log.info('--- END ---', data);
+                    });
+                });
+                request.end();
+                emitter.emit(EventName.DONE,data);
+            }
+        });
+
+    }
+    emitter.emit(EventName.NOT_FOUND,null);
+
+}.toEmitter();
 

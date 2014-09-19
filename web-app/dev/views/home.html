@@ -1,4 +1,4 @@
-<div class='homeDiv'>
+<div class='homeDiv' ng-show="tweets">
     <div class="profile" ng-show="profile">
         <img class="profile-image" src="{{profile.profilePicUrl}}">
         <br><br>
@@ -6,13 +6,11 @@
         <br><br>
         <button class="btn btn-info" ng-click="signIn()">New Tweet</button>
         <br>
-        <span style="color: ghostwhite; font-size: 16px;">User_id:</span>
-        <input class="form-control" type="text" ng-model="user_id" placeholder="twitter_id">
         <br>
-        <span style="color: ghostwhite; font-size: 16px;">Screen_name:</span>
-        <input class="form-control" type="text" ng-model="screen_name" placeholder="screen_name">
+        <input class="form-control" type="text" ng-model="name" placeholder="search users">
         <br>
-        <button class="btn btn-info" ng-click="search(user_id,screen_name)">Search Friend's Tweet</button>
+        <button class="btn btn-info" ng-click="searchUser(name)">Search</button>
+        <br>
         <br>
         <select ng-model="friend" ng-options="friend.screen_name for friend in friends"
                 class="form-control" ng-show="friends">
@@ -20,7 +18,7 @@
         <br>
         <button class="btn btn-info" ng-click="search(friend)" ng-show="friends">Search Friend</button>
         <br>
-        <span style="color: ghostwhite; font-size: 16px;">Search Tweets by text </span>
+        <span style="color: ghostwhite; font-size: 16px;">Search Tweets </span>
         <input class="form-control" type="text" ng-model="phrase">
         <br>
         <button class="btn btn-info" ng-click="searchTweet(phrase)">Search Tweets</button>
@@ -33,7 +31,8 @@
         <div class="innerTweetDiv">
             <table class="table table-striped">
                 <tr class="table-bordered" ng-repeat="tweet in tweets track by $index">
-                    <td>{{tweet.text}}
+                     <td ng-if="tweet.retweet_count>0">
+                         <a>{{tweet.entities.user_mentions[0].screen_name || tweet.user.screen_name}}</a>{{tweet.text}}
                         <br>
                         <button class="btn " ng-click="retweet(tweet.id_str)" ng-class="{retweet:tweet.retweeted}"
                                 ng-disabled="tweet.retweeted">Retweet
@@ -43,10 +42,20 @@
                         </button>
                         <button class="btn btn-info " ng-click="search(tweet)">Tweet by {{tweet.user.name}}
                         </button>
-                        <div></div>
-
+                    </td>
+                    <td ng-if="!tweet.retweet_count">
+                        <a>{{tweet.user.screen_name}}</a>{{tweet.text}}{{tweet.user.screen_name}}
+                        <br>
+                        <button class="btn " ng-click="retweet(tweet.id_str)" ng-class="{retweet:tweet.retweeted}"
+                                ng-disabled="tweet.retweeted">Retweet
+                        </button>
+                        <button class="btn " ng-click="favourite(tweet)" ng-class="{favourite:tweet.favorited}"
+                                ng-disabled="tweet.favorited">Favourite
+                        </button>
+                        <button class="btn btn-info " ng-click="search(tweet)">Tweet by {{tweet.user.name}}
+                        </button>
+                    </td>
                 </tr>
-                </td></tr>
             </table>
         </div>
 
@@ -88,7 +97,7 @@
                 <textarea cols="25" rows="5" class="form-control" ng-model="tweetStatus"></textarea>
                 <br>
                 <button class="btn btn-info modal-btn" ng-click="tweet()">Tweet</button>
-                <button class=" btn btn-info" data-dismiss="modal" aria-hidden="true">Cancel</button>
+                <button class=" btn btn-info" data-dismiss="modal" aria-hidden="true">Close</button>
             </div>
         </div>
     </div>
@@ -96,8 +105,11 @@
 <div align="left" id="tweet" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content" style="width: 654;margin-left: -88px;">
-            <div class="modal-header">
-                <h3 style="margin-left: -85px;">Search Tweets</h3>
+            <div class="modal-header" style="height: 76px;">
+                <div style="float:left;margin-left: 21px;"><h3 style="margin-left: -85px;">Search Results</h3></div>
+                <div style="float: right;margin-right: 21px;">
+                    <button class=" btn btn-info" data-dismiss="modal" aria-hidden="true">Close</button>
+                </div>
             </div>
             <div class="modal-body" style="width: 600px;height:500px;overflow: auto">
                 <table class="table table-striped">
@@ -106,9 +118,40 @@
                     </tr>
                     </td></tr>
                 </table>
-
-                <button class=" btn btn-info" data-dismiss="modal" aria-hidden="true">Close</button>
             </div>
         </div>
     </div>
+</div>
+<div align="left" id="UserSearch" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content" style="width: 654;margin-left: -88px;">
+            <div class="modal-header" style="height: 76px;">
+                <div style="float:left;margin-left: 21px;"><h3 style="margin-left: -85px;">Search Results</h3></div>
+                <div style="float: right;margin-right: 21px;">
+                    <button class=" btn btn-info" data-dismiss="modal" aria-hidden="true">Close</button>
+                </div>
+            </div>
+            <div class="modal-body" style="width: 600px;height:500px;overflow: auto">
+                <table class="table table-striped">
+                    <tr class="table-bordered" ng-repeat="user in users track by $index">
+                        <td><img src="{{user.profile_image_url}}" style="height: 50px;width:50px">
+
+                        </td>
+                        <td>{{user.name}}
+
+                        </td>
+                        <td>
+                            <button class="btn btn-info" ng-click="unfollow(user)" ng-show="user.following">UnFollow
+                            </button>
+                            <button class="btn btn-info" ng-click="follow(user)" ng-show="!user.following">Follow
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div ng-hide="tweets" style="margin-top: 164px;margin-left: 481px;">
+    <img src="../images/720.GIF">
 </div>

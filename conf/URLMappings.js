@@ -62,3 +62,5 @@ _app.get('/getUserTimeLine',controllers.user.getSpecificUserTimelineTweet);
 _app.get('/searchTweets',controllers.user.searchTweets);
 _app.get('/getFriendList',controllers.user.getFriendList);
 _app.get('/getUserByName',controllers.user.getUserByName);
+_app.post('/follow',controllers.user.followUser);
+_app.post('/unFollow',controllers.user.unFollowUser);

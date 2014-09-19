@@ -53,6 +53,21 @@ angular.module('yoApp')
                     callback(error,null);
                 });
         };
+        this.getSearchUsers = function (data,callback) {
+            $http({
+                url: '/getUserByName',
+                method: "GET",
+                params: data
+            })
+                .success(function (data) {
+                    console.log('search Tweets',data);
+                    callback(null,data);
+                }).
+                error(function (error) {
+                    console.log("error during seaching tweets: ", error.message);
+                    callback(error,null);
+                });
+        };
         this.reTweet = function (id,callback) {
             $http.post('/reTweet',{id:id})
                 .success(function (data) {
@@ -93,5 +108,27 @@ angular.module('yoApp')
                     callback(error,null);
                 });
 
+        };
+        this.follow = function (user,callback) {
+            $http.post('/follow',{data:user})
+                .success(function (data) {
+                    console.log('follow successfully',data);
+                    callback('success');
+                })
+                .error(function (error) {
+                    console.log("error during follow: ", error.message);
+                    callback(null);
+                });
+        };
+        this.unFollow = function (user,callback) {
+            $http.post('/unFollow',{data:user})
+                .success(function (data) {
+                    console.log('follow successfully',data);
+                    callback('success');
+                })
+                .error(function (error) {
+                    console.log("error during follow: ", error.message);
+                    callback(null);
+                });
         };
     }]);
