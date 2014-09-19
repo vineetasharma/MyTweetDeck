@@ -56,9 +56,10 @@ angular.module('yoApp')
         HomeService.getTweets(function (user_timeline_tweets) {
             console.log('service called');
             if (typeof user_timeline_tweets == 'object') {
-                user_timeline_tweets.forEach(function (tweet) {
+                /*user_timeline_tweets.forEach(function (tweet) {
                     $scope.tweets.push(tweet);
-                });
+                });*/
+                $scope.tweets=user_timeline_tweets;
                 console.log($scope.tweets);
             }
             console.log(user_timeline_tweets);
@@ -116,7 +117,7 @@ angular.module('yoApp')
         }
         HomeService.getFavoriteTweets(function (tweets) {
             $scope.favouriteTweets = tweets;
-            $scope.tweets = $scope.tweets.concat($scope.favouriteTweets);
+//            $scope.tweets = $scope.tweets.concat($scope.favouriteTweets);
         });
         (function () {
             setInterval(function () {
