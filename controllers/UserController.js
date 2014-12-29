@@ -16,8 +16,8 @@ exports.dashboard = function (req, res) {
 }.secured();
 
 exports.findOrCreateTwitterAccount = function (accessToken, refreshToken, profile, done) {
-    console.log(accessToken, 'accessToken');
-    console.log(refreshToken, 'refreshToken');
+    log.info(accessToken, 'accessToken');
+    log.info(refreshToken, 'refreshToken');
     console.log(done, 'done');
     UserService.findOrCreateTwitterAccountService(accessToken, refreshToken, profile)
         .on("success", function (user) {
