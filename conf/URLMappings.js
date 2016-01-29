@@ -10,12 +10,7 @@ var controllers = {
     user: require("../controllers/UserController"),
     home: require("../controllers/HomeController")
 };
-var T = new Twit({
-    consumer_key:_config.twitterAuth.consumerKey
-    , consumer_secret:_config.twitterAuth.consumerSecret
-    , access_token:         '...'
-    , access_token_secret:  '...'
-})
+
 
 //Cluster API
 _app.get("/cluster/worker/list", controllers.cluster.list);

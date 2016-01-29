@@ -13,13 +13,20 @@ expressValidator = require('express-validator'),
     socket = require('socket.io'),
     OAuth = require('oauth').OAuth,
     Twit = require('twit'),
-    nodemailer=require('nodemailer'),
-    process=require('process'),
-    ejs=require('ejs'),
-    twitter=require('twitter');
+    nodemailer = require('nodemailer'),
+    process = require('process'),
+    ejs = require('ejs'),
+    twitter = require('twitter');
 var oa;
-var ntwitter = require('ntwitter');
+var Twit = require('twit')
 
+var twit = new Twit({
+    consumer_key: 'xxxxxxxxxxxxxxxxxxxx'
+    , consumer_secret: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+    , access_token: 'xxxxxxxxxxxxxxxx-xxxxxxxxxxxxxxxxxx'
+    , access_token_secret: 'xxxxxxxxxxxxxxxxxxxxxxxxxxx'
+});
+var Emitter = require('primus-emitter');
 // Use the BearerStrategy with Passport.
 passport.use(new BearerStrategy(Util.verifyBearerToken));
 passport.serializeUser(function (user, done) {
@@ -71,12 +78,13 @@ global.noop = function () {
 //Create Express App
 var app = express();
 
+
 //set the base dir of project in global, This is done to maintain the correct base in case of forked processes.
 global.__appBaseDir = __dirname;
 
 //Get the Environment
 global.__appEnv = process.env.NODE_ENV || "development";
-console.log("Initializing with environment:", __appEnv);
+//console.log("Initializing with environment:", __appEnv);
 
 //Initialize the config. Now the configurations will be available in _config global getter.
 AppBuilder.initConfig({
@@ -92,7 +100,7 @@ var logOnStdOut = _config.logger.stdout.enabled;
 AppBuilder.initLogger(function (message, level) {
     if (logOnStdOut) {
         //Print on console the fully formatted message
-        console.log(message.fullyFormattedMessage);
+        //   console.log(message.fullyFormattedMessage);
     }
 });
 
@@ -111,7 +119,7 @@ if (__appEnv == "production") {
     app.use(express.static(path.join(__dirname, 'web-app', "bower_components")));
     app.use(express.static(path.join(__dirname, 'web-app', "dev")));
 }
-app.use(expressSession({secret: 'TD_Secret', key: 'sid', cookie: { secure: false }}))
+app.use(expressSession({secret: 'TD_Secret', key: 'sid', cookie: {secure: false}}))
 app.use(express.cookieParser());
 app.use(Util.localToBearerStrategyMiddleWare);
 app.use(express.json());
@@ -145,6 +153,8 @@ global.__defineGetter__("_process", function () {
     return process
 });
 
+var users = [], stream = null, track = "modi";
+
 //Initialize the Database connection and load models
 AppBuilder.initDomains(function () {
     //Init Hooks
@@ -163,13 +173,76 @@ AppBuilder.initDomains(function () {
     _server.on("error", function (err) {
         log.error(err);
     });
+    var Primus = require("primus")
+
+    var options = {
+        port: 9092,
+        transformer: "engine.io"
+    }
+    var primus = new Primus(_server, options);
+    // add emitter to Primus
+    primus.use('emitter', Emitter);
+    primus.on("connection", function (spark) {
+        //_sparks = spark;
+
+
+        // The user it's added to the array if it doesn't exist
+        if (users.indexOf(spark.id) === -1) {
+            users.push(socket.id);
+        }
+
+        // Log
+        logConnectedUsers();
+
+        // Listener when a user emits the "start stream" signal
+        spark.on("data", function (data) {
+            // The stream will be started only when the 1st user arrives
+            if (data == 'START_STREAM' && stream === null) {
+
+                stream = twit.stream('statuses/filter', {track: 'modi', language: 'en'})
+                stream.on("tweet", function (data) {
+                    // only broadcast when users are online
+                    if (users.length > 0) {
+                        spark.send('tweet', data);
+                    }
+                    else {
+                        //stream.destroy();
+                        stream = null;
+                    }
+                });
+            }
+        });
+
+        // This handles when a user is disconnected
+        spark.on("disconnect", function (o) {
+            // find the user in the array
+            var index = users.indexOf(spark.id);
+            if (index != -1) {
+                // Eliminates the user from the array
+                users.splice(index, 1);
+            }
+            logConnectedUsers();
+        });
+
+        // Emits signal when the user is connected sending
+        // the tracking words the app it's using
+        spark.send("connected", {
+            tracking: track
+        });
+
+    })
+// A log function for debugging purposes
+    function logConnectedUsers() {
+        console.log("============= CONNECTED USERS ==============");
+        console.log("==  ::  " + users.length);
+        console.log("============================================");
+    }
+
     var server = _server.listen(app.get('port'), function () {
         log.info('Server listening on', _config.serverUrl);
 
         //Initialize Socket IO Server
         globalEvent.emit("OnSocketIoStarted", socket.listen(server));
-
-        globalEvent.emit("OnEmailNotification", {"emailId": 'vibhor.kukreja@intelligrape.com', "subject": 'hello', "textMatter": 'hi'});
 
         //Initialize IPC for test environment
         if (__appEnv == "test" && process.send) {
@@ -177,7 +250,13 @@ AppBuilder.initDomains(function () {
                 //Register the IPC commands
                 AppBuilder.addIPCTestCommandHandlers();
                 //send message to parent thread in case of integration testing using IPC
-                process.send({event: "ready", serverUrl: _config.serverUrl, port: _config.port, env: __appEnv, listCap: _config.maxCountForListingApi});
+                process.send({
+                    event: "ready",
+                    serverUrl: _config.serverUrl,
+                    port: _config.port,
+                    env: __appEnv,
+                    listCap: _config.maxCountForListingApi
+                });
             } catch (c) {
             }
         }
@@ -200,4 +279,7 @@ AppBuilder.initDomains(function () {
         log.error(err);
     });
 });
+
+
+
 

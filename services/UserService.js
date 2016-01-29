@@ -78,7 +78,7 @@ exports.updateUserDetails = function (id, data) {
 exports.sendEmailVerificationLink = function (id,name,email) {
     log.info('sendEmailVerificationLink called',id,name,email);
     var date=new Date();
-    console.log(id,name,email);
+   // console.log(id,name,email);
     var mailData={
         link:id+"="+date.getTime(),
         name:name
@@ -472,7 +472,7 @@ exports.follow = function (data1,user) {
                     , data.accessToken
                     , data.refreshToken
                 );
-                console.log("https://api.twitter.com/1.1/friendships/create.json?screen_name="+data1.screen_name+"&user_id="+data1.user_id);
+              //  console.log("https://api.twitter.com/1.1/friendships/create.json?screen_name="+data1.screen_name+"&user_id="+data1.user_id);
                 var data = "";
                 request.addListener('response', function (response) {
                     response.setEncoding('utf8');
